@@ -44,7 +44,7 @@ class IDDetails:
         self.name = name
         self.link = link
         self.description = description
-        # only get the part after the last slash link.rsplit('/', 1)[-1] if link else ""
+        # only get the part after the last slash
         self.filename_pdf = link.rsplit('/', 1)[-1] if link else ""
         # check if the file name is end with .pdf, if not, add .pdf to the end of the link
         if self.filename_pdf and not self.filename_pdf.lower().endswith('.pdf'):
@@ -59,11 +59,6 @@ class IDDetails:
             'description': self.description
         }
 
-
-def write_to_csv(data, filename): # not used
-    df = pd.DataFrame(data)
-    df.to_csv(filename, index=False, encoding='utf-8-sig', mode='a', header=not (os.path.exists(filename) and os.path.getsize(filename) > 0))
-    print(f"Data saved to {filename}")
 
 def append_to_json(data, filename):
     # Load existing data if file exists
@@ -180,24 +175,13 @@ def extract_release_info(file_path):
     if not os.path.exists(file_path):
         print(f"File {file_path} does not exist.")
         return None
-    
-    # Extract year and version from the filename
-    filename = os.path.basename(file_path)
-    # year_version = filename.replace("releasenotes_", "").replace(".xml", "")
-    
-    # if len(year_version) < 5:
-    #     print(f"Invalid filename format: {filename}")
-    #     return None
-    
-    # year = year_version[:4]
-    # version = year_version[4:]
-    
+        
     parser = etree.XMLParser(remove_blank_text=True)
     tree = etree.parse(file_path, parser)
     root = tree.getroot()
  
     version = ""
-    # extract <title>DICOM PS3 2023d</title> by xpath, it in the root element
+    # extract <book><title>DICOM PS3 2023d</title>...</book>
     title_elements = root.xpath('/db:book/db:title[1]', namespaces=ns)
     if not title_elements or title_elements[0].text is None:
         title = ""
@@ -209,31 +193,31 @@ def extract_release_info(file_path):
     # extract <chapter><section><title>"Changes to Parts" elements
     changes = root.xpath('/db:book/db:chapter/db:section[db:title="Changes to Parts"]', namespaces=ns)
     changes_of_parts_result = extract_changes_of_parts(version, changes)
-    changes_of_parts_dataframe = pd.DataFrame([entry.to_dict() for entry in changes_of_parts_result])
+    changes_of_parts_df = pd.DataFrame([entry.to_dict() for entry in changes_of_parts_result])
     # extract <chapter><section><title>"Supplements Incorporated" elements
     sups = root.xpath('/db:book/db:chapter/db:section[db:title="Supplements Incorporated"]', namespaces=ns)
     supplements_incorporated_result = extract_varlistentry(sups)
-    supplements_incorporated_dataframe = pd.DataFrame([entry.to_dict() for entry in supplements_incorporated_result])
+    supplements_incorporated_df = pd.DataFrame([entry.to_dict() for entry in supplements_incorporated_result])
     # extract <chapter><section><title>"Correction Items Incorporated" elements
     cps = root.xpath('/db:book/db:chapter/db:section[db:title="Correction Items Incorporated"]', namespaces=ns)
     correction_items_incorporated_result = extract_varlistentry(cps)
-    correction_items_incorporated_dataframe = pd.DataFrame([entry.to_dict() for entry in correction_items_incorporated_result])
+    correction_items_incorporated_df = pd.DataFrame([entry.to_dict() for entry in correction_items_incorporated_result])
 
     # write the dataframes to json files
     if os.path.exists("data/extracted") is False:
         os.makedirs("data/extracted")
         
-    if not changes_of_parts_dataframe.empty:
+    if not changes_of_parts_df.empty:
         change_of_parts_json_file = f"data/extracted/change_of_parts.json"
-        append_to_json(changes_of_parts_dataframe, change_of_parts_json_file)
+        append_to_json(changes_of_parts_df, change_of_parts_json_file)
 
-    if not supplements_incorporated_dataframe.empty:
+    if not supplements_incorporated_df.empty:
         supplements_incorporated_json_file = f"data/extracted/supplements_incorporated.json"
-        append_to_json(supplements_incorporated_dataframe, supplements_incorporated_json_file)
+        append_to_json(supplements_incorporated_df, supplements_incorporated_json_file)
 
-    if not correction_items_incorporated_dataframe.empty:
+    if not correction_items_incorporated_df.empty:
         correction_items_incorporated_json_file = f"data/extracted/correction_items_incorporated.json"
-        append_to_json(correction_items_incorporated_dataframe, correction_items_incorporated_json_file)
+        append_to_json(correction_items_incorporated_df, correction_items_incorporated_json_file)
 
 
 def walk_directory(directory):
