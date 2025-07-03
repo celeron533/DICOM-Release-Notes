@@ -245,7 +245,7 @@ def walk_directory(directory):
     """
     for root, dirs, files in os.walk(directory):
         for file in files:
-            if file.endswith('.xml'):
+            if file.endswith('.xml') and file.startswith('releasenotes_'):
                 file_path = os.path.join(root, file)
                 print(f"Processing file: {file_path}")
                 extract_release_info(file_path)
