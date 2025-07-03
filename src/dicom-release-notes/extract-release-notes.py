@@ -181,7 +181,7 @@ def extract_release_info(file_path):
     root = tree.getroot()
  
     version = ""
-    # extract <book><title>DICOM PS3 2023d</title>...</book>
+    # 1. extract <book><title>DICOM PS3 2023d</title>...</book>
     title_elements = root.xpath('/db:book/db:title[1]', namespaces=ns)
     if not title_elements or title_elements[0].text is None:
         title = ""
@@ -190,15 +190,17 @@ def extract_release_info(file_path):
         version = title.split()[-1] if len(title.split()) > 1 else ""
         print(f"Extracted version: {version} from title: {title}")
 
-    # extract <chapter><section><title>"Changes to Parts" elements
+    # 2. extract <chapter><section><title>"Changes to Parts" elements
     changes = root.xpath('/db:book/db:chapter/db:section[db:title="Changes to Parts"]', namespaces=ns)
     changes_of_parts_result = extract_changes_of_parts(version, changes)
     changes_of_parts_df = pd.DataFrame([entry.to_dict() for entry in changes_of_parts_result])
-    # extract <chapter><section><title>"Supplements Incorporated" elements
+    
+    # 3. extract <chapter><section><title>"Supplements Incorporated" elements
     sups = root.xpath('/db:book/db:chapter/db:section[db:title="Supplements Incorporated"]', namespaces=ns)
     supplements_incorporated_result = extract_varlistentry(sups)
     supplements_incorporated_df = pd.DataFrame([entry.to_dict() for entry in supplements_incorporated_result])
-    # extract <chapter><section><title>"Correction Items Incorporated" elements
+    
+    # 4. extract <chapter><section><title>"Correction Items Incorporated" elements
     cps = root.xpath('/db:book/db:chapter/db:section[db:title="Correction Items Incorporated"]', namespaces=ns)
     correction_items_incorporated_result = extract_varlistentry(cps)
     correction_items_incorporated_df = pd.DataFrame([entry.to_dict() for entry in correction_items_incorporated_result])
