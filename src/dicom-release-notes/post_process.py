@@ -8,52 +8,61 @@ import json
 change_of_parts_json_file = f"data/extracted/change_of_parts.json"
 supplements_incorporated_json_file = f"data/extracted/supplements_incorporated.json"
 correction_items_incorporated_json_file = f"data/extracted/correction_items_incorporated.json"
+document_list_json_file = f"data/extracted/document_list.json"
 
-def append_to_json(data, filename):
-    # Load existing data if file exists
-    if os.path.exists(filename):
-        with open(filename, 'r', encoding='utf-8') as f:
-            try:
-                existing_data = json.load(f)
-            except json.JSONDecodeError:
-                existing_data = []
-    else:
-        existing_data = []
 
-    # Append new data
-    if isinstance(data, pd.DataFrame):
-        new_data = data.to_dict(orient='records')
-    else:
-        new_data = data
+def grouped_changes_of_parts(changes_of_parts_df: pd.DataFrame) -> pd.DataFrame:
+    # Exclude rows where 'id' is blank string or null
+    filtered_df = changes_of_parts_df[changes_of_parts_df['id'].notna() & (changes_of_parts_df['id'] != '')]
 
-    existing_data.extend(new_data)
+    # Group by 'version' and 'id', aggregate 'part' into lists
+    grouped = filtered_df.groupby(['version', 'id'])['part'].apply(list).reset_index()
 
-    # Write back to file
-    with open(filename, 'w', encoding='utf-8') as f:
-        json.dump(existing_data, f, ensure_ascii=False, indent=2)
-    print(f"Data saved to {filename}")
+    # Now group by 'version', aggregate 'id' and 'part' into desired structure
+    result = (
+        grouped.groupby('version')
+        .apply(lambda df: [
+            {'id': row['id'], 'parts': row['part']}
+            for _, row in df.iterrows()
+        ])
+        .reset_index(name='ids')
+    )
+
+    result.to_json('grouped_changes_of_parts.json', orient='records', force_ascii=False, indent=2)
+
+    return result
 
 def process():
-    supplements_incorporated_dataframe = pd.read_json(supplements_incorporated_json_file)
-    correction_items_incorporated_dataframe = pd.read_json(correction_items_incorporated_json_file)
-    changes_of_parts_dataframe = pd.read_json(change_of_parts_json_file)
+    supplements_incorporated_df = pd.read_json(supplements_incorporated_json_file)
+    correction_items_incorporated_df = pd.read_json(correction_items_incorporated_json_file)
+    grouped_changes_of_parts_df = grouped_changes_of_parts(pd.read_json(change_of_parts_json_file))
 
     # join the dataframes and write to a combined json file
-    id_details_combined_dataframe = pd.concat([supplements_incorporated_dataframe, correction_items_incorporated_dataframe], ignore_index=True)
-    all_in_one_dataframe = pd.merge(
-        changes_of_parts_dataframe[['version', 'part', 'id']],
-        id_details_combined_dataframe[['id', 'name', 'filename_pdf', 'description']],
-        how='left',
-        on='id',
-        )
-    # Remove rows where 'name' is NaN or empty string
-    all_in_one_dataframe = all_in_one_dataframe[all_in_one_dataframe['name'].notna() & (all_in_one_dataframe['name'] != '')]
-    # Replace NaN with None to ensure valid JSON output
-    all_in_one_dataframe = all_in_one_dataframe.where(pd.notnull(all_in_one_dataframe), None)
+    id_details_combined_df = pd.concat([supplements_incorporated_df, correction_items_incorporated_df], ignore_index=True)
+
+    # Create mappings from id to description and name for quick lookup
+    id_to_description = dict(zip(id_details_combined_df['id'], id_details_combined_df['description']))
+    id_to_name = dict(zip(id_details_combined_df['id'], id_details_combined_df['name']))
+
+    # # Iterate each item (row) in grouped_changes_of_parts_df
+    # for idx, version_entry in grouped_changes_of_parts_df.iterrows():
+    #     print(f"Version: {version_entry['version']}")
+    #     for id_obj in version_entry['ids']:
+    #         print(f"  ID: {id_obj['id']}, Parts: {id_obj['parts']}")
+
+    # Add description and name to each id object in grouped_changes
+    for idx, version_entry in grouped_changes_of_parts_df.iterrows():
+        for id_obj in version_entry['ids']:
+            id_val = id_obj['id']
+            id_obj['description'] = id_to_description.get(id_val, None)
+            id_obj['name'] = id_to_name.get(id_val, None)
+
+    # Convert back to DataFrame for further processing or saving
+    all_in_one_df = pd.DataFrame(grouped_changes_of_parts_df)
    
     all_in_one_json_file = f"data/all_in_one.json"
 
-    append_to_json(all_in_one_dataframe, all_in_one_json_file)
+    all_in_one_df.to_json(all_in_one_json_file, orient='records', force_ascii=False, indent=2)
 
 if __name__ == "__main__":
     process()
