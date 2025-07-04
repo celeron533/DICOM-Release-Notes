@@ -27,7 +27,7 @@ def grouped_changes_of_parts(changes_of_parts_df: pd.DataFrame) -> pd.DataFrame:
         .reset_index(name='ids')
     )
 
-    result.to_json('grouped_changes_of_parts.json', orient='records', force_ascii=False, indent=2)
+    # result.to_json('grouped_changes_of_parts.json', orient='records', force_ascii=False, indent=2)
 
     return result
 
