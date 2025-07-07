@@ -53,11 +53,11 @@ def process():
             id_obj['files'] = id_to_document_list.get(id_val, [])
 
     # Convert back to DataFrame for further processing or saving
-    all_in_one_df = pd.DataFrame(grouped_changes_of_parts_df)
+    consolidated_df = pd.DataFrame(grouped_changes_of_parts_df)
    
-    all_in_one_json_file = f"data/all_in_one.json"
+    consolidated_json_file = f"data/consolidated.json"
 
-    all_in_one_df.to_json(all_in_one_json_file, orient='records', force_ascii=False, indent=2)
+    consolidated_df.to_json(consolidated_json_file, orient='records', force_ascii=False, indent=2)
 
 if __name__ == "__main__":
     process()
