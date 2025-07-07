@@ -236,4 +236,5 @@ def walk_directory(directory):
                 print(f"Processing file: {file_path}")
                 extract_release_info(file_path)
 
-walk_directory("downloaded")
+if __name__ == "__main__":
+    walk_directory("downloaded")
