@@ -28,10 +28,16 @@ jobs:
       - name: Run data generation script
         run: poetry run python src/dicom-release-notes/start.py
 
-      # - name: deploy to GitHub Pages
-      #   uses: peaceiris/actions-gh-pages@v4
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./src/dicom-release-notes/output
-      #     publish_branch: gh-pages
-      #     publish_dir_mode: 755
+      - name: copy files to publish directory
+        run: |
+          mkdir -p publish/data
+          cp src/dicom-release-notes/data/consolidated.json publish/data/
+          cp index.html publish/
+
+      - name: deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./publish
+          publish_branch: gh-pages
+          publish_dir_mode: 755
