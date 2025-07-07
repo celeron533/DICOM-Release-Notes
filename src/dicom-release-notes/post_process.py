@@ -59,6 +59,8 @@ def process():
 
     consolidated_df.to_json(consolidated_json_file, orient='records', force_ascii=False, indent=2)
 
+    print(f"Consolidated data saved to {consolidated_json_file}")
+
 if __name__ == "__main__":
     process()
     print("Post processing completed.")
