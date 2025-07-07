@@ -20,7 +20,30 @@
     <div id="main-table"></div>
 
     <script>
+        // icon SVGs
+        const icons = {
+            pdf: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#e53935"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">PDF</text></svg>`,
+            doc: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#1976d2"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">DOC</text></svg>`,
+            docx: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#1565c0"/><text x="1" y="9" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">DOC</text><text x="1" y="20" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">X</text></svg>`,
+            xml: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#00c0c0"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">XML</text></svg>`,
+            pptx: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#7b1fa2"/><text x="1" y="9" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">PPT</text><text x="1" y="20" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">X</text></svg>`,
+            dir: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#efb359"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">DIR</text></svg>`
+
+        };
         const data_URL = "./data/all_in_one.json";
+
+        // helper to get icon by extension
+        function getIcon(filename) {
+            // If no extension, treat as directory
+            const ext = filename.includes('.') ? filename.split('.').pop().toLowerCase() : "";
+            if (!ext) return icons.dir;
+            if (ext === "pdf") return icons.pdf;
+            if (ext === "doc") return icons.doc;
+            if (ext === "docx") return icons.docx;
+            if (ext === "xml") return icons.xml;
+            if (ext === "pptx") return icons.pptx;
+            return "";
+        };
 
         var table = new Tabulator("#main-table", {
             height:"700px",
@@ -33,24 +56,78 @@
                     "Cache-Control": "max-age=60, must-revalidate"
                 }
             },
+
+/*
+            // flatten the data structure
+            ajaxResponse: function(url, params, response) {
+
+                const treeData = [];
+                
+                response.forEach(versionItem => {
+                    // add version node (parent node)
+                    const versionNode = {
+                        id: versionItem.version,
+                        version: versionItem.version,
+                    };
+                    
+                    treeData.push(versionNode);
+                    
+                    // add child nodes (ids)
+                    versionItem.ids.forEach(idItem => {
+                        treeData.push({
+                        ...idItem,
+                        version: versionItem.version,
+                        });
+                    });
+                });
+                
+                return treeData;
+            },
+*/
+
+            dataTree: true,
+            dataTreeChildField: "ids",
+            dataTreeStartExpanded: true,
+            dataTreeFilter:true,
+            dataTreeSort:true,
+
+
             // placeholder:"Awaiting Data, Please Load File",
             pagination: "local",
             paginationSize: 100,
             paginationSizeSelector: [25, 50, 100, 200, 500, 1000, true],
             paginationCounter:"rows",
             // paginationButtonCount:10,
-            // groupBy: ["version", "part"],
+
             columns: [
-                {title: "Release", field: "version", hozAlign:"center", headerFilter: true},
-                {title: "Part", field: "part", hozAlign:"center", headerFilter: true},
+                // {title: "Release", field: "version", hozAlign:"center", headerFilter: true},
+                // {title: "Part", field: "part", hozAlign:"center", headerFilter: true},
                 // {title: "ID", field: "id", headerFilter: true},
-                {title: "Name", field: "name", headerFilter: true},
-                {title: "File", field: "filename_pdf", headerFilter: true, formatter: "link", formatterParams: {
-                    labelField: "filename_pdf",
-                    urlPrefix: "https://medical.nema.org/medical/dicom/final/",
-                    target: "_blank",
-                }},
-                {title: "Description", field: "description", headerFilter: true},
+                // {title: "Name", field: "name", headerFilter: true},
+                // {title: "File", field: "filename_pdf", headerFilter: true, formatter: "link", formatterParams: {
+                //     labelField: "filename_pdf",
+                //     urlPrefix: "https://medical.nema.org/medical/dicom/final/",
+                //     target: "_blank",
+                // }},
+                // {title: "Description", field: "description", headerFilter: true},
+
+                { title: "Version", field: "version",headerFilter: true },
+                { title: "ID", field: "id",headerFilter: true},
+                { title: "Name", field: "name", headerFilter: true },
+                { title: "Description", field: "description",headerFilter: true },
+                { title: "Parts", field: "parts", headerFilter: true},
+                { 
+                    title: "Files", 
+                    field: "files", 
+                    formatter: function(cell) {
+                        const files = cell.getValue();
+                        if (!files || files.length === 0) return "-";
+                        return files.map(file => {
+                            const icon = getIcon(file);
+                            return `<a href="https://medical.nema.org/medical/dicom/final/${file}" target="_blank" >${icon ? icon : file}</a>`;
+                        }).join(" ");
+                    } 
+                },
             ],
         });
 
