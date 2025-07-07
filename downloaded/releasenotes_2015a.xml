@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <title>DICOM PS 3 2015a</title>
+  <subtitle>Release Notes</subtitle>
+  <info>
+    <author>
+      <orgname>DICOM Standards Committee</orgname>
+    </author>
+    <copyright>
+      <year>2015</year>
+      <holder>NEMA</holder>
+    </copyright>
+  </info>
+  <chapter label="">
+    <title/>
+    <section>
+      <title/>
+    <para>2015/02/05</para>
+    <para>The following changes have been made relative to the previously published PS 3 2014c
+        release of the standard, by incorporating the changes specified in the supplements and
+        correction items.</para>
+      <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="ftp://medical.nema.org/medical/dicom/final/"/></para>
+    </section>
+
+    <section>
+      <title>Production Notes</title>
+      <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+      <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard.
+      The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you
+      are reading the PDF in a tool that supports linking to other parts.</para>
+      <para>The two HTML formats are provided for the convenience of those who find them easier to
+        navigate within a browser, and though the appearance and organization is different, the
+        content is the same. One form consists of entire parts in one very large HTML page, and the
+        other consist of chunks of sections with navigation elements. The granularity of the
+        chunking has been increased compared to previous releases (as of the 2014c release), so that
+        individual pages are smaller (this has a significant impact on PS3.3 in particular). Both
+        forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a
+        browser that supports SVG is required (most contemporary browsers do).</para>
+      <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the
+        convenience of future Supplement and CP editors. Their main claim to fame is that they exist
+        at all, and though they are viewable and editable, they are lacking many features of the
+        Word source of previous release, for example the use of styles for section headings. They do
+        contain embedded hyperlinks, and these are also present in the table of contents, even
+        though the page numbers rendered in the table of contents may be meaningless. To reiterate,
+        the intent of these files is to provide a source to cut and past into new Word documents,
+        and not to be functional documents in their own right. Since Word does not support SVG, all
+        figures embedded in the DOCX files have been rasterized to a fixed resolution and are
+        adequate for position only and are not editable and are not intended to be a substitute for
+        the SVG figures.</para>
+      <para>The rendering pipeline used to produce these files is available but requires some
+        expertise to use it. It is not supported. To achieve quality rendering, the use of some
+        commercial tools was necessary, to supplement the many open source tools that were also
+        used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring
+        mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source,
+        version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO
+        form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG
+        (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF,
+        and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files
+        were produced using DeltaXML DocBook Compare (commercial).</para>
+      <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+      <itemizedlist>
+        <listitem><para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords) to break
+          within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using
+          these words literally.</para></listitem>
+        <listitem><para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements
+            with a title identifying them as such, to facilitate their automated detection and
+            extraction.</para></listitem>
+        <listitem><para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining
+            whether or not they are extensible, etc., again to enable automated extraction.</para></listitem>
+        <listitem><para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to
+          from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package
+          to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for
+          cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it
+          has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para></listitem>
+      </itemizedlist>
+    </section>
+    
+    <section>
+      <title>Changes to Parts</title>
+      
+      <section>
+        <title>General Changes</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.1</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.2</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1409">CP 1409</link></para></listitem>
+          <listitem><para><link linkend="cp_1422">CP 1422</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.3</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1031">CP 1031</link></para></listitem>
+          <listitem><para><link linkend="cp_1410">CP 1410</link></para></listitem>
+          <listitem><para><link linkend="cp_1417">CP 1417</link></para></listitem>
+          <listitem><para>Correct wrong CID reference (to 7486, was 7482) in description of mixed breeds (C.7.1.1.1.1)</para></listitem>
+          <listitem><para>Clean up typos in code tuples (missing spaces after commas, swapped order of CV and CSD)</para></listitem>
+          <listitem>
+            <para>Figure corrections:</para>
+            <itemizedlist>
+              <listitem>
+                <para>Figure C.8.19.6-6 restore the dependency between the primary and secondary angles that was shown in the original combined figure</para>
+              </listitem>
+              <listitem>
+                <para>Figure C.8.19.6-9 restore the representation of the dependency between the three angles (At1, At2, At3) that was shown in the original combined figure</para>
+              </listitem>
+              <listitem>
+                <para>Figure C.8-15 make the end of the arrow of (0018,7030) point to the center of the "equivalent TLHC of the Active Area" (smaller than the TLHC of the FOV) (clarify intent of CP 1044 by adding additional dotted box)</para>
+              </listitem>
+              <listitem>
+                <para>Figure C.8.21.3-5 restored nesting symbols for attributes</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.4</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1419">CP 1419</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.5</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1031">CP 1031</link></para></listitem>
+          <listitem><para><link linkend="cp_1422">CP 1422</link></para></listitem>
+          <listitem><para>Delete redundant note embedded in Figure D.2-4, which is also in DocBook text.</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.6</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1031">CP 1031</link></para></listitem>
+          <listitem><para><link linkend="cp_1406">CP 1406</link></para></listitem>
+          <listitem><para><link linkend="cp_1407">CP 1407</link></para></listitem>
+          <listitem><para><link linkend="cp_1417">CP 1417</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.7</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.8</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.10</title>
+        <itemizedlist>
+           <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.11</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.12</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.14</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.15</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.16</title>
+        <itemizedlist>
+          <listitem><para>Correct CID 3672 Pacemakers codes URL and NBG coding scheme definition article reference</para></listitem>
+          <listitem><para>Correct coding scheme designator from SRT to DCM for 111625 Diffuse direct illumination in CID 4203 Ophthalmic Photography Illumination</para></listitem>
+          <listitem><para>Correct fibula entry in CID 4031, which was missing SCT and UMLS codes</para></listitem>
+          <listitem><para><link linkend="cp_1031">CP 1031</link></para></listitem>
+          <listitem><para><link linkend="cp_1404">CP 1404</link></para></listitem>
+          <listitem><para><link linkend="cp_1405">CP 1405</link></para></listitem>
+          <listitem><para><link linkend="cp_1406">CP 1406</link></para></listitem>
+          <listitem><para><link linkend="cp_1407">CP 1407</link></para></listitem>
+          <listitem><para><link linkend="cp_1408">CP 1408</link></para></listitem>
+          <listitem><para><link linkend="cp_1412">CP 1412</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.17</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_167">Sup 167</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.18</title>
+        <itemizedlist>
+          <listitem><para>Add UC to JSON table (which CP 1031 forgot to add)</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.19</title>
+        <itemizedlist>
+          <listitem><para>Add UC to schema (which CP 1031 forgot to add)</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.20</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+    </section>
+    
+    <section>
+      <title>Supplements Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="sup_167"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup167_ft.pdf">Sup 167</link></term><listitem><para>X-Ray 3D Angiographic IOD Informative Annex</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+    <section>
+      <title>Correction Items Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="cp_1031"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1031_ft.pdf">CP 1031</link></term><listitem><para>Support long code values</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1404"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1404_ft.pdf">CP 1404</link></term><listitem><para>Correct Condition on Exposure in Projection X-Ray RDSR</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1405"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1405_ft.pdf">CP 1405</link></term><listitem><para>Replace BI-RADs codes that have SNOMED equivalents</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1406"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1406_ft.pdf">CP 1406</link></term><listitem><para>Add codes for tumor sites</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1407"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1407_ft.pdf">CP 1407</link></term><listitem><para>Add diffusion tractography related sites</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1408"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1408_ft.pdf">CP 1408</link></term><listitem><para>Add NeuroNames as Coding Scheme</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1409"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1409_ft.pdf">CP 1409</link></term><listitem><para>Add Conformance Storage Media Categories</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1410"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1410_ft.pdf">CP 1410</link></term><listitem><para>Clarify Lossy Image Compression Ratio</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1412"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1412_ft.pdf">CP 1412</link></term><listitem><para>LOINC code updates in SR templates and context groups</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1417"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1417_ft.pdf">CP 1417</link></term><listitem><para>Clarify use and declaration of private mapping resource</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1419"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1419_ft.pdf">CP 1419</link></term><listitem><para>Correct Sequence Level of Procedure Step Cancellation DateTime</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1422"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1422_ft.pdf">CP 1422</link></term><listitem><para>Correct High Bit value description in various IODs</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+  </chapter>
+</book>

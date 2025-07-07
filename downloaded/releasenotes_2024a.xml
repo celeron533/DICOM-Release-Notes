@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+    <title>DICOM PS3 2024a</title>
+    <subtitle>Release Notes</subtitle>
+    <info>
+        <author>
+            <orgname>DICOM Standards Committee</orgname>
+        </author>
+        <copyright>
+            <year>2024</year>
+            <holder>NEMA</holder>
+        </copyright>
+        <legalnotice>
+            <para>A DICOM® publication</para>
+        </legalnotice>
+    </info>
+    <chapter label="">
+        <title/>
+        <section>
+            <title/>
+            <para>2024/01/19</para>
+            <para>The following changes have been made relative to the previously published PS3 2023e release of the standard, by incorporating the changes specified in the supplements and correction items.</para>
+            <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="https://medical.nema.org/medical/dicom/final/"/></para>
+        </section>
+
+        <section>
+            <title>Production Notes</title>
+            <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+            <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard. The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you are reading the PDF in a tool that supports linking to other parts).</para>
+            <para>The two HTML formats are provided for the convenience of those who find them easier to navigate within a browser, and though the appearance and organization is different, the content is the same. One form consists of entire parts in one very large HTML page, and the other consist of chunks of sections with navigation elements. Both forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a browser that supports SVG is required (most contemporary browsers do).</para>
+            <para>All paragraphs (&lt;p/&gt; elements) in the HTML files of this release, are uniquely identified with a hypertext anchor (&lt;a/&gt; element), each of which has an id attribute (derived from the source DocBook &lt;para/&gt; element xml:id attribute). These unique identifiers will remain stable in subsequent releases, so they may be reliably used as the persistent targets of hyperlinks relative to the current release base URL, and are more specific than the existing anchors for entire sections or tables. Unlike the section and table anchors, there is no semantic significance to the syntax of the identifiers (i.e., they are UUIDs, rather than being derived from the section or table numbering pattern). Subsequent releases will add new identifiers for new paragraphs and text split out of existing paragraphs into new paragraphs, and will, if possible, empty, rather than entirely remove, existing paragraphs that are retired (in order to avoid dead links).</para>
+            <para>The chunked HTML format includes navigation elements in the header and footer, as well as a hyperlink to the current release of that page, in case the user happens to find or be using an older release of the page.</para>
+            <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the convenience of future Supplement and CP editors. Their main claim to fame is that they exist at all, and though they are viewable and editable, they are lacking many features of the Word source of previous release, for example the use of styles for section headings. They do contain embedded hyperlinks, and these are also present in the table of contents, even though the page numbers rendered in the table of contents may be meaningless. To reiterate, the intent of these files is to provide a source to cut and past into new Word documents, and not to be functional documents in their own right. Since Word does not support SVG, all figures embedded in the DOCX files have been rasterized to a fixed resolution and are adequate for position only and are not editable and are not intended to be a substitute for the SVG figures.</para>
+            <para>The rendering pipeline used to produce these files is available but requires some expertise to use it. It is not supported. To achieve quality rendering, the use of some commercial tools was necessary, to supplement the many open source tools that were also used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source, version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF, and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files were produced using DeltaXML DocBook Compare (commercial). The PDF files were post-processed with qpdf to generate object streams to reduce the size of the tagged PDF and
+                improve searching for strings that span lines within tables and to linearize the files for streamed web page viewing.</para>
+            <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords and UIDs) to break within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using these words literally.</para>
+                </listitem>
+                <listitem>
+                    <para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements with a title identifying them as such, to facilitate their automated detection and extraction.</para>
+                </listitem>
+                <listitem>
+                    <para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining whether or not they are extensible, etc., again to enable automated extraction.</para>
+                </listitem>
+                <listitem>
+                    <para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para>
+                </listitem>
+            </itemizedlist>
+        </section>
+
+        <section>
+            <title>Changes to Parts</title>
+
+            <section>
+                <title>General Changes</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.1</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.2</title>
+                <itemizedlist>
+                    <listitem><para><link linkend="sup_234">Sup 234</link></para></listitem>
+                    <listitem><para><link linkend="cp_1636">CP 1636</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.3</title>
+                <itemizedlist>
+                    <para>Correct capitalizaton of Tomo in NM Tomo when not used as defined term</para>
+                    <para>Clean up DCID invocation text for Channel Source Sequence</para>
+                    <listitem><para><link linkend="cp_2285">CP 2285</link></para></listitem>
+                    <listitem><para><link linkend="cp_2296">CP 2296</link></para></listitem>
+                    <listitem><para><link linkend="cp_2310">CP 2310</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.4</title>
+                <itemizedlist>
+                    <listitem><para>Consistently use lower case form of origin server and user agent as per RFC 7230 and make definitions match PS3.18</para></listitem>
+                    <listitem><para>Correct name of Procedure Step Progress Information Sequence</para></listitem>
+                    <listitem><para><link linkend="sup_234">Sup 234</link></para></listitem>
+                    <listitem><para><link linkend="cp_2269">CP 2269</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.5</title>
+                <itemizedlist>
+                    <listitem><para><link linkend="cp_2301">CP 2301</link></para></listitem>
+                    <listitem><para><link linkend="cp_2302">CP 2302</link></para></listitem>
+                    <listitem><para><link linkend="cp_2304">CP 2304</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.6</title>
+                <itemizedlist>
+                    <listitem><para><link linkend="sup_234">Sup 234</link></para></listitem>
+                    <listitem><para><link linkend="cp_2296">CP 2296</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.7</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.8</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.10</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.11</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.12</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.14</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.15</title>
+                <itemizedlist>
+                    <listitem><para>Flag Referenced Patient Alias Sequence as retired (was retired in CP 2281 applied to 2023d)</para></listitem>
+                    <listitem><para><link linkend="cp_2296">CP 2296</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.16</title>
+                <itemizedlist>
+                    <listitem><para>Correct various CID labels and xml:id attributes, VT in TID 12001, incorrect replacement code for 297174005​</para></listitem>
+                    <listitem><para><link linkend="cp_2287">CP 2287</link></para></listitem>
+                    <listitem><para><link linkend="cp_2288">CP 2288</link></para></listitem>
+                    <listitem><para><link linkend="cp_2296">CP 2296</link> TBD. Add missing UMLS codes to CID 9272</para></listitem>
+                    <listitem><para><link linkend="cp_2309">CP 2309</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.17</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.18</title>
+                <itemizedlist>
+                    <listitem><para>Consistently use lower case form of origin server and user agent as per RFC 7230</para></listitem>
+                    <listitem><para><link linkend="sup_234">Sup 234</link></para></listitem>
+                    <listitem><para><link linkend="cp_2303">CP 2303</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.19</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.20</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.21</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.22</title>
+                <itemizedlist> </itemizedlist>
+            </section>
+
+        </section>
+
+        <section>
+            <title>Supplements Incorporated</title>
+            <variablelist>
+                <varlistentry xml:id="sup_234"><term><link xl:href="https://medical.nema.org/medical/dicom/final/sup234_ft_DICOMwebStorageCommitmentService.pdf">Sup 234</link></term><listitem><para>DICOMweb Storage Commitment Service</para></listitem></varlistentry>
+            </variablelist>
+        </section>
+
+        <section>
+            <title>Correction Items Incorporated</title>
+            <variablelist>
+                <varlistentry xml:id="cp_1636"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp1636_ft_SpecificCharacterSetUsageInNewConformance.pdf">CP 1636</link></term><listitem><para>Examples of Specific Character Set Usage in PS3.2</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2269"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2269_ft_ClarifyMatchingMultipleValues.pdf">CP 2269</link></term><listitem><para>Clarify matching multiple values</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2285"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2285_ft_harmonize_description_of_directory_records_and_clarify_their_applicability.pdf">CP 2285</link></term><listitem><para>Harmonize description of Directory Records and clarify their applicability</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2287"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2287_ft_correctBreastRP.pdf">CP 2287</link></term><listitem><para>Update mammography dose reference point code meaning</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2288"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2288_ft_TableTimingEnhancedRDSR.pdf">CP 2288</link></term><listitem><para>Description of DateTime entries in TABLE content items for Enhanced RDSR</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2296"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2296_ft_ProvideAdditionalROIParametersToAvoidParsingStrings.pdf">CP 2296</link></term><listitem><para>Provide additional ROI parameters to avoid parsing strings</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2301"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2301_ft_singleBitRLEandJ2KforSEG.pdf">CP 2301</link></term><listitem><para>Clarify applicability of RLE and JPEG 2000 Transfer Syntax to single bit images such as binary segmentations</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2302"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2302_ft_singleBitNativeMulitFrameNoPadding.pdf">CP 2302</link></term><listitem><para>Clarify absence of padding between frames applies to single BitsStored multi-frame images encoded in Native format</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2303"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2303_ft_singleBitFrameLevelRetrieve.pdf">CP 2303</link></term><listitem><para>Clarify Frame Pixel Data Retrieve Response for single BitsStored multi-frame images encoded in Native format</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2304"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2304_ft_group_number_term.pdf">CP 2304</link></term><listitem><para>Use the Group Number term correctly</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2309"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2309_ft_AddSourceObstructionToTreatmentTerminationReasons.pdf">CP 2309</link></term><listitem><para>Add channel obstruction to Treatment Termination reasons</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2310"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2310_ft_ImproveWordingAboutUseOfStudyWithinReferencesInStructureSet.pdf">CP 2310</link></term><listitem><para>Wording improvement for C.8.8.5.4 and use of Study in RTSS references</para></listitem></varlistentry>
+            </variablelist>
+        </section>
+
+    </chapter>
+</book>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <title>DICOM PS 3 2015c</title>
+  <subtitle>Release Notes</subtitle>
+  <info>
+    <author>
+      <orgname>DICOM Standards Committee</orgname>
+    </author>
+    <copyright>
+      <year>2015</year>
+      <holder>NEMA</holder>
+    </copyright>
+  </info>
+  <chapter label="">
+    <title/>
+    <section>
+      <title/>
+    <para>2015/07/04</para>
+    <para>The following changes have been made relative to the previously published PS3 2015b
+        release of the standard, by incorporating the changes specified in the supplements and
+        correction items.</para>
+      <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="ftp://medical.nema.org/medical/dicom/final/"/></para>
+    </section>
+
+    <section>
+      <title>Production Notes</title>
+      <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+      <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard.
+      The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you
+      are reading the PDF in a tool that supports linking to other parts.</para>
+      <para>The two HTML formats are provided for the convenience of those who find them easier to
+        navigate within a browser, and though the appearance and organization is different, the
+        content is the same. One form consists of entire parts in one very large HTML page, and the
+        other consist of chunks of sections with navigation elements. Both
+        forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a
+        browser that supports SVG is required (most contemporary browsers do).</para>
+      <para>All paragraphs (&lt;p/&gt; elements) in the HTML files of this release, are uniquely identified with
+        a hypertext anchor (&lt;a/&gt; element), each of which has an id attribute (derived from
+        the source DocBook &lt;para/&gt; element xml:id attribute).
+        These unique identifiers will remain stable in subsequent releases, so they may be reliably used as
+        the persistent targets of hyperlinks relative to the current release base URL, and are
+        more specific than the existing anchors for entire sections or tables. Unlike the section and table
+        anchors, there is no semantic significance to the syntax of the identifiers (i.e., they are UUIDs,
+        rather than being derived from the section or table numbering pattern).
+        Subsequent releases will add new identifiers for new paragraphs and text split out of existing
+        paragraphs into new paragraphs, and will, if possible, empty, rather than entirely remove, existing paragraphs
+        that are retired (in order to avoid dead links).</para>
+      <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the
+        convenience of future Supplement and CP editors. Their main claim to fame is that they exist
+        at all, and though they are viewable and editable, they are lacking many features of the
+        Word source of previous release, for example the use of styles for section headings. They do
+        contain embedded hyperlinks, and these are also present in the table of contents, even
+        though the page numbers rendered in the table of contents may be meaningless. To reiterate,
+        the intent of these files is to provide a source to cut and past into new Word documents,
+        and not to be functional documents in their own right. Since Word does not support SVG, all
+        figures embedded in the DOCX files have been rasterized to a fixed resolution and are
+        adequate for position only and are not editable and are not intended to be a substitute for
+        the SVG figures.</para>
+      <para>The rendering pipeline used to produce these files is available but requires some
+        expertise to use it. It is not supported. To achieve quality rendering, the use of some
+        commercial tools was necessary, to supplement the many open source tools that were also
+        used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring
+        mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source,
+        version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO
+        form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG
+        (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF,
+        and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files
+        were produced using DeltaXML DocBook Compare (commercial).</para>
+      <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+      <itemizedlist>
+        <listitem><para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords) to break
+          within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using
+          these words literally.</para></listitem>
+        <listitem><para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements
+            with a title identifying them as such, to facilitate their automated detection and
+            extraction.</para></listitem>
+        <listitem><para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining
+            whether or not they are extensible, etc., again to enable automated extraction.</para></listitem>
+        <listitem><para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to
+          from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package
+          to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for
+          cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it
+          has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para></listitem>
+      </itemizedlist>
+    </section>
+    
+    <section>
+      <title>Changes to Parts</title>
+      
+      <section>
+        <title>General Changes</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.1</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.2</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1411">CP 1411</link></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.3</title>
+        <itemizedlist>
+          <listitem><para>Correct error in Table C.8-27 X-Ray Acquisition Module that replaced Exposure in µAs (0018,1153) with Exposure in mAs (0018,9332), inadvertently introduced between 2011 and 2013 releases</para></listitem>
+          <listitem><para>Correct error in Equation C.7.6.2.1-1, should be Pz not Px, inadvertently introduced between 2011 and 2013 releases</para></listitem>
+          <listitem><para><link linkend="sup_180">Sup 180</link></para></listitem>
+          <listitem><para><link linkend="sup_186">Sup 186</link></para></listitem>
+          <listitem><para><link linkend="cp_812">CP 812</link></para></listitem>
+          <listitem><para><link linkend="cp_1321">CP 1321</link></para></listitem>
+          <listitem><para><link linkend="cp_1322">CP 1322</link> (with placeholder replacement figure from Word export)</para></listitem>
+          <listitem><para><link linkend="cp_1402">CP 1402</link></para></listitem>
+          <listitem><para><link linkend="cp_1411">CP 1411</link></para></listitem>
+          <listitem><para><link linkend="cp_1436">CP 1436</link></para></listitem>
+          <listitem><para><link linkend="cp_1437">CP 1437</link></para></listitem>
+          <listitem><para><link linkend="cp_1438">CP 1438</link></para></listitem>
+          <listitem><para><link linkend="cp_1439">CP 1439</link></para></listitem>
+          <listitem><para><link linkend="cp_1440">CP 1440</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.4</title>
+        <itemizedlist>
+          <listitem><para>Fill in missing DCM code for Enhanced Multi-frame Conversion Equipment as already defined in PS3.16.</para></listitem>
+          <listitem><para>Use consistent spelling of CANCELED (rather than CANCELLED) for defined term, and use single 'l' in text throughout (except for cancellation, which has two 'l's in the text and attribute names).</para></listitem>
+          <listitem><para><link linkend="sup_186">Sup 186</link></para></listitem>
+          <listitem><para><link linkend="cp_934">CP 934</link></para></listitem>
+          <listitem><para><link linkend="cp_1442">CP 1442</link> (fixed more instances of * in Table CC.2.5-2c; Retrieve Location UID row had already been removed by CP 1350 incorporated in 2014c)</para></listitem>
+          <listitem><para><link linkend="cp_1443">CP 1443</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.5</title>
+        <itemizedlist>
+          <listitem><para>Include some missing changes related to the addition of OD VR in CP 1261 (not incorporated properly in previous releases)</para></listitem>
+          <listitem><para>Add missing mention of UC and UR in captions and headings (related to CPs 1031, 1324)</para></listitem>
+          <listitem><para>Make note about maximum length of UC, UR and UT minus two not one, since required to be even (to be consistent with normative text in table).</para></listitem>
+          <listitem><para><link linkend="sup_180">Sup 180</link></para></listitem>
+          <listitem><para><link linkend="cp_1411">CP 1411</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.6</title>
+        <itemizedlist>
+          <listitem><para>Correct Table A-3 hyperlinks to consistently link to CID sections not tables (was mixed).</para></listitem>
+          <listitem><para>Add UIDs for missing context groups.</para></listitem>
+          <listitem><para><link linkend="sup_180">Sup 180</link></para></listitem>
+          <listitem><para><link linkend="sup_186">Sup 186</link></para></listitem>
+          <listitem><para><link linkend="cp_1321">CP 1321</link></para></listitem>
+          <listitem><para><link linkend="cp_1322">CP 1322</link></para></listitem>
+          <listitem><para><link linkend="cp_1402">CP 1402</link></para></listitem>
+          <listitem><para><link linkend="cp_1411">CP 1411</link></para></listitem>
+          <listitem><para><link linkend="cp_1438">CP 1438</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.7</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.8</title>
+        <itemizedlist>
+          <listitem><para>Correct spelling of parameter</para></listitem>
+          <listitem><para>Correct Figure 9-1 to match Table 9-11 (error in number of reserved bytes after Protocol Version introduced during redrawing of figure in SVG for 2013)</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.10</title>
+        <itemizedlist>
+           <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.11</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_180">Sup 180</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.12</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.14</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.15</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1321">CP 1321</link></para></listitem>
+          <listitem><para><link linkend="cp_1322">CP 1322</link></para></listitem>
+          <listitem><para><link linkend="cp_1411">CP 1411</link></para></listitem>
+          <listitem><para><link linkend="cp_1438">CP 1438</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.16</title>
+        <itemizedlist>
+          <listitem><para>Correct transposed digits in one occurence of Finding Site (incorrect G-C03E to correct G-C0E3).</para></listitem>
+          <listitem><para>Correct IEC61217 (was incorrectly entered as IEC6127 when CP1430 incorporated).</para></listitem>
+          <listitem><para>Add placeholder for definition for IVOCT code (was not defined in Sup 151).</para></listitem>
+          <listitem><para><link linkend="cp_1322">CP 1322</link></para></listitem>
+          <listitem><para><link linkend="cp_1413">CP 1413</link></para></listitem>
+          <listitem><para><link linkend="cp_1416">CP 1416</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.17</title>
+        <itemizedlist>
+          <listitem><para>Use final text codes in Annex QQQ from CP1391 that had not been merged when Sup 172 incorprated</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.18</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.19</title>
+        <itemizedlist>
+          <listitem><para>Correct inconsistency in Relax NG Compact schema for the Abstract Multi-Dimensional Image Model compared with table (UNSIGNED_CHAR8 should be UNSIGNED_INT8, UUID should be bulkDataUUID, sampleNumber should be indexWithinDimension (also in Figure A.2.4-1), Origin and DirectionCosines index may be 0, Irregular origin is attribute not element)</para></listitem>
+          <listitem><para>Correct numberOfSamples, idNumber, content of DataAt, capitalization of datatype, form of coordinates (xCoord not X_coord) in Figure A.2.4-1</para></listitem>
+          <listitem><para>Correct delimiter in DICOM MIME Type</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.20</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+    </section>
+    
+    <section>
+      <title>Supplements Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="sup_180"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup180_ft.pdf">Sup 180</link></term><listitem><para>MPEG-4 AVC/H.264 Transfer Syntax</para></listitem></varlistentry>
+        <varlistentry xml:id="sup_186"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup186_ft.pdf">Sup 186</link></term><listitem><para>Extensible SR Storage SOP Class</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+    <section>
+      <title>Correction Items Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="cp_812"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp812_ft_pixelpaddingvalueisstoredpixelvalue.pdf">CP 812</link></term><listitem><para>Clarification that Pixel Padding Value is a raw value before any transformations</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_934"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp934_ft_cfindcountspatientrelatedinstudyroot.pdf">CP 934</link></term><listitem><para>Fix Inconsistency of C-FIND only Number of Patient Related XXX attributes</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1321"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1321_ft.pdf">CP 1321</link></term><listitem><para>Add Telecom Addresses</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1322"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1322_ft.pdf">CP 1322</link></term><listitem><para>Add Consulting Physician</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1402"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1402_ft.pdf">CP 1402</link></term><listitem><para>Add UI Value Representation to Hanging Protocol Selector attributes</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1411"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1411_ft_reservedgroupforknownssafeprivateelements.pdf">CP 1411</link></term><listitem><para>Add attributes describing safe or unsafe private elements</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1413"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1413_ft.pdf">CP 1413</link></term><listitem><para>Add LOINC and UCUM license terms</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1416"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1416_ft.pdf">CP 1416</link></term><listitem><para>Update to use SNOMED codes</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1436"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1436_ft.pdf">CP 1436</link></term><listitem><para>Clarification Of Verification Control Point Meterset</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1437"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1437_ft.pdf">CP 1437</link></term><listitem><para>Clarification of Beam Dose Scope</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1438"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1438_ft.pdf">CP 1438</link></term><listitem><para>Omitted Beams Sequence In BDI</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1439"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1439_ft.pdf">CP 1439</link></term><listitem><para>Clarification of RT Image Position</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1440"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1440_ft.pdf">CP 1440</link></term><listitem><para>Correct HL7 CX component name references</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1442"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1442_ft.pdf">CP 1442</link></term><listitem><para>Typos in UPS specification</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1443"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1443_ft.pdf">CP 1443</link></term><listitem><para>Additional N-GET Service for UPS Push</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+  </chapter>
+</book>

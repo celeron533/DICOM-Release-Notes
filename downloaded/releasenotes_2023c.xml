@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <title>DICOM PS3 2023c</title>
+  <subtitle>Release Notes</subtitle>
+  <info>
+    <author>
+      <orgname>DICOM Standards Committee</orgname>
+    </author>
+    <copyright>
+      <year>2023</year>
+      <holder>NEMA</holder>
+    </copyright>
+      <legalnotice>
+          <para>A DICOM® publication</para>
+      </legalnotice>
+  </info>
+  <chapter label="">
+    <title/>
+    <section>
+      <title/>
+        <para>2023/07/05</para>
+        <para>The following changes have been made relative to the previously published PS3 2023b release of the standard, by incorporating the changes specified in the supplements and correction items.</para>
+        <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="https://medical.nema.org/medical/dicom/final/"/></para>
+    </section>
+
+    <section>
+      <title>Production Notes</title>
+      <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+      <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard.
+      The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you
+      are reading the PDF in a tool that supports linking to other parts).</para>
+      <para>The two HTML formats are provided for the convenience of those who find them easier to
+        navigate within a browser, and though the appearance and organization is different, the
+        content is the same. One form consists of entire parts in one very large HTML page, and the
+        other consist of chunks of sections with navigation elements. Both
+        forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a
+        browser that supports SVG is required (most contemporary browsers do).</para>
+      <para>All paragraphs (&lt;p/&gt; elements) in the HTML files of this release, are uniquely identified with
+        a hypertext anchor (&lt;a/&gt; element), each of which has an id attribute (derived from
+        the source DocBook &lt;para/&gt; element xml:id attribute).
+        These unique identifiers will remain stable in subsequent releases, so they may be reliably used as
+        the persistent targets of hyperlinks relative to the current release base URL, and are
+        more specific than the existing anchors for entire sections or tables. Unlike the section and table
+        anchors, there is no semantic significance to the syntax of the identifiers (i.e., they are UUIDs,
+        rather than being derived from the section or table numbering pattern).
+        Subsequent releases will add new identifiers for new paragraphs and text split out of existing
+        paragraphs into new paragraphs, and will, if possible, empty, rather than entirely remove, existing paragraphs
+        that are retired (in order to avoid dead links).</para>
+        <para>The chunked HTML format includes navigation elements in the header and footer, as well as a
+        hyperlink to the current release of that page, in case the user happens to find or be using
+        an older release of the page.</para>
+      <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the
+        convenience of future Supplement and CP editors. Their main claim to fame is that they exist
+        at all, and though they are viewable and editable, they are lacking many features of the
+        Word source of previous release, for example the use of styles for section headings. They do
+        contain embedded hyperlinks, and these are also present in the table of contents, even
+        though the page numbers rendered in the table of contents may be meaningless. To reiterate,
+        the intent of these files is to provide a source to cut and past into new Word documents,
+        and not to be functional documents in their own right. Since Word does not support SVG, all
+        figures embedded in the DOCX files have been rasterized to a fixed resolution and are
+        adequate for position only and are not editable and are not intended to be a substitute for
+        the SVG figures.</para>
+      <para>The rendering pipeline used to produce these files is available but requires some expertise to use it. It is not supported. To achieve quality rendering, the use of some commercial tools was necessary, to supplement the many open source tools that were also used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source, version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF, and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files were produced using DeltaXML DocBook Compare (commercial). The PDF files were post-processed with qpdf to generate object streams to reduce the size of the tagged PDF and improve
+        searching for strings that span lines within tables and to linearize the files for streamed web page viewing.</para>
+      <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+      <itemizedlist>
+        <listitem><para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords and UIDs) to break within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using these words literally.</para></listitem>
+        <listitem><para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements
+            with a title identifying them as such, to facilitate their automated detection and
+            extraction.</para></listitem>
+        <listitem><para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining
+            whether or not they are extensible, etc., again to enable automated extraction.</para></listitem>
+        <listitem><para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to
+          from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package
+          to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for
+          cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it
+          has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para></listitem>
+      </itemizedlist>
+    </section>
+    
+    <section>
+      <title>Changes to Parts</title>
+      
+      <section>
+        <title>General Changes</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.1</title>
+        <itemizedlist>
+            <listitem><para>Update URL for EBU-SMPTE-VSF JT-NM Phase 2 Report</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.2</title>
+        <itemizedlist>
+            <listitem><para>Correct Annex N reference and Table title</para></listitem>
+            <listitem><para>Used Real-Time (hyphenated) throughout</para></listitem>
+            <listitem><para>Make Annex N section headings consistent wrt. "supported"</para></listitem>
+            <listitem><para>Remove duplicate editorial instructions for status code tables</para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.3</title>
+        <itemizedlist>
+            <listitem><para>Replace most occurrences of Information Object Definition with IOD in titles and text</para></listitem>
+            <listitem><para>Correctly apply WSI condition to Plane Orientation (Patient) macro in Segmentation (CP1830)</para></listitem>
+            <listitem><para>Harmonize use of previous version or edition to refer to release instead throughout, except for references to ACR-NEMA 300-1985, 1988, and provide references and hyperlinks for the latter</para></listitem>
+            <listitem><para>Make italicization and colspan of invocation of macros consistent</para></listitem>
+            <listitem><para><link linkend="sup_229">Sup 229</link></para></listitem>
+            <listitem><para><link linkend="sup_237">Sup 237</link></para></listitem>
+            <listitem><para><link linkend="cp_2222">CP 2222</link></para></listitem>
+            <listitem><para><link linkend="cp_2258">CP 2258</link></para></listitem>
+            <listitem><para><link linkend="cp_2271">CP 2271</link></para></listitem>
+            <listitem><para><link linkend="cp_2272">CP 2272</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.4</title>
+        <itemizedlist>
+            <listitem><para>Remove (now incorrect) reference to number of Q/R models and remove retired entry from list of models</para></listitem>
+            <listitem><para>Generalize Annex O preamble to additional behavior and conformance requirements without limiting to SCU</para></listitem>
+            <listitem><para><link linkend="sup_229">Sup 229</link></para></listitem>
+            <listitem><para><link linkend="sup_237">Sup 237</link></para></listitem>
+            <listitem><para><link linkend="cp_2261">CP 2261</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.5</title>
+        <itemizedlist>
+            <listitem><para>Convert full width to half width katakana in example​</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.6</title>
+        <itemizedlist>
+            <listitem><para>Correct keyword for Variable Modality LUT Softcopy Presentation State Storage​</para></listitem>
+            <listitem><para><link linkend="sup_229">Sup 229</link></para></listitem>
+            <listitem><para><link linkend="sup_237">Sup 237</link></para></listitem>
+            <listitem><para><link linkend="cp_2256">CP 2256</link></para></listitem>
+            <listitem><para><link linkend="cp_2258">CP 2258</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.7</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.8</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.10</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.11</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.12</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.14</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.15</title>
+        <itemizedlist>
+            <listitem><para>Remove duplicate conflicting entries for Performed Station AE Title (0040,0241), Scheduled Station AE Title (0040,0001) and Scheduled Study Location AE Title (0032,1021) that were already present (since Sup 142) with a "K"​ rather than "C" (per CP2227 updated as FT2)</para></listitem>
+            <listitem><para>Make name of (0040,A112) consistent with PS3.6</para></listitem>
+            <listitem><para><link linkend="cp_2258">CP 2258</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.16</title>
+        <itemizedlist>
+            <listitem><para>Change sporadic use of exam to study except for physical exam and use examination for that, in descriptions, templates, context groups and code meanings</para></listitem>
+            <listitem><para><link linkend="sup_229">Sup 229</link></para></listitem>
+            <listitem><para><link linkend="cp_2238">CP 2238</link></para></listitem>
+            <listitem><para><link linkend="cp_2256">CP 2256</link></para></listitem>
+            <listitem><para><link linkend="cp_2260">CP 2260</link></para></listitem>
+            <listitem><para><link linkend="cp_2268">CP 2268</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.17</title>
+        <itemizedlist>
+            <listitem><para><link linkend="sup_229">Sup 229 (need SVG figures)</link></para></listitem>
+            <listitem><para><link linkend="sup_237">Sup 237</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.18</title>
+        <itemizedlist>
+            <listitem><para><link linkend="cp_2204">CP 2204</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.19</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.20</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+        
+        <section>
+            <title>PS3.21</title>
+            <itemizedlist>
+            </itemizedlist>
+        </section>
+        
+        <section>
+            <title>PS3.22</title>
+            <itemizedlist>
+            </itemizedlist>
+        </section>
+        
+    </section>
+    
+    <section>
+      <title>Supplements Incorporated</title>
+      <variablelist>
+          <varlistentry xml:id="sup_229"><term><link xl:href="https://medical.nema.org/medical/dicom/final/sup229_ft_photoacoustic.pdf">Sup 229</link></term><listitem><para>Photoacoustic Imaging</para></listitem></varlistentry>
+          <varlistentry xml:id="sup_237"><term><link xl:href="https://medical.nema.org/medical/dicom/final/sup237_ft_General32bitECG.pdf">Sup 237</link></term><listitem><para>General 32-bit ECG</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+    <section>
+      <title>Correction Items Incorporated</title>
+      <variablelist>
+          <varlistentry xml:id="cp_2204"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2204_ft_SinglePartBulkData.pdf">CP 2204</link></term><listitem><para>Restore singlepart for all resources and clarify range requests</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_2222"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2222_ft_AddMissingTreatmentSiteModifier.pdf">CP 2222</link></term><listitem><para>Add missing Treatment Site Modifier</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_2238"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2238_ft_add_reject_flag_to_traditional_RDSR.pdf">CP 2238</link></term><listitem><para>Add Reject Flag items in RDSR for X-Ray and CT</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_2256"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2256_ft_DropSegmentModel.pdf">CP 2256</link></term><listitem><para>Drop 16-segment model of myocardium</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_2258"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2258_ft_AddManufactureDateToDeviceIdentification.pdf">CP 2258</link></term><listitem><para>Add manufacture date and installation date to Device and Equipment Identification</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_2260"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2260_ft_ihtsdoJul2022INTreleaseupdate.pdf">CP 2260</link></term><listitem><para>Update DICOM to reflect changes in IHTSDO SNOMED CT-DICOM Subset for JUL 2022 INT Release</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_2261"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2261_ft_ClarifyInventoryProduction.pdf">CP 2261</link></term><listitem><para>Clarify Inventory Production Rules</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_2268"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2268_ft_quantproc.pdf">CP 2268</link></term><listitem><para>Update Quantitative Diagnostic Imaging Procedure codes</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_2271"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2271_ft_AddFirstGenReferencesToTxPrep.pdf">CP 2271</link></term><listitem><para>Add First Gen References to Treatment Preparation IOD</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_2272"><term><link xl:href="https://medical.nema.org/medical/dicom/final/cp2272_ft_CleanupROIModule.pdf">CP 2272</link></term><listitem><para>Cleanup ROI Module</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+
+  </chapter>
+</book>

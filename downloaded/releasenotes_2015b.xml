@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <title>DICOM PS 3 2015b</title>
+  <subtitle>Release Notes</subtitle>
+  <info>
+    <author>
+      <orgname>DICOM Standards Committee</orgname>
+    </author>
+    <copyright>
+      <year>2015</year>
+      <holder>NEMA</holder>
+    </copyright>
+  </info>
+  <chapter label="">
+    <title/>
+    <section>
+      <title/>
+    <para>2015/04/16</para>
+    <para>The following changes have been made relative to the previously published PS 3 2015a
+        release of the standard, by incorporating the changes specified in the supplements and
+        correction items.</para>
+      <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="ftp://medical.nema.org/medical/dicom/final/"/></para>
+    </section>
+
+    <section>
+      <title>Production Notes</title>
+      <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+      <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard.
+      The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you
+      are reading the PDF in a tool that supports linking to other parts.</para>
+      <para>The two HTML formats are provided for the convenience of those who find them easier to
+        navigate within a browser, and though the appearance and organization is different, the
+        content is the same. One form consists of entire parts in one very large HTML page, and the
+        other consist of chunks of sections with navigation elements. The granularity of the
+        chunking has been increased compared to previous releases (as of the 2014c release), so that
+        individual pages are smaller (this has a significant impact on PS3.3 in particular). Both
+        forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a
+        browser that supports SVG is required (most contemporary browsers do).</para>
+      <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the
+        convenience of future Supplement and CP editors. Their main claim to fame is that they exist
+        at all, and though they are viewable and editable, they are lacking many features of the
+        Word source of previous release, for example the use of styles for section headings. They do
+        contain embedded hyperlinks, and these are also present in the table of contents, even
+        though the page numbers rendered in the table of contents may be meaningless. To reiterate,
+        the intent of these files is to provide a source to cut and past into new Word documents,
+        and not to be functional documents in their own right. Since Word does not support SVG, all
+        figures embedded in the DOCX files have been rasterized to a fixed resolution and are
+        adequate for position only and are not editable and are not intended to be a substitute for
+        the SVG figures.</para>
+      <para>The rendering pipeline used to produce these files is available but requires some
+        expertise to use it. It is not supported. To achieve quality rendering, the use of some
+        commercial tools was necessary, to supplement the many open source tools that were also
+        used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring
+        mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source,
+        version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO
+        form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG
+        (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF,
+        and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files
+        were produced using DeltaXML DocBook Compare (commercial).</para>
+      <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+      <itemizedlist>
+        <listitem><para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords) to break
+          within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using
+          these words literally.</para></listitem>
+        <listitem><para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements
+            with a title identifying them as such, to facilitate their automated detection and
+            extraction.</para></listitem>
+        <listitem><para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining
+            whether or not they are extensible, etc., again to enable automated extraction.</para></listitem>
+        <listitem><para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to
+          from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package
+          to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for
+          cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it
+          has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para></listitem>
+      </itemizedlist>
+    </section>
+    
+    <section>
+      <title>Changes to Parts</title>
+      
+      <section>
+        <title>General Changes</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.1</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_155">Sup 155</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.2</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_155">Sup 155</link></para></listitem>
+          <listitem><para><link linkend="sup_173">Sup 173</link></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.3</title>
+        <itemizedlist>
+          <listitem><para>Fix typo in code sequence examples that had UC rather than SH VR for Code Value</para></listitem>
+          <listitem><para>Correct coordinates in Figure C.23.2-1, restoring them to values in original figure in PS3.3 2011 before SVG conversion.</para></listitem>
+          <listitem><para>Correct reference to Figure 7-2a that should be to Figure 7-1a in Section 7.5 (related to CP 1424).</para></listitem>
+          <listitem><para>Consistently use digit 1 rather than one in index descriptions.</para></listitem>
+          <listitem><para>Improve module name usage and consistency between IOD tables and definitions.</para></listitem>
+          <listitem><para>Hyperlink module name occurences in text to sections that define them.</para></listitem>
+          <listitem><para>Consistently hyphenate and not capitalize "single-frame image" (to be consistent with "multi-frame image").</para></listitem>
+          <listitem><para><link linkend="sup_173">Sup 173</link></para></listitem>
+          <listitem><para><link linkend="cp_375">CP 375</link></para></listitem>
+          <listitem><para><link linkend="cp_1420">CP 1420</link></para></listitem>
+          <listitem><para><link linkend="cp_1421">CP 1421</link></para></listitem>
+          <listitem><para><link linkend="cp_1424">CP 1424</link></para></listitem>
+          <listitem><para><link linkend="cp_1426">CP 1426</link></para></listitem>
+          <listitem><para><link linkend="cp_1427">CP 1427</link></para></listitem>
+          <listitem><para><link linkend="cp_1428">CP 1428</link></para></listitem>
+          <listitem><para><link linkend="cp_1429">CP 1429</link></para></listitem>
+          <listitem><para><link linkend="cp_1430">CP 1430</link> (and made the terms Enumerated Values, since not specified in CP)</para></listitem>
+          <listitem><para><link linkend="cp_1434">CP 1434</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.4</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_173">Sup 173</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.5</title>
+        <itemizedlist>
+          <listitem><para>Correct "Frame" to "Basic" Offset Table</para></listitem>
+          <listitem><para>Include TAB in Annex E DICOM Default Character Repertoire</para></listitem>
+          <listitem><para><link linkend="cp_1425">CP 1425</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.6</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_155">Sup 155</link></para></listitem>
+          <listitem><para><link linkend="sup_173">Sup 173</link></para></listitem>
+          <listitem><para><link linkend="cp_375">CP 375</link></para></listitem>
+          <listitem><para><link linkend="cp_1420">CP 1420</link></para></listitem>
+          <listitem><para><link linkend="cp_1430">CP 1430</link></para></listitem>
+          <listitem><para><link linkend="cp_1434">CP 1434</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.7</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.8</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.10</title>
+        <itemizedlist>
+           <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.11</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.12</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.14</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.15</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.16</title>
+        <itemizedlist>
+          <listitem><para>Apply CP 1388 Real World Value Map Reference to Measurements to TID 1419 ROI Measurements, which was omitted from previous releases</para></listitem>
+          <listitem><para>Clean up inconsistencies between CID section titles and table captions (mostly capitalization and punctuation)</para></listitem>
+          <listitem><para>Correct SNOMED code for coronary sinus (of left atrial septum) (change T-32320 to T-32330) (cf. T-48410)</para></listitem>
+          <listitem><para>Remove unused "Caudal-cranial" with incorrect meaning for code (G-A107) in French translations</para></listitem>
+          <listitem><para>Correct misplaced RADIUS and RADIUSULNA body part rows that were in CID 12107 rather than Annex L table L-1</para></listitem>
+          <listitem><para>Corrected digit-transposed or single digit error codes G-A245 to G-A425, C-B1700 to C-B7100, C-22989 to C-22898, G-7306 to G-7406)</para></listitem>
+          <listitem><para><link linkend="sup_155">Sup 155</link></para></listitem>
+          <listitem><para><link linkend="sup_173">Sup 173</link></para></listitem>
+          <listitem><para><link linkend="cp_375">CP 375</link></para></listitem>
+          <listitem><para><link linkend="cp_1430">CP 1430</link> (FT2 version)</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.17</title>
+        <itemizedlist>
+          <listitem><para>Corrected duplicated code G-A1F8</para></listitem>
+          <listitem><para><link linkend="sup_173">Sup 173</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.18</title>
+        <itemizedlist>
+          <listitem><para>Correct Modality data element tag</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.19</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1435">CP 1435</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.20</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_155">Sup 155</link></para></listitem>
+        </itemizedlist>
+      </section>
+      
+    </section>
+    
+    <section>
+      <title>Supplements Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="sup_155"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup155_ft.pdf">Sup 155</link></term><listitem><para>Imaging Reports using HL7 Clinical Document Architecture</para></listitem></varlistentry>
+        <varlistentry xml:id="sup_173"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup173_ft.pdf">Sup 173</link></term><listitem><para>Wide Field Ophthalmic Photography Image Storage SOP Classes</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+    <section>
+      <title>Correction Items Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="cp_375"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp375_ft.pdf">CP 375</link></term><listitem><para>Correct Context Groups for Intra-oral anatomy</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1420"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1420_ft.pdf">CP 1420</link></term><listitem><para>Support for Multi Slab Block in Ion Plan</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1421"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1421_ft.pdf">CP 1421</link></term><listitem><para>Support for Mean Excitation Energy In Structure Physical Properties</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1424"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1424_ft.pdf">CP 1424</link></term><listitem><para>Add Series entity present in Real-World Model but missing in Information Model figure</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1425"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1425_ft.pdf">CP 1425</link></term><listitem><para>Tab character should be permitted be in text VRs (ST, LT, UT)</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1426"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1426_ft.pdf">CP 1426</link></term><listitem><para>Correct condition in Pixel Measures, Plane Position and Orientation Functional Groups for Segmentation</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1427"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1427_ft.pdf">CP 1427</link></term><listitem><para>Make Defined Term for 3D Dimension Organization Type used for US Volume mean equally spaced as well as parallel slices, and add Spacing Between Slices</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1428"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1428_ft.pdf">CP 1428</link></term><listitem><para>Use Pixel Measures in Enhanced US Volume</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1429"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1429_ft.pdf">CP 1429</link></term><listitem><para>Tiled Image Box in Structured Display</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1430"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1430_ft.pdf">CP 1430</link></term><listitem><para>Add Motion Mode Definition Module</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1434"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1434_ft.pdf">CP 1434</link></term><listitem><para>Additional SSD Information</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1435"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1435_ft.pdf">CP 1435</link></term><listitem><para>Correct errors in State Diagram of Hosted Applications</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+  </chapter>
+</book>

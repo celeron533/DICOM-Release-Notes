@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <title>DICOM PS 3 2016b</title>
+  <subtitle>Release Notes</subtitle>
+  <info>
+    <author>
+      <orgname>DICOM Standards Committee</orgname>
+    </author>
+    <copyright>
+      <year>2016</year>
+      <holder>NEMA</holder>
+    </copyright>
+  </info>
+  <chapter label="">
+    <title/>
+    <section>
+      <title/>
+    <para>2016/04/01</para>
+    <para>The following changes have been made relative to the previously published PS3 2016a release of the standard, by incorporating the changes specified in the supplements and correction items.</para>
+      <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="ftp://medical.nema.org/medical/dicom/final/"/></para>
+    </section>
+
+    <section>
+      <title>Production Notes</title>
+      <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+      <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard.
+      The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you
+      are reading the PDF in a tool that supports linking to other parts.</para>
+      <para>The two HTML formats are provided for the convenience of those who find them easier to
+        navigate within a browser, and though the appearance and organization is different, the
+        content is the same. One form consists of entire parts in one very large HTML page, and the
+        other consist of chunks of sections with navigation elements. Both
+        forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a
+        browser that supports SVG is required (most contemporary browsers do).</para>
+      <para>All paragraphs (&lt;p/&gt; elements) in the HTML files of this release, are uniquely identified with
+        a hypertext anchor (&lt;a/&gt; element), each of which has an id attribute (derived from
+        the source DocBook &lt;para/&gt; element xml:id attribute).
+        These unique identifiers will remain stable in subsequent releases, so they may be reliably used as
+        the persistent targets of hyperlinks relative to the current release base URL, and are
+        more specific than the existing anchors for entire sections or tables. Unlike the section and table
+        anchors, there is no semantic significance to the syntax of the identifiers (i.e., they are UUIDs,
+        rather than being derived from the section or table numbering pattern).
+        Subsequent releases will add new identifiers for new paragraphs and text split out of existing
+        paragraphs into new paragraphs, and will, if possible, empty, rather than entirely remove, existing paragraphs
+        that are retired (in order to avoid dead links).</para>
+      <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the
+        convenience of future Supplement and CP editors. Their main claim to fame is that they exist
+        at all, and though they are viewable and editable, they are lacking many features of the
+        Word source of previous release, for example the use of styles for section headings. They do
+        contain embedded hyperlinks, and these are also present in the table of contents, even
+        though the page numbers rendered in the table of contents may be meaningless. To reiterate,
+        the intent of these files is to provide a source to cut and past into new Word documents,
+        and not to be functional documents in their own right. Since Word does not support SVG, all
+        figures embedded in the DOCX files have been rasterized to a fixed resolution and are
+        adequate for position only and are not editable and are not intended to be a substitute for
+        the SVG figures.</para>
+      <para>The rendering pipeline used to produce these files is available but requires some
+        expertise to use it. It is not supported. To achieve quality rendering, the use of some
+        commercial tools was necessary, to supplement the many open source tools that were also
+        used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring
+        mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source,
+        version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO
+        form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG
+        (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF,
+        and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files
+        were produced using DeltaXML DocBook Compare (commercial).</para>
+      <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+      <itemizedlist>
+        <listitem><para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords and UIDs) to break within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using these words literally.</para></listitem>
+        <listitem><para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements
+            with a title identifying them as such, to facilitate their automated detection and
+            extraction.</para></listitem>
+        <listitem><para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining
+            whether or not they are extensible, etc., again to enable automated extraction.</para></listitem>
+        <listitem><para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to
+          from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package
+          to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for
+          cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it
+          has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para></listitem>
+      </itemizedlist>
+    </section>
+    
+    <section>
+      <title>Changes to Parts</title>
+      
+      <section>
+        <title>General Changes</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.1</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1528">CP 1528</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.2</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_185">Sup 185</link></para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1532">CP 1532</link></para></listitem>
+          <listitem><para><link linkend="cp_1536">CP 1536</link></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.3</title>
+        <itemizedlist>
+          <listitem><para>Remove spurious word "attribute" in description of Dimension Organization Sequence.</para></listitem>
+          <listitem><para>Change Modality Type to Modality throughout.</para></listitem>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para>Correct example functional group macro identifiers in Figure C.7.6.16-1 to match original</para></listitem>
+          <listitem><para>Add missing comprehensive 3D and extensible SR in module overview table</para></listitem>
+          <listitem><para>Correct data element for High Bit in the floating point image pixel modules</para></listitem>
+          <listitem><para>Replace Figure C.7.6.16-4c with SVG</para></listitem>
+          <listitem><para><link linkend="sup_185">Sup 185</link></para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1483">CP 1483</link></para></listitem>
+          <listitem><para><link linkend="cp_1523">CP 1523</link></para></listitem>
+          <listitem><para><link linkend="cp_1525">CP 1525</link></para></listitem>
+          <listitem><para><link linkend="cp_1530">CP 1530</link></para></listitem>
+          <listitem><para><link linkend="cp_1531">CP 1531</link></para></listitem>
+          <listitem><para><link linkend="cp_1533">CP 1533</link></para></listitem>
+          <listitem><para><link linkend="cp_1535">CP 1535</link></para></listitem>
+          <listitem><para><link linkend="cp_1538">CP 1538</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.4</title>
+        <itemizedlist>
+          <listitem><para>Use singular SOP Class in Extensible SR headings.</para></listitem>
+          <listitem><para>Correct IOD reference in Annex B and I tables for RRDSR.</para></listitem>
+          <listitem><para><link linkend="sup_185">Sup 185</link></para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.5</title>
+        <itemizedlist>
+          <listitem><para>Remove space from RFC abbreviations in bibliography</para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1483">CP 1483</link></para></listitem>
+          <listitem><para><link linkend="cp_1529">CP 1529</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.6</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_185">Sup 185</link></para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1483">CP 1483</link></para></listitem>
+          <listitem><para><link linkend="cp_1525">CP 1525</link></para></listitem>
+          <listitem><para><link linkend="cp_1530">CP 1530</link></para></listitem>
+          <listitem><para><link linkend="cp_1531">CP 1531</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.7</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.8</title>
+        <itemizedlist>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.10</title>
+        <itemizedlist>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.11</title>
+        <itemizedlist>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1450">CP 1450</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.12</title>
+        <itemizedlist>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.14</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.15</title>
+        <itemizedlist>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.16</title>
+        <itemizedlist>
+          <listitem><para>Remove spurious duplication of included template title in Row 4 of TID 4200.</para></listitem>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para><link linkend="sup_185">Sup 185</link></para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1495">CP 1495</link> (per FT3 without R-4081A for median/middle, since still waiting for IHTSDO approval)</para></listitem>
+          <listitem><para><link linkend="cp_1515">CP 1515</link></para></listitem>
+          <listitem><para><link linkend="cp_1521">CP 1521</link></para></listitem>
+          <listitem><para><link linkend="cp_1522">CP 1522</link></para></listitem>
+          <listitem><para><link linkend="cp_1524">CP 1524</link></para></listitem>
+          <listitem><para><link linkend="cp_1525">CP 1525</link></para></listitem>
+          <listitem><para><link linkend="cp_1526">CP 1526</link></para></listitem>
+          <listitem><para><link linkend="cp_1530">CP 1530</link></para></listitem>
+          <listitem><para><link linkend="cp_1534">CP 1534</link></para></listitem>
+          <listitem><para><link linkend="cp_1535">CP 1535</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.17</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_185">Sup 185</link></para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1495">CP 1495</link></para></listitem>
+          <listitem><para><link linkend="cp_1536">CP 1536</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.18</title>
+        <itemizedlist>
+          <listitem><para>Update to standard HTTP Terminology per proposed CP that was to be made as an editorial change (remove "persistent", use origin server, user agent and media type throughout).</para></listitem>
+          <listitem><para>Update to replace "MIME type" with "media type" per proposed CP that was to be made as an editorial change.</para></listitem>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1483">CP 1483</link></para></listitem>
+          <listitem><para><link linkend="cp_1536">CP 1536</link></para></listitem>
+          <listitem><para><link linkend="cp_1537">CP 1537</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.19</title>
+        <itemizedlist>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+          <listitem><para><link linkend="cp_1520">CP 1520</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.20</title>
+        <itemizedlist>
+          <listitem><para>Remove space from IETF RFC abbreviations</para></listitem>
+          <listitem><para><link linkend="cp_1415">CP 1415</link></para></listitem>
+        </itemizedlist>
+      </section>
+      
+    </section>
+    
+    <section>
+      <title>Supplements Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="sup_185"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup185_ft.pdf">Sup 185</link></term><listitem><para>Content Assessment Results IOD</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+    <section>
+      <title>Correction Items Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="cp_1415"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1415_ft.pdf">CP 1415</link></term><listitem><para>Update PS3.1 front matter</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1450"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1450_ft_mediacompression.pdf">CP 1450</link></term><listitem><para>Correct media application profile description with respect to compression</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1483"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1483_ft.pdf">CP 1483</link></term><listitem><para>Clarify BulkDataURI</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1492"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1492_ft.pdf">CP 1492</link></term><listitem><para>Archeological Extension</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1495"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1495_ft_badsnomedcodes.pdf">CP 1495</link></term><listitem><para>Replace incorrect SNOMED codes</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1515"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1515_ft_AdditionOfRepresentationForRTConeBeamAcquisition.pdf">CP 1515</link></term><listitem><para>Addition of Cone Beam CT Dose Recording for RT CT Images</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1520"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1520_ft_realwordmapinabstractmodelornot.pdf">CP 1520</link></term><listitem><para>Real World Mapping in Abstract Multi-Dimensional Model</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1521"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1521_ft_roottemplatedefinition.pdf">CP 1521</link></term><listitem><para>Add Root Template Definition</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1522"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1522_ft_ordernonsignificantformeasurementtemplates.pdf">CP 1522</link></term><listitem><para>Order is not significant for subordinate measurement templates</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1523"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1523_ft_multipleitemsinquantitydefinition.pdf">CP 1523</link></term><listitem><para>Requirements for items in Quantity Definition Sequence</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1524"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1524_ft_moretracerkineticmodels.pdf">CP 1524</link></term><listitem><para>More tracer kinetic models</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1525"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1525_ft_ctrdsrwaterequivalentdiameteraapm220.pdf">CP 1525</link></term><listitem><para>Water equivalent diameter for CT RDSR</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1526"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1526_ft_pixelspacingvalueorderinimagelibrary.pdf">CP 1526</link></term><listitem><para>Correct order of reference to pixel spacing values in SR Image Library</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1528"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1528_ft_citingDICOM.pdf">CP 1528</link></term><listitem><para>Update specs for citing DICOM</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1529"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1529_ft_privateCreator.pdf">CP 1529</link></term><listitem><para>Private Creator once per group</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1530"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1530_ft_AddPurposeCodeForRTPlanPositioning.pdf">CP 1530</link></term><listitem><para>Add Purpose Code For RT Plan Positioning</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1531"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1531_ft_AdditionalTagsForIonEyeTreatment.pdf">CP 1531</link></term><listitem><para>Additional Tags For Ion Eye Treatment</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1532"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1532_ft.pdf">CP 1532</link></term><listitem><para>Modify the Specific Character Set Description for the MWL Conformance Statement Example</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1533"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1533_ft_IEdefinitions.pdf">CP 1533</link></term><listitem><para>Clean up Composite IEs descriptions</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1534"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1534_ft.pdf">CP 1534</link></term><listitem><para>Add Assignment Rejection Code for UPS Cancelation</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1535"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1535_ft_suvlbmalternateformulas.pdf">CP 1535</link></term><listitem><para>Additional SUVlbm formulas</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1536"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1536_ft_http2.pdf">CP 1536</link></term><listitem><para>Support HTTP/2</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1537"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1537_ft_stow_status_codes.pdf">CP 1537</link></term><listitem><para>Specify STOW error codes in decimal</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1538"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1538_ft_IODERModels.pdf">CP 1538</link></term><listitem><para>Correct IOD relationship to Info Model</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+
+  </chapter>
+</book>

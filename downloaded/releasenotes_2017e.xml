@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <title>DICOM PS 3 2017e</title>
+  <subtitle>Release Notes</subtitle>
+  <info>
+    <author>
+      <orgname>DICOM Standards Committee</orgname>
+    </author>
+    <copyright>
+      <year>2017</year>
+      <holder>NEMA</holder>
+    </copyright>
+  </info>
+  <chapter label="">
+    <title/>
+    <section>
+      <title/>
+    <para>2017/11/30</para>
+    <para>The following changes have been made relative to the previously published PS3 2017d release of the standard, by incorporating the changes specified in the supplements and correction items.</para>
+      <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="ftp://medical.nema.org/medical/dicom/final/"/></para>
+    </section>
+
+    <section>
+      <title>Production Notes</title>
+      <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+      <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard.
+      The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you
+      are reading the PDF in a tool that supports linking to other parts).</para>
+      <para>The two HTML formats are provided for the convenience of those who find them easier to
+        navigate within a browser, and though the appearance and organization is different, the
+        content is the same. One form consists of entire parts in one very large HTML page, and the
+        other consist of chunks of sections with navigation elements. Both
+        forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a
+        browser that supports SVG is required (most contemporary browsers do).</para>
+      <para>All paragraphs (&lt;p/&gt; elements) in the HTML files of this release, are uniquely identified with
+        a hypertext anchor (&lt;a/&gt; element), each of which has an id attribute (derived from
+        the source DocBook &lt;para/&gt; element xml:id attribute).
+        These unique identifiers will remain stable in subsequent releases, so they may be reliably used as
+        the persistent targets of hyperlinks relative to the current release base URL, and are
+        more specific than the existing anchors for entire sections or tables. Unlike the section and table
+        anchors, there is no semantic significance to the syntax of the identifiers (i.e., they are UUIDs,
+        rather than being derived from the section or table numbering pattern).
+        Subsequent releases will add new identifiers for new paragraphs and text split out of existing
+        paragraphs into new paragraphs, and will, if possible, empty, rather than entirely remove, existing paragraphs
+        that are retired (in order to avoid dead links).</para>
+      <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the
+        convenience of future Supplement and CP editors. Their main claim to fame is that they exist
+        at all, and though they are viewable and editable, they are lacking many features of the
+        Word source of previous release, for example the use of styles for section headings. They do
+        contain embedded hyperlinks, and these are also present in the table of contents, even
+        though the page numbers rendered in the table of contents may be meaningless. To reiterate,
+        the intent of these files is to provide a source to cut and past into new Word documents,
+        and not to be functional documents in their own right. Since Word does not support SVG, all
+        figures embedded in the DOCX files have been rasterized to a fixed resolution and are
+        adequate for position only and are not editable and are not intended to be a substitute for
+        the SVG figures.</para>
+      <para>The rendering pipeline used to produce these files is available but requires some expertise to use it. It is not supported. To achieve quality rendering, the use of some commercial tools was necessary, to supplement the many open source tools that were also used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source, version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF, and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files were produced using DeltaXML DocBook Compare (commercial). The PDF files were post-processed with qpdf to generate object streams to reduce the size of the tagged PDF and improve
+        searching for strings that span lines within tables and to linearize the files for streamed web page viewing.</para>
+      <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+      <itemizedlist>
+        <listitem><para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords and UIDs) to break within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using these words literally.</para></listitem>
+        <listitem><para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements
+            with a title identifying them as such, to facilitate their automated detection and
+            extraction.</para></listitem>
+        <listitem><para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining
+            whether or not they are extensible, etc., again to enable automated extraction.</para></listitem>
+        <listitem><para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to
+          from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package
+          to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for
+          cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it
+          has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para></listitem>
+      </itemizedlist>
+    </section>
+    
+    <section>
+      <title>Changes to Parts</title>
+      
+      <section>
+        <title>General Changes</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.1</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_200">Sup 200</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.2</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.3</title>
+        <itemizedlist>
+          <listitem><para>Correct Type of Attributes added by CP 1644 from 1 to 3 in Table C.8.25.14-5</para></listitem>
+          <listitem><para>Correct name of Table A.66.4.3-1 to include "image"</para></listitem>
+          <listitem><para>Remove attribute Average Beam Dose Point Source to External Contour Distance (300A,0131) whose enclosing sequence was removed by CP 1658, and remove reference to it from section C.8.8.14.15</para></listitem>
+          <listitem><para>Correct inconsistencies in module overview tables for protocol IODs (Table A.1-9).</para></listitem>
+          <listitem><para><link linkend="cp_1189">CP 1189</link></para></listitem>
+          <listitem><para><link linkend="cp_1632">CP 1632</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.4</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+          <listitem><para><link linkend="cp_1403">CP 1403</link></para></listitem>
+          <listitem><para><link linkend="cp_1632">CP 1632</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.5</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1701">CP 1701</link></para></listitem>
+          <listitem><para><link linkend="cp_1704">CP 1704</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.6</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1668">CP 1668</link></para></listitem>
+          <listitem><para><link linkend="cp_1705">CP 1705</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.7</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1403">CP 1403</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.8</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.10</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.11</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.12</title>
+        <itemizedlist>
+          <listitem><para>Update zip description link and hyperlink</para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.14</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.15</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.16</title>
+        <itemizedlist>
+          <listitem><para>Add hyperlinked resources for context groups (including value sets for FHIR in JSON and XML and in IHE SVS)</para></listitem>
+          <listitem><para>Change all "grey" to "gray" for consistency, except in "greyhound".</para></listitem>
+          <listitem><para>Use http rather than https consistently throughout.</para></listitem>
+          <listitem><para>Restore code for Unspecified in CID 6040, which was lost in an earlier edit.</para></listitem>
+          <listitem><para>Add initial sub-section to Annex B to separate CID 2 in chunked HTML so available as resource target.</para></listitem>
+          <listitem><para>Move coding scheme and version back into table title as it was before DocBook conversion in 2013.</para></listitem>
+          <listitem><para>Add OWL resource link to preamble of Annex D.</para></listitem>
+          <listitem><para>Sort definitions in Annex 3.</para></listitem>
+          <listitem><para><link linkend="sup_200">Sup 200</link></para></listitem>
+          <listitem><para><link linkend="cp_1668">CP 1668</link></para></listitem>
+          <listitem><para><link linkend="cp_1705">CP 1705</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.17</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.18</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1683">CP 1683</link></para></listitem>
+          <listitem><para><link linkend="cp_1703">CP 1703</link></para></listitem>
+          <listitem><para><link linkend="cp_1704">CP 1704</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.19</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.20</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.21</title>
+        <itemizedlist>
+          <listitem><para>Created</para></listitem>
+          <listitem><para><link linkend="sup_200">Sup 200</link></para></listitem>
+        </itemizedlist>
+      </section>
+      
+    </section>
+    
+    <section>
+      <title>Supplements Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="sup_200"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup200_ft_AIM_DICOMSRTID1500.pdf">Sup 200</link></term><listitem><para>Transformation of NCI Annotation and Image Markup (AIM) and DICOM SR Measurement Templates</para></listitem></varlistentry>
+       </variablelist>
+    </section>
+    
+    <section>
+      <title>Correction Items Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="cp_1189"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1189_ft_TemporalPositionTimeOffset.pdf">CP 1189</link></term><listitem><para>Add usage of Temporal Position Macro as needed for Enhanced MR, Enhanced CT, Enhanced PET and related Legacy objects</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1403"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1403_ft_UseOfDIMSEServiceStatusCodes.pdf">CP 1403</link></term><listitem><para>Clarify use of DIMSE service Status codes</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1632"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1632_ft_AddSupportForNonPatientInstanceReferences.pdf">CP 1632</link></term><listitem><para>Add Support for non-Patient Instance References</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1668"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1668_ft_Discontinuation_Reasons_for_read.pdf">CP 1668</link></term><listitem><para>Add set of Codes for discontinuation of Read Request</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1683"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1683_ft_qido_paging_fix.pdf">CP 1683</link></term><listitem><para>Fix error with QIDO results calculation</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1698"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1698_ft_dontwantnostinkinetags.pdf">CP 1698</link></term><listitem><para>Remove ETag requirement in Non-Patient Instance Restful service</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1701"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1701_ft_privatecreatorascii.pdf">CP 1701</link></term><listitem><para>Private Creator Data Elements only use Default Character Repertoire</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1703"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1703_ft_TLSandRFC7525.pdf">CP 1703</link></term><listitem><para>TLS Security Note for Web Services</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1704"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1704_ft_defaultuncompressednotrequirediftoobig.pdf">CP 1704</link></term><listitem><para>Relax requirement to provide default Transfer Syntax if lossless compressed image is too large</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1705"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1705_ft_moretexturemeasures.pdf">CP 1705</link></term><listitem><para>Add more texture measures</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+
+  </chapter>
+</book>

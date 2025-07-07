@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <title>DICOM PS3 2020a</title>
+  <subtitle>Release Notes</subtitle>
+  <info>
+    <author>
+      <orgname>DICOM Standards Committee</orgname>
+    </author>
+    <copyright>
+      <year>2019</year>
+      <holder>NEMA</holder>
+    </copyright>
+      <legalnotice>
+          <para>A DICOM® publication</para>
+      </legalnotice>
+  </info>
+  <chapter label="">
+    <title/>
+    <section>
+      <title/>
+    <para>2020/01/22</para>
+    <para>The following changes have been made relative to the previously published PS3 2019e release of the standard, by incorporating the changes specified in the supplements and correction items.</para>
+      <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="ftp://medical.nema.org/medical/dicom/final/"/></para>
+    </section>
+
+    <section>
+      <title>Production Notes</title>
+      <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+      <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard.
+      The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you
+      are reading the PDF in a tool that supports linking to other parts).</para>
+      <para>The two HTML formats are provided for the convenience of those who find them easier to
+        navigate within a browser, and though the appearance and organization is different, the
+        content is the same. One form consists of entire parts in one very large HTML page, and the
+        other consist of chunks of sections with navigation elements. Both
+        forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a
+        browser that supports SVG is required (most contemporary browsers do).</para>
+      <para>All paragraphs (&lt;p/&gt; elements) in the HTML files of this release, are uniquely identified with
+        a hypertext anchor (&lt;a/&gt; element), each of which has an id attribute (derived from
+        the source DocBook &lt;para/&gt; element xml:id attribute).
+        These unique identifiers will remain stable in subsequent releases, so they may be reliably used as
+        the persistent targets of hyperlinks relative to the current release base URL, and are
+        more specific than the existing anchors for entire sections or tables. Unlike the section and table
+        anchors, there is no semantic significance to the syntax of the identifiers (i.e., they are UUIDs,
+        rather than being derived from the section or table numbering pattern).
+        Subsequent releases will add new identifiers for new paragraphs and text split out of existing
+        paragraphs into new paragraphs, and will, if possible, empty, rather than entirely remove, existing paragraphs
+        that are retired (in order to avoid dead links).</para>
+        <para>The chunked HTML format includes navigation elements in the header and footer, as well as a
+        hyperlink to the current release of that page, in case the user happens to find or be using
+        an older release of the page.</para>
+      <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the
+        convenience of future Supplement and CP editors. Their main claim to fame is that they exist
+        at all, and though they are viewable and editable, they are lacking many features of the
+        Word source of previous release, for example the use of styles for section headings. They do
+        contain embedded hyperlinks, and these are also present in the table of contents, even
+        though the page numbers rendered in the table of contents may be meaningless. To reiterate,
+        the intent of these files is to provide a source to cut and past into new Word documents,
+        and not to be functional documents in their own right. Since Word does not support SVG, all
+        figures embedded in the DOCX files have been rasterized to a fixed resolution and are
+        adequate for position only and are not editable and are not intended to be a substitute for
+        the SVG figures.</para>
+      <para>The rendering pipeline used to produce these files is available but requires some expertise to use it. It is not supported. To achieve quality rendering, the use of some commercial tools was necessary, to supplement the many open source tools that were also used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source, version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF, and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files were produced using DeltaXML DocBook Compare (commercial). The PDF files were post-processed with qpdf to generate object streams to reduce the size of the tagged PDF and improve
+        searching for strings that span lines within tables and to linearize the files for streamed web page viewing.</para>
+      <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+      <itemizedlist>
+        <listitem><para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords and UIDs) to break within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using these words literally.</para></listitem>
+        <listitem><para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements
+            with a title identifying them as such, to facilitate their automated detection and
+            extraction.</para></listitem>
+        <listitem><para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining
+            whether or not they are extensible, etc., again to enable automated extraction.</para></listitem>
+        <listitem><para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to
+          from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package
+          to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for
+          cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it
+          has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para></listitem>
+      </itemizedlist>
+    </section>
+    
+    <section>
+      <title>Changes to Parts</title>
+      
+      <section>
+        <title>General Changes</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.1</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.2</title>
+        <itemizedlist>
+            <listitem><para>Correct links to PS3.18 section targets changed by Sup 183.</para></listitem>
+            <listitem><para>Correct links to Sup 202 RTV figures.</para></listitem>
+            <listitem><para><link linkend="sup_176">Sup 176</link></para></listitem>
+            <listitem><para><link linkend="sup_208">Sup 208</link></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.3</title>
+        <itemizedlist>
+            <listitem>
+                <para>Correct name of Multi-energy CT Processing Macro Attributes table and use of th rather than td in tbody of Multi-energy CT X-Ray Detector Macro</para>
+            </listitem>
+            <listitem>
+                <para>Add line breaks in failure reason code descriptions in C.14.1.1</para>
+                <para>Add Frame of Reference Module for RTSS IOD in Overview table to match IOD.</para>
+            </listitem>
+            <listitem>
+                <para>Correct tag for Applicable Safety Standard Description in Specific Absorption Rate Definition.</para>
+            </listitem>
+            <listitem>
+                <para>Make IOD section names consistent with SOP Class names (cf. PS3.4 Table B.5-1).</para>
+            </listitem>
+            <listitem><para><link linkend="cp_1931">CP 1931</link></para></listitem>
+            <listitem><para><link linkend="cp_1932">CP 1932</link></para></listitem>
+            <listitem><para><link linkend="cp_1947">CP 1947</link></para></listitem>
+            <listitem><para><link linkend="cp_1949">CP 1949</link></para></listitem>
+            <listitem><para><link linkend="sup_176">Sup 176</link></para></listitem>
+            <listitem><para><link linkend="sup_208">Sup 208</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.4</title>
+        <itemizedlist>
+            <listitem>
+                <para>Fix incorrect form of some DateTime attributes</para>
+            </listitem>
+            <listitem><para><link linkend="cp_1479">CP 1479</link></para></listitem>
+            <listitem><para><link linkend="cp_1954">CP 1954</link></para></listitem>
+            <listitem><para><link linkend="sup_208">Sup 208</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.5</title>
+        <itemizedlist>
+            <listitem><para><link linkend="cp_1943">CP 1943</link></para></listitem>
+            <listitem><para><link linkend="cp_1947">CP 1947</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.6</title>
+        <itemizedlist>
+            <listitem><para><link linkend="cp_1933">CP 1933</link></para></listitem>
+            <listitem><para><link linkend="cp_1945">CP 1945</link></para></listitem>
+            <listitem><para><link linkend="sup_176">Sup 176</link></para></listitem>
+            <listitem><para><link linkend="sup_208">Sup 208</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.7</title>
+        <itemizedlist>
+            <listitem><para><link linkend="cp_1954">CP 1954</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.8</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.10</title>
+        <itemizedlist>
+            <listitem><para><link linkend="cp_1948">CP 1948</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.11</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.12</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.14</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.15</title>
+        <itemizedlist>
+            <listitem>
+                <para>Correct tag for known safe Elscint Acquisition Duration element</para>
+            </listitem>
+            <listitem><para><link linkend="cp_1928">CP 1928</link></para></listitem>
+            <listitem><para><link linkend="cp_1942">CP 1942</link></para></listitem>
+            <listitem><para><link linkend="cp_1946">CP 1946</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.16</title>
+        <itemizedlist>
+            <listitem>
+                <para>Remove spurious "no purpose of reference"</para>
+            </listitem>
+            <listitem>
+                <para>Correct SCOORD row number reference in content item description for TID 1406</para>
+            </listitem>
+            <listitem>
+                <para>Clean up and hyperlink notes about incorrect codes in prior context group versions and update replacements with SCT rather than SRT (to be consistent with CP 1850 approach).</para>
+            </listitem>
+            <listitem><para><link linkend="cp_1929">CP 1929</link></para></listitem>
+            <listitem><para><link linkend="cp_1930">CP 1930</link></para></listitem>
+            <listitem><para><link linkend="cp_1931">CP 1931</link></para></listitem>
+            <listitem><para><link linkend="cp_1933">CP 1933</link></para></listitem>
+            <listitem><para><link linkend="cp_1935">CP 1935</link></para></listitem>
+            <listitem><para><link linkend="cp_1936">CP 1936</link></para></listitem>
+            <listitem><para><link linkend="cp_1937">CP 1937</link> (FT2)</para></listitem>
+            <listitem><para><link linkend="cp_1941">CP 1941</link></para></listitem>
+            <listitem><para><link linkend="cp_1945">CP 1945</link></para></listitem>
+            <listitem><para><link linkend="cp_1952">CP 1952</link></para></listitem>
+            <listitem><para><link linkend="cp_1953">CP 1953</link></para></listitem>
+            <listitem><para><link linkend="sup_176">Sup 176</link></para></listitem>
+            <listitem><para><link linkend="sup_208">Sup 208</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.17</title>
+        <itemizedlist>
+            <listitem><para><link linkend="cp_1937">CP 1937</link></para></listitem>
+            <listitem><para><link linkend="cp_1938">CP 1938</link></para></listitem>
+            <listitem><para><link linkend="cp_1939">CP 1939</link></para></listitem>
+            <listitem><para><link linkend="cp_1940">CP 1940</link></para></listitem>
+            <listitem><para><link linkend="cp_1941">CP 1941</link></para></listitem>
+            <listitem><para><link linkend="sup_208">Sup 208</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.18</title>
+        <itemizedlist>
+            <listitem><para><link linkend="cp_1861">CP 1861</link></para></listitem>
+            <listitem><para><link linkend="cp_1862">CP 1862</link></para></listitem>
+            <listitem><para><link linkend="cp_1889">CP 1889</link></para></listitem>
+            <listitem><para><link linkend="cp_1919">CP 1919</link></para></listitem>
+            <listitem><para><link linkend="cp_1920">CP 1920</link></para></listitem>
+            <listitem><para><link linkend="cp_1924">CP 1924</link></para></listitem>
+            <listitem><para><link linkend="cp_1925">CP 1925</link></para></listitem>
+            <listitem><para><link linkend="cp_1948">CP 1948</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.19</title>
+        <itemizedlist>
+            <listitem>
+                <para>Correct formatting of soap xml element in WSDL</para>
+            </listitem>
+            <listitem><para><link linkend="cp_1889">CP 1889</link></para></listitem>
+            <listitem><para><link linkend="cp_1920">CP 1920</link></para></listitem>
+            <listitem><para><link linkend="cp_1922">CP 1922</link></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.20</title>
+        <itemizedlist>
+        </itemizedlist>
+      </section>
+        
+        <section>
+            <title>PS3.21</title>
+            <itemizedlist>
+            </itemizedlist>
+        </section>
+        
+        <section>
+            <title>PS3.22</title>
+            <itemizedlist>
+            </itemizedlist>
+        </section>
+        
+    </section>
+    
+    <section>
+      <title>Supplements Incorporated</title>
+      <variablelist>
+          <varlistentry xml:id="sup_176"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup176_ft_NewRTRadiations.pdf">Sup 176</link></term><listitem><para>Second Generation Radiotherapy – Tomotherapeutic and Robotic-Arm Treatment Modalities</para></listitem></varlistentry>
+          <varlistentry xml:id="sup_208"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup208_ft_DICOM_Ext_Encapsulation_of_Models_for_3D_Manu.pdf">Sup 208</link></term><listitem><para>DICOM Encapsulation of OBJ Models for 3D Manufacturing and Virtual Reality</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+    <section>
+      <title>Correction Items Incorporated</title>
+      <variablelist>
+          <varlistentry xml:id="cp_1479"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1479_ft_UpdatePart4ForExpandedCodeSequence.pdf">CP 1479</link></term><listitem><para>Update PS3.4 for expanded Code Sequence</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1861"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1861_ft_changeJSONvaluetypemappingISandDS.pdf">CP 1861</link></term><listitem><para>Consistency between DICOM VR definition of DS &amp; IS, and JSON Value Representation</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1862"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1862_ft_removeCharSetfromQIDOResponse.pdf">CP 1862</link></term><listitem><para>Necessity of returning the Specific Character Set (0008,0005) attribute in a QIDO-RS response</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1889"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1889_ft_newvrswebservicesandapi.pdf">CP 1889</link></term><listitem><para>Recently added OV, SV and UV VRs were not included in PS3.18 or PS3.19.</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1919"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1919_ft_rs_studies_media_types.pdf">CP 1919</link></term><listitem><para>Clarify the Media Type sections for Studies Service</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1920"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1920_ft_paddingInJSON.pdf">CP 1920</link></term><listitem><para>Padding in DICOM JSON and XML (Native) Models</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1922"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1922_ft_ps19correspondtops18.pdf">CP 1922</link></term><listitem><para>Update PS3.19 WADO-RS and STOW-RS to PS3.18 Studies Service Retrieve and Store</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1924"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1924_ft_non-zero-digit.pdf">CP 1924</link></term><listitem><para>PS3.18 Section 5.1.1 does not have a definition for NON-ZERO-DIGIT</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1925"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1925_ft_fix_qp_syntax.pdf">CP 1925</link></term><listitem><para>PS3.18 Section 8.3.1 has syntax mistakes</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1928"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1928_ft_multienergyctdeid.pdf">CP 1928</link></term><listitem><para>Add multi-energy CT attributes to de-identification profile</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1929"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1929_ft_precoordmxparam.pdf">CP 1929</link></term><listitem><para>Add precoordinated measurement CODE content item parameter to TID 300</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1930"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1930_ft_eddrugadmin.pdf">CP 1930</link></term><listitem><para>Erectile dysfunction test drug administration</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1931"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1931_ft_SCOORD3DplanarROI.pdf">CP 1931</link></term><listitem><para>SCOORD3D should be allowed for Planar ROIs in TID 1411 and be more flexible for Volumetric ROIs in TID 1410</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1932"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1932_ft_SeriesDateTimeWhenMissing.pdf">CP 1932</link></term><listitem><para>Add Series Date and Time to missing Modules</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1933"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1933_ft_AddPIRADSV21_PZpmSectorAnatomy.pdf">CP 1933</link></term><listitem><para>Add PIRADS V2.1 base PZpm sector anatomy</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1935"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1935_ft_part16_IAASR_ImagingAgentAdminConsumable.pdf">CP 1935</link></term><listitem><para>Correction of child node relation to parent node within part 16, TID 11005</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1936"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1936_ft_part16_IAASR_CorrectionOfChildNodeRelations.pdf">CP 1936</link></term><listitem><para>Correction of "Adverse Event" child node relation to parent node within TID 11021 and 11022</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1937"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1937_ft2_part16_part17_IAASR_ExtendSemanticOfTID11003AdjustExampleMMMMRenumberingIssues.pdf">CP 1937</link></term><listitem><para>Extend semantic of TID 11003 to be more flexible to the needs and correct node numbering in example (FT2)</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1938"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1938_ft_part17_IAASR_InconsistentRepresentationOfCodes.pdf">CP 1938</link></term><listitem><para>Inconsistent representation of CODE values within example MMMM.1 in part 17</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1939"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1939_ft_part17_IAASR_SemanticIssueInConsumableParts.pdf">CP 1939</link></term><listitem><para>Semantic issue in consumable parts</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1940"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1940_ft_part17_IAASR_CorrectionOfIncorrectDateTimeValueInExample.pdf">CP 1940</link></term><listitem><para>Correction of an incorrect datetime value</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1941"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1941_ft_part16_part17_IAASR_RenameImageAgentAdministrationSyringePumpPhaseActivityTemplate.pdf">CP 1941</link></term><listitem><para>Change name of TID 11003 for better comprehensibility in context with changes of CP-1937 in the cases of non-automated administration</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1942"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1942_ft_update_dhcp_description.pdf">CP 1942</link></term><listitem><para>DDNS/DHCP updates</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1943"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1943_ft_IncorrectFrameTimevalueforVideoType60HzHD.pdf">CP 1943</link></term><listitem><para>Incorrect Frame Time's value for Video Type 60 Hz HD</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1945"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1945_ft_RadElementCSDcp1945_ft_RadElementCSD.pdf">CP 1945</link></term><listitem><para>Add coding scheme designator for RadElement</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1946"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1946_ft_part15_annexH_update_rfcs_add_conformance.pdf">CP 1946</link></term><listitem><para>Update Part 15 Annex H (add conformance)</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1947"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1947_ft_security_consideration_3rd_party_formats.pdf">CP 1947</link></term><listitem><para>Add security considerations for encapsulated formats</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1948"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1948_ft_part10_security_consideration.pdf">CP 1948</link></term><listitem><para>Part 10 Format security considerations</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1949"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1949_ft_identityWL.pdf">CP 1949</link></term><listitem><para>Specify the identity window level values</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1952"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1952_ft_RemoveSpeciesCommonName.pdf">CP 1952</link></term><listitem><para>Remove common name from taxonomic rank code meanings</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1953"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1953_ft_TumorGraftTypes.pdf">CP 1953</link></term><listitem><para>Add more specific tumor graft histologic types</para></listitem></varlistentry>
+          <varlistentry xml:id="cp_1954"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1954_ft_fix_inconsistent_dimse_status_code_meaning.pdf">CP 1954</link></term><listitem><para>Fix inconsistent DIMSE status code meaning</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+
+  </chapter>
+</book>

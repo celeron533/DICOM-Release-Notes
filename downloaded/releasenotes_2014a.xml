@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <title>DICOM PS 3 2014a</title>
+  <subtitle>Release Notes</subtitle>
+  <info>
+    <author>
+      <orgname>DICOM Standards Committee</orgname>
+    </author>
+    <copyright>
+      <year>2014</year>
+      <holder>NEMA</holder>
+    </copyright>
+  </info>
+  <chapter label="">
+    <title/>
+    <section>
+      <title/>
+    <para>2014/06/27</para>
+    <para>The following changes have been made relative to the published PS 3 2013 release of the
+        standard, by incorporating the changes specified in the supplements and correction
+        items.</para>
+      <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="ftp://medical.nema.org/medical/dicom/final/"/></para>
+      <para>In addition to the changes highlight below, various editorial changes were made during the Word to DocBook XML conversion to
+        accommodate the different capabilities of DocBook, particularly to harmonize titles and organization for indexing, cross-referencing
+        and extraction.</para>
+      <para>The figures were also redrawn in SVG format and changes in style were made to improve the appearance without changing the meaning.</para>
+    </section>
+
+    <section>
+      <title>Production Notes</title>
+      <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+      <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard.
+      The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you
+      are reading the PDF in a tool that supports linking to other parts.</para>
+      <para>The two HTML formats are provided for the convenience of those who find them easier to navigate within a browser, and though the
+        appearance and organization is different, the content is the same. One form consists of entire parts in one very large HTML page,
+        and the other consist of chunks of large sections with navigation elements. Both forms are hyper-linked within and between parts.
+        The figures in the HTML are SVG, so a browser that supports SVG is required (most contemporary browsers do).</para>
+      <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the convenience of future Supplement and CP editors. Their main claim to fame is that they
+      exists at all, and though they are viewable and editable, they are lacking many features of the Word source of previous release, for
+      example the use of styles for section headings. They do contain embedded hyperlinks, and these are also present in the table
+      of contents, even though the page numbers rendered in the table of contents may be meaningless. To reiterate, the intent of these files is
+      to provide a source to cut and past into new Word documents, and not to be functional documents in their own right.
+      Since Word does not support SVG, all figures embedded in the DOCX files have been rasterized to a fixed resolution
+      and are adequate for position only and are not editable and are not intended to be a substitute for the SVG figures.</para>
+      <para>The rendering pipeline used to produce these files is available but requires
+        some expertise to use it. It is not supported, and to achieve quality rendering
+        the use of some commercial tools was required to supplement the many open source tools that
+        were also used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG
+        authoring mode. OpenOffice (open source) was used as the equation editor. The DocBook (open
+        source, version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and
+        intermediate FO form used to created the PDF and DOCX. MathML equations were converted to
+        SVG using pMML2SVG (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used
+        to produce the PDF, and XMLmind FO-Converter (commercial) was used to produce the
+        DOCX.</para>
+      <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+      <itemizedlist>
+        <listitem><para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords) to break
+          within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using
+          these words literally.</para></listitem>
+        <listitem><para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements
+            with a title identifying them as such, to facilitate their automated detection and
+            extraction</para></listitem>
+        <listitem><para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining
+            whether or not they are extensible, etc., again to enable automated extraction.</para></listitem>
+        <listitem><para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to
+          from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package
+          to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for
+          cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it
+          has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para></listitem>
+      </itemizedlist>
+    </section>
+    
+    <section>
+      <title>Changes to Parts</title>
+      
+      <section>
+        <title>PS3.1</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1310">CP 1310</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.2</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_159">Sup 159</link></para></listitem>
+          <listitem><para><link linkend="sup_165">Sup 165</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.3</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_124">Sup 124</link></para></listitem>
+          <listitem><para><link linkend="sup_159">Sup 159</link></para></listitem>
+          <listitem><para><link linkend="sup_165">Sup 165</link></para></listitem>
+          <listitem><para></para></listitem>
+          <listitem><para><link linkend="cp_1203">CP 1203</link></para></listitem>
+          <listitem><para><link linkend="cp_1282">CP 1282</link></para></listitem>
+          <listitem><para><link linkend="cp_1285">CP 1285</link></para></listitem>
+          <listitem><para><link linkend="cp_1287">CP 1287</link></para></listitem>
+          <listitem><para><link linkend="cp_1290">CP 1290</link></para></listitem>
+          <listitem><para><link linkend="cp_1291">CP 1291</link></para></listitem>
+          <listitem><para><link linkend="cp_1294">CP 1294</link></para></listitem>
+          <listitem><para><link linkend="cp_1304">CP 1304</link></para></listitem>
+          <listitem><para><link linkend="cp_1309">CP 1309</link></para></listitem>
+          <listitem><para><link linkend="cp_1313">CP 1313</link></para></listitem>
+          <listitem><para><link linkend="cp_1314">CP 1314</link></para></listitem>
+          <listitem><para><link linkend="cp_1315">CP 1315</link> (was already done)</para></listitem>
+          <listitem><para><link linkend="cp_1316">CP 1316</link></para></listitem>
+          <listitem><para><link linkend="cp_1325">CP 1325</link> (used mmol rather than mM per UCUM)</para></listitem>
+          <listitem><para><link linkend="cp_1326">CP 1326</link></para></listitem>
+          <listitem><para><link linkend="cp_1327">CP 1327</link></para></listitem>
+          <listitem><para><link linkend="cp_1328">CP 1328</link> (used different section number because of pre-existing change)</para></listitem>
+          <listitem><para><link linkend="cp_1329">CP 1329</link></para></listitem>
+          <listitem><para><link linkend="cp_1330">CP 1330</link></para></listitem>
+          <listitem><para><link linkend="cp_1331">CP 1331</link></para></listitem>
+          <listitem><para><link linkend="cp_1332">CP 1332</link></para></listitem>
+          <listitem><para><link linkend="cp_1335">CP 1335</link></para></listitem>
+          <listitem><para><link linkend="cp_1337">CP 1337</link></para></listitem>
+          <listitem><para><link linkend="cp_1343">CP 1343</link></para></listitem>
+          <listitem><para><link linkend="cp_1346">CP 1346</link></para></listitem>
+          <listitem><para><link linkend="cp_1347">CP 1347</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.4</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_124">Sup 124</link></para></listitem>
+          <listitem><para><link linkend="sup_159">Sup 159</link></para></listitem>
+          <listitem><para><link linkend="sup_165">Sup 165</link></para></listitem>
+          <listitem><para></para></listitem>
+          <listitem><para><link linkend="cp_1304">CP 1304</link></para></listitem>
+          <listitem><para><link linkend="cp_1311">CP 1311</link></para></listitem>
+          <listitem><para><link linkend="cp_1334">CP 1334</link></para></listitem>
+          <listitem><para><link linkend="cp_1343">CP 1343</link></para></listitem>
+          <listitem><para><link linkend="cp_1344">CP 1344</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.5</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1304">CP 1304</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.6</title>
+        <itemizedlist>
+          <listitem><para>Clean up UID CID references, hyperlinking to PS3.16, removing CIDs 4053, 4054 and 12256 that were assigned but never used in final text, and italicizing all retired CIDs</para></listitem>
+          <listitem><para></para></listitem>
+          <listitem><para><link linkend="sup_124">Sup 124</link></para></listitem>
+          <listitem><para><link linkend="sup_159">Sup 159</link></para></listitem>
+          <listitem><para><link linkend="sup_165">Sup 165</link></para></listitem>
+          <listitem><para></para></listitem>
+          <listitem><para><link linkend="cp_1203">CP 1203</link></para></listitem>
+          <listitem><para><link linkend="cp_1282">CP 1282</link></para></listitem>
+          <listitem><para><link linkend="cp_1285">CP 1285</link></para></listitem>
+          <listitem><para><link linkend="cp_1287">CP 1287</link></para></listitem>
+          <listitem><para><link linkend="cp_1291">CP 1291</link></para></listitem>
+          <listitem><para><link linkend="cp_1292">CP 1292</link></para></listitem>
+          <listitem><para><link linkend="cp_1294">CP 1294</link></para></listitem>
+          <listitem><para><link linkend="cp_1297">CP 1297</link></para></listitem>
+          <listitem><para><link linkend="cp_1325">CP 1325</link></para></listitem>
+          <listitem><para><link linkend="cp_1326">CP 1326</link></para></listitem>
+          <listitem><para><link linkend="cp_1331">CP 1331</link></para></listitem>
+          <listitem><para><link linkend="cp_1343">CP 1343</link></para></listitem>
+          <listitem><para><link linkend="cp_1347">CP 1347</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.7</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.8</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.10</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1297">CP 1297</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.11</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.12</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.14</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.15</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_165">Sup 165</link></para></listitem>
+          <listitem><para></para></listitem>
+          <listitem><para><link linkend="cp_1307">CP 1307</link></para></listitem>
+          <listitem><para><link linkend="cp_1339">CP 1339</link></para></listitem>
+          <listitem><para><link linkend="cp_1343">CP 1343</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.16</title>
+        <itemizedlist>
+          <listitem><para>Move TID 2010 further down so templates are sorted numerically</para></listitem>
+          <listitem><para></para></listitem>
+          <listitem><para><link linkend="sup_124">Sup 124</link></para></listitem>
+          <listitem><para><link linkend="sup_159">Sup 159</link></para></listitem>
+          <listitem><para></para></listitem>
+          <listitem><para><link linkend="cp_1291">CP 1291</link></para></listitem>
+          <listitem><para><link linkend="cp_1292">CP 1292</link></para></listitem>
+          <listitem><para><link linkend="cp_1294">CP 1294</link></para></listitem>
+          <listitem><para><link linkend="cp_1308">CP 1308</link></para></listitem>
+          <listitem><para><link linkend="cp_1312">CP 1312</link></para></listitem>
+          <listitem><para><link linkend="cp_1317">CP 1317</link></para></listitem>
+          <listitem><para><link linkend="cp_1318">CP 1318</link></para></listitem>
+          <listitem><para><link linkend="cp_1336">CP 1336</link></para></listitem>
+          <listitem><para><link linkend="cp_1338">CP 1338</link></para></listitem>
+          <listitem><para><link linkend="cp_1340">CP 1340</link></para></listitem>
+          <listitem><para><link linkend="cp_1341">CP 1341</link></para></listitem>
+          <listitem><para></para></listitem>          
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.17</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_124">Sup 124</link></para></listitem>
+          <listitem><para><link linkend="sup_159">Sup 159</link></para></listitem>
+          <listitem><para></para></listitem>
+          <listitem><para><link linkend="cp_1304">CP 1304</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.18</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1351">CP 1351</link></para></listitem>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.19</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.20</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+    </section>
+    
+    <section>
+      <title>Supplements Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="sup_124"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup124_ft2.pdf">Sup 124</link></term><listitem><para>Communication of Display Parameters</para></listitem></varlistentry>
+        <varlistentry xml:id="sup_159"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup159_ft.pdf">Sup 159</link></term><listitem><para>Radiopharmaceutical Radiation Dose Reporting</para></listitem></varlistentry>
+        <varlistentry xml:id="sup_165"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup165_ft.pdf">Sup 165</link></term><listitem><para>Breast Projection X-Ray Image Storage SOP Class</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+    <section>
+      <title>Correction Items Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="cp_1203"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1203_ft.pdf">CP 1203</link></term><listitem><para>PDR Pulse Details in RT Brachy Session Record</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1282"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1282_ft.pdf">CP 1282</link></term><listitem><para>Value Multiplicity of Positioner Increments in 3D X-Ray and Breast Tomo</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1285"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1285_ft.pdf">CP 1285</link></term><listitem><para>Add Irradiation Event UID to X-Ray 3D IODs</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1287"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1287_ft.pdf">CP 1287</link></term><listitem><para>Add Structure Classification Code to RT Structure Set</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1290"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1290_ft.pdf">CP 1290</link></term><listitem><para>Correct ROI Physical Property Value for Elemental Composition</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1291"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1291_ft.pdf">CP 1291</link></term><listitem><para>Additional Derivation Codes For Dose Composition</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1292"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1292_ft.pdf">CP 1292</link></term><listitem><para>Concept Code For Beam Delivery Instruction</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1294"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1294_ft.pdf">CP 1294</link></term><listitem><para>Add Water Reference and Echo Top Position to the Enhanced Spectroscopy object</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1297"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1297_ft.pdf">CP 1297</link></term><listitem><para>Add Receiving AE Title to File Meta Information</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1304"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1304_ft.pdf">CP 1304</link></term><listitem><para>Various corrections related to MPEG-4 AVC/H.264 Transfer Syntax</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1307"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1307_ft.pdf">CP 1307</link></term><listitem><para>MR rescaling known safe private elements</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1308"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1308_ft.pdf">CP 1308</link></term><listitem><para>Correct code meaning of Density in Mammography CAD SR</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1309"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1309_ft.pdf">CP 1309</link></term><listitem><para>Correct references to other standards</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1310"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1310_ft.pdf">CP 1310</link></term><listitem><para>Provide succinct definition of DICOM</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1311"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1311_ft.pdf">CP 1311</link></term><listitem><para>Describe matching of wildcard characters encoded in string VRs</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1312"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1312_ft.pdf">CP 1312</link></term><listitem><para>Add Report Titles to CID 7000</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1313"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1313_ft.pdf">CP 1313</link></term><listitem><para>Wrong reference in KOS Document</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1314"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1314_ft.pdf">CP 1314</link></term><listitem><para>Add Category Code Sequence to RT Structure Set</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1315"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1315_ft.pdf">CP 1315</link></term><listitem><para>Common Instance Reference Module is mandatory in VL Whole Slide Microscopy IOD</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1316"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1316_ft.pdf">CP 1316</link></term><listitem><para>Clarify exact windowing function</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1317"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1317_ft.pdf">CP 1317</link></term><listitem><para>Refactor Accumulated Projection X-Ray Dose Templates</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1318"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1318_ft.pdf">CP 1318</link></term><listitem><para>RDSR From MPPS Without Exposure Dose Sequence for Projection Radiography</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1325"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1325_ft.pdf">CP 1325</link></term><listitem><para>Add Contrast Relaxivity (MR) information to Enhanced Contrast/Bolus module</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1326"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1326_ft.pdf">CP 1326</link></term><listitem><para>Volume to Transducer Mapping transformation may not be constant</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1327"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1327_ft.pdf">CP 1327</link></term><listitem><para>Correct Type of Wedge Position Sequence</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1328"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1328_ft.pdf">CP 1328</link></term><listitem><para>Range of Angular Values using IEC Geometry Definitions</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1329"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1329_ft.pdf">CP 1329</link></term><listitem><para>Add Indication For Dose Of Delivery</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1330"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1330_ft.pdf">CP 1330</link></term><listitem><para>RT Image Attribute Completion</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1331"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1331_ft.pdf">CP 1331</link></term><listitem><para>Treatment Time in RT Plan</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1332"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1332_ft.pdf">CP 1332</link></term><listitem><para>Standardization of DIXON Image and Frame Types</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1334"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1334_ft.pdf">CP 1334</link></term><listitem><para>Clarify worklist extended negotiation after Sup 157</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1335"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1335_ft.pdf">CP 1335</link></term><listitem><para>Clarify SR Frame of Reference for SCOORD3D and TCOORD IODs</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1336"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1336_ft.pdf">CP 1336</link></term><listitem><para>Use LOINC code for Key Image in Template</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1337"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1337_ft.pdf">CP 1337</link></term><listitem><para>Add Isocenter Position to MR/PET/Enhanced CT/MR/PET and RT Equipment Correlation to Enhanced CT</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1338"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1338_ft.pdf">CP 1338</link></term><listitem><para>Move Body Substance from Type to Category for Segmentation</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1339"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1339_ft.pdf">CP 1339</link></term><listitem><para>Add various new dates, times, serial numbers and UIDs for de-identification</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1340"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1340_ft.pdf">CP 1340</link></term><listitem><para>Add For Litigation KOS Reason</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1341"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1341_ft.pdf">CP 1341</link></term><listitem><para>Add Series Purposes of Reference</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1343"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1343_ft.pdf">CP 1343</link></term><listitem><para>Add Patient Photo to Patient Identification Modules</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1344"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1344_ft.pdf">CP 1344</link></term><listitem><para>Clarify Type Requirements In Unified Worklist</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1346"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1346_ft.pdf">CP 1346</link></term><listitem><para>Add Table Information to X-Ray 3D IODs</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1347"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1347_ft.pdf">CP 1347</link></term><listitem><para>Add a new attribute to describe the direction of a scan relative to the patient</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1351"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1351_ft.pdf">CP 1351</link></term><listitem><para>Add JSON support to WADO-RS RetrieveMetadata and STOW-RS services</para></listitem></varlistentry>
+
+      </variablelist>
+    </section>
+    
+  </chapter>
+</book>

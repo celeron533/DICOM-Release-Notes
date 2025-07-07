@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+  <title>DICOM PS 3 2016a</title>
+  <subtitle>Release Notes</subtitle>
+  <info>
+    <author>
+      <orgname>DICOM Standards Committee</orgname>
+    </author>
+    <copyright>
+      <year>2016</year>
+      <holder>NEMA</holder>
+    </copyright>
+  </info>
+  <chapter label="">
+    <title/>
+    <section>
+      <title/>
+    <para>2016/02/18</para>
+    <para>The following changes have been made relative to the previously published PS3 2015c release of the standard, by incorporating the changes specified in the supplements and correction items.</para>
+      <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="ftp://medical.nema.org/medical/dicom/final/"/></para>
+    </section>
+
+    <section>
+      <title>Production Notes</title>
+      <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+      <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard.
+      The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you
+      are reading the PDF in a tool that supports linking to other parts.</para>
+      <para>The two HTML formats are provided for the convenience of those who find them easier to
+        navigate within a browser, and though the appearance and organization is different, the
+        content is the same. One form consists of entire parts in one very large HTML page, and the
+        other consist of chunks of sections with navigation elements. Both
+        forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a
+        browser that supports SVG is required (most contemporary browsers do).</para>
+      <para>All paragraphs (&lt;p/&gt; elements) in the HTML files of this release, are uniquely identified with
+        a hypertext anchor (&lt;a/&gt; element), each of which has an id attribute (derived from
+        the source DocBook &lt;para/&gt; element xml:id attribute).
+        These unique identifiers will remain stable in subsequent releases, so they may be reliably used as
+        the persistent targets of hyperlinks relative to the current release base URL, and are
+        more specific than the existing anchors for entire sections or tables. Unlike the section and table
+        anchors, there is no semantic significance to the syntax of the identifiers (i.e., they are UUIDs,
+        rather than being derived from the section or table numbering pattern).
+        Subsequent releases will add new identifiers for new paragraphs and text split out of existing
+        paragraphs into new paragraphs, and will, if possible, empty, rather than entirely remove, existing paragraphs
+        that are retired (in order to avoid dead links).</para>
+      <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the
+        convenience of future Supplement and CP editors. Their main claim to fame is that they exist
+        at all, and though they are viewable and editable, they are lacking many features of the
+        Word source of previous release, for example the use of styles for section headings. They do
+        contain embedded hyperlinks, and these are also present in the table of contents, even
+        though the page numbers rendered in the table of contents may be meaningless. To reiterate,
+        the intent of these files is to provide a source to cut and past into new Word documents,
+        and not to be functional documents in their own right. Since Word does not support SVG, all
+        figures embedded in the DOCX files have been rasterized to a fixed resolution and are
+        adequate for position only and are not editable and are not intended to be a substitute for
+        the SVG figures.</para>
+      <para>The rendering pipeline used to produce these files is available but requires some
+        expertise to use it. It is not supported. To achieve quality rendering, the use of some
+        commercial tools was necessary, to supplement the many open source tools that were also
+        used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring
+        mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source,
+        version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO
+        form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG
+        (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF,
+        and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files
+        were produced using DeltaXML DocBook Compare (commercial).</para>
+      <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+      <itemizedlist>
+        <listitem><para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords and UIDs) to break within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using these words literally.</para></listitem>
+        <listitem><para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements
+            with a title identifying them as such, to facilitate their automated detection and
+            extraction.</para></listitem>
+        <listitem><para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining
+            whether or not they are extensible, etc., again to enable automated extraction.</para></listitem>
+        <listitem><para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to
+          from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package
+          to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for
+          cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it
+          has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para></listitem>
+      </itemizedlist>
+    </section>
+    
+    <section>
+      <title>Changes to Parts</title>
+      
+      <section>
+        <title>General Changes</title>
+        <itemizedlist>
+          <listitem>
+            <para>Customize header and footer content in chunked html to include release, part name and hyperlinked "breadcrumb" trail to parent sections.</para>
+          </listitem>
+          <listitem>
+            <para>Add registered trademark of DICOM, HL7, SNOMED, LOINC, etc., and corresponding text in foreword of all parts.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.1</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1490">CP 1490</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.2</title>
+        <itemizedlist>
+          <listitem><para><link linkend="sup_156">Sup 156</link></para></listitem>
+          <listitem><para><link linkend="sup_181">Sup 181</link></para></listitem>
+          <listitem><para><link linkend="sup_184">Sup 184</link></para></listitem>
+          <listitem><para><link linkend="sup_187">Sup 187</link></para></listitem>
+        </itemizedlist>
+      </section>
+      
+      <section>
+        <title>PS3.3</title>
+        <itemizedlist>
+          <listitem><para>Capitalize IOL correctly in section headings</para></listitem>
+          <listitem><para>Sort General Series Module Modality Defined Terms into alphabetical order of term</para></listitem>
+          <listitem><para>Fix -1 that is rendering as 2 in Word/ODT for Pixel Intensity Relationship Sign due to XFC bug in auto list numbering detection, by making the first item "+1" rather than "1" (OK since VR is SS not string)</para></listitem>
+          <listitem><para>Correct color-by-pixel term for Pixel Representation in Table C.8.17.2-1 to be 0, not 2</para></listitem>
+          <listitem><para>Move example sentence about diffusion post-processed images back into note per pre-conversion text in C.8.16.1.3.</para></listitem>
+          <listitem><para>Split presentation states into separate table in IOD overview to support addition of Sup 156.</para></listitem>
+          <listitem><para>Split structured reports into separate table in IOD overview to support addition of Sup 187.</para></listitem>
+          <listitem><para><link linkend="sup_156">Sup 156</link></para></listitem>
+          <listitem><para><link linkend="sup_181">Sup 181</link></para></listitem>
+          <listitem><para><link linkend="sup_184">Sup 184</link></para></listitem>
+          <listitem><para><link linkend="sup_187">Sup 187</link></para></listitem>
+          <listitem><para><link linkend="cp_1431">CP 1431</link></para></listitem>
+          <listitem><para><link linkend="cp_1432">CP 1432</link></para></listitem>
+          <listitem><para><link linkend="cp_1441">CP 1441</link></para></listitem>
+          <listitem><para><link linkend="cp_1444">CP 1444</link></para></listitem>
+          <listitem><para><link linkend="cp_1445">CP 1445</link></para></listitem>
+          <listitem><para><link linkend="cp_1446">CP 1446</link></para></listitem>
+          <listitem><para><link linkend="cp_1452">CP 1452</link></para></listitem>
+          <listitem><para><link linkend="cp_1454">CP 1454</link></para></listitem>
+          <listitem><para><link linkend="cp_1456">CP 1456</link></para></listitem>
+          <listitem><para><link linkend="cp_1457">CP 1457</link></para></listitem>
+          <listitem><para><link linkend="cp_1458">CP 1458</link></para></listitem>
+          <listitem><para><link linkend="cp_1459">CP 1459</link></para></listitem>
+          <listitem><para><link linkend="cp_1460">CP 1460</link></para></listitem>
+          <listitem><para><link linkend="cp_1461">CP 1461</link></para></listitem>
+          <listitem><para><link linkend="cp_1462">CP 1462</link></para></listitem>
+          <listitem><para><link linkend="cp_1463">CP 1463</link></para></listitem>
+          <listitem><para><link linkend="cp_1471">CP 1471</link></para></listitem>
+          <listitem><para><link linkend="cp_1472">CP 1472</link></para></listitem>
+          <listitem><para><link linkend="cp_1473">CP 1473</link></para></listitem>
+          <listitem><para><link linkend="cp_1475">CP 1475</link></para></listitem>
+          <listitem><para><link linkend="cp_1476">CP 1476</link></para></listitem>
+          <listitem><para><link linkend="cp_1477">CP 1477</link></para></listitem>
+          <listitem><para><link linkend="cp_1478">CP 1478</link></para></listitem>
+          <listitem><para><link linkend="cp_1480">CP 1480</link></para></listitem>
+          <listitem><para><link linkend="cp_1486">CP 1486</link></para></listitem>
+          <listitem><para><link linkend="cp_1487">CP 1487</link></para></listitem>
+          <listitem><para><link linkend="cp_1488">CP 1488</link></para></listitem>
+          <listitem><para><link linkend="cp_1489">CP 1489</link></para></listitem>
+          <listitem><para><link linkend="cp_1496">CP 1496</link></para></listitem>
+          <listitem><para><link linkend="cp_1499">CP 1499</link></para></listitem>
+          <listitem><para><link linkend="cp_1502">CP 1502</link></para></listitem>
+          <listitem><para><link linkend="cp_1504">CP 1504</link></para></listitem>
+          <listitem><para><link linkend="cp_1512">CP 1512</link></para></listitem>
+          <listitem><para><link linkend="cp_1516">CP 1516</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.4</title>
+        <itemizedlist>
+          <listitem>
+            <para>Correct tags used for Performed Procedure Step Start/End DateTime in UPS (were Date-only MPPS tags despite correct name)</para>
+          </listitem>
+          <listitem><para><link linkend="sup_156">Sup 156</link></para></listitem>
+          <listitem><para><link linkend="sup_181">Sup 181</link></para></listitem>
+          <listitem><para><link linkend="sup_184">Sup 184</link></para></listitem>
+          <listitem><para><link linkend="sup_187">Sup 187</link></para></listitem>
+          <listitem><para><link linkend="cp_1441">CP 1441</link></para></listitem>
+          <listitem><para><link linkend="cp_1501">CP 1501</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.5</title>
+        <itemizedlist>
+           <listitem>
+            <para>Use YBR_FULL (with underscore, not YBR FULL) in description of RLE.</para>
+          </listitem>
+          <listitem>
+            <para>Move normative text about decompression behavior out of note in MPEG-4 to match style in all other transfer syntaxes.</para>
+          </listitem>
+          <listitem><para><link linkend="sup_181">Sup 181</link></para></listitem>
+          <listitem><para><link linkend="cp_1066">CP 1066</link>; also added OL from Sup 181 in list of non-short VL VRs</para></listitem>
+          <listitem><para><link linkend="cp_1302">CP 1302</link>; also corrected Table K.3-1 alphabetic/phonetic order to match revised text, and moved "English name" with alphabetic</para></listitem>
+          <listitem><para><link linkend="cp_1357">CP 1357</link></para></listitem>
+          <listitem><para><link linkend="cp_1447">CP 1447</link></para></listitem>
+          <listitem><para><link linkend="cp_1451">CP 1451</link></para></listitem>
+          <listitem><para><link linkend="cp_1499">CP 1499</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.6</title>
+        <itemizedlist>
+          <listitem>
+            <para>Correct DICONDE ST VM 1-n, add new DICONDE data elements for revised E2339</para>
+          </listitem>
+          <listitem>
+            <para>Correct entity from Waveform to Spatial Registration in Figure A.39-1 to match 2011 in which it was correct</para>
+          </listitem>
+          <listitem>
+            <para>List Papyrus 3 Implicit VR Little Endian Transfer Syntax as a retired UID, since though never published was used and should not be reassigned.</para>
+          </listitem>
+          <listitem>
+            <para>List Carl Zeiss OPT Macular Cube misused NEMA root SOP Class as a retired UID, since though never published was used and should not be reassigned.</para>
+          </listitem>
+          <listitem>
+            <para>Add Papyrus 3 MR SOP Class as a retired UID, since though never published was used and should not be reassigned.</para>
+          </listitem>
+          <listitem>
+            <para>Show CP 1365 Data Elements as retired (was not done as it should have been in 2014b).</para>
+          </listitem>
+          <listitem>
+            <para>List data elements (0018,0061) and (0400,0315) that were misused by an implementer but are not standard and should not be reassigned.</para>
+          </listitem>
+          <listitem><para><link linkend="sup_156">Sup 156</link></para></listitem>
+          <listitem><para><link linkend="sup_181">Sup 181</link></para></listitem>
+          <listitem><para><link linkend="sup_184">Sup 184</link></para></listitem>
+          <listitem><para><link linkend="sup_187">Sup 187</link></para></listitem>
+          <listitem><para><link linkend="cp_1364">CP 1364</link></para></listitem>
+          <listitem><para><link linkend="cp_1431">CP 1431</link></para></listitem>
+          <listitem><para><link linkend="cp_1432">CP 1432</link></para></listitem>
+          <listitem><para><link linkend="cp_1441">CP 1441</link>; unretire Destination AE (2100,0140)</para></listitem>
+          <listitem><para><link linkend="cp_1454">CP 1454</link></para></listitem>
+          <listitem><para><link linkend="cp_1457">CP 1457</link></para></listitem>
+          <listitem><para><link linkend="cp_1458">CP 1458</link></para></listitem>
+          <listitem><para><link linkend="cp_1460">CP 1460</link></para></listitem>
+          <listitem><para><link linkend="cp_1461">CP 1461</link></para></listitem>
+          <listitem><para><link linkend="cp_1470">CP 1470</link></para></listitem>
+          <listitem><para><link linkend="cp_1476">CP 1476</link></para></listitem>
+          <listitem><para><link linkend="cp_1478">CP 1478</link></para></listitem>
+          <listitem><para><link linkend="cp_1487">CP 1487</link></para></listitem>
+          <listitem><para><link linkend="cp_1496">CP 1496</link></para></listitem>
+          <listitem><para><link linkend="cp_1499">CP 1499</link></para></listitem>
+          <listitem><para><link linkend="cp_1504">CP 1504</link></para></listitem>
+          <listitem><para><link linkend="cp_1516">CP 1516</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.7</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.8</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.10</title>
+        <itemizedlist>
+           <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.11</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.12</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.14</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.15</title>
+        <itemizedlist>
+          <listitem>
+            <para>Correct spelling of ParticipantObjectSensistity to ParticipantObjectSensitivity.</para>
+          </listitem>
+          <listitem><para><link linkend="sup_156">Sup 156</link></para></listitem>
+          <listitem><para><link linkend="sup_181">Sup 181</link></para></listitem>
+          <listitem><para><link linkend="cp_1485">CP 1485</link></para></listitem>
+          <listitem><para><link linkend="cp_1496">CP 1496</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.16</title>
+        <itemizedlist>
+          <listitem>
+            <para>Correct row reference in condition for laterality in TID 10022</para>
+          </listitem>
+          <listitem>
+            <para>Correct row reference in condition for Site Of in TID 10022</para>
+          </listitem>
+          <listitem>
+            <para>Remove quotes around units code value for Glucose in Row 11 of TID 10024</para>
+          </listitem>
+          <listitem>
+            <para>User hyperlinks for TID (nnnn) pattern, where nnn is 1400, 1401, 1402.</para>
+          </listitem>
+          <listitem>
+            <para>Correct row numbering in TID 1607.</para>
+          </listitem>
+          <listitem>
+            <para>Correct Figure A-8 to show TID 4002 as child of 4001 not 4020 (to match actual template structure and pre-DocBook conversion standard)</para>
+          </listitem>
+          <listitem>
+            <para>Hyperlink NCIt codes.</para>
+          </listitem>
+          <listitem>
+            <para>Add SRT CSD that was missing for one occurrence of (M-34200, SRT, "Stenosis").</para>
+          </listitem>
+          <listitem>
+            <para>Provide Wahl reference for SUVpeak and remove unfulfilled notes about providing references for lesion to background codes.</para>
+          </listitem>
+          <listitem>
+            <para>Fix URL for country codes in CID 5001.</para>
+          </listitem>
+          <listitem>
+            <para>Update SNOMED permission statement and add VetSCT statement.</para>
+          </listitem>
+          <listitem><para><link linkend="sup_156">Sup 156</link></para></listitem>
+          <listitem><para><link linkend="sup_181">Sup 181</link></para></listitem>
+          <listitem><para><link linkend="sup_184">Sup 184</link></para></listitem>
+          <listitem><para><link linkend="sup_187">Sup 187</link></para></listitem>
+          <listitem><para><link linkend="cp_1448">CP 1448</link></para></listitem>
+          <listitem><para><link linkend="cp_1449">CP 1449</link></para></listitem>
+          <listitem><para><link linkend="cp_1457">CP 1457</link></para></listitem>
+          <listitem><para><link linkend="cp_1464">CP 1464</link></para></listitem>
+          <listitem><para><link linkend="cp_1465">CP 1465</link></para></listitem>
+          <listitem><para><link linkend="cp_1466">CP 1466</link></para></listitem>
+          <listitem><para><link linkend="cp_1467">CP 1467</link></para></listitem>
+          <listitem><para><link linkend="cp_1468">CP 1468</link></para></listitem>
+          <listitem><para><link linkend="cp_1469">CP 1469</link></para></listitem>
+          <listitem><para><link linkend="cp_1470">CP 1470</link></para></listitem>
+          <listitem><para><link linkend="cp_1473">CP 1473</link></para></listitem>
+          <listitem><para><link linkend="cp_1478">CP 1478</link></para></listitem>
+          <listitem><para><link linkend="cp_1493">CP 1493</link></para></listitem>          
+          <listitem><para><link linkend="cp_1494">CP 1494</link></para></listitem>
+          <listitem><para><link linkend="cp_1496">CP 1496</link></para></listitem>
+          <listitem><para><link linkend="cp_1497">CP 1497</link></para></listitem>
+          <listitem><para><link linkend="cp_1498">CP 1498</link></para></listitem>
+          <listitem><para><link linkend="cp_1516">CP 1516</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.17</title>
+        <itemizedlist>
+          <listitem>
+            <para>Remove mention of CP 1387 in example</para>
+          </listitem>
+          <listitem>
+            <para>Use code 109106 already assigned in place of ddddd1 in legacy conversion example.</para>
+          </listitem>
+          <listitem><para><link linkend="sup_156">Sup 156</link></para></listitem>
+          <listitem><para><link linkend="sup_181">Sup 181</link></para></listitem>
+          <listitem><para><link linkend="sup_187">Sup 187</link></para></listitem>
+          <listitem><para><link linkend="cp_1444">CP 1444</link></para></listitem>
+          <listitem><para><link linkend="cp_1457">CP 1457</link></para></listitem>
+          <listitem><para><link linkend="cp_1471">CP 1471</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.18</title>
+        <itemizedlist>
+          <listitem>
+            <para>Correct UN element from Value to InlineBinary in JSON example</para>
+          </listitem>
+          <listitem>
+            <para>Update bibliography to use biblio elements rather than plain paragraphs</para>
+          </listitem>
+          <listitem>
+            <para>Update definitions to use glossary elements rather than plain paragraphs</para>
+          </listitem>
+          <listitem><para><link linkend="sup_174">Sup 174</link></para></listitem>
+          <listitem><para><link linkend="cp_1364">CP 1364</link></para></listitem>
+          <listitem><para><link linkend="cp_1482">CP 1482</link> and hyperlink to RFC sections from references</para></listitem>
+          <listitem><para><link linkend="cp_1491">CP 1491</link></para></listitem>
+          <listitem><para><link linkend="cp_1506">CP 1506</link></para></listitem>
+          <listitem><para><link linkend="cp_1507">CP 1507</link></para></listitem>
+          <listitem><para><link linkend="cp_1510">CP 1510</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.19</title>
+        <itemizedlist>
+          <listitem><para><link linkend="cp_1364">CP 1364</link></para></listitem>
+          <listitem><para><link linkend="cp_1514">CP 1514</link></para></listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>PS3.20</title>
+        <itemizedlist>
+          <listitem><para></para></listitem>
+        </itemizedlist>
+      </section>
+      
+    </section>
+    
+    <section>
+      <title>Supplements Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="sup_156"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup156_ft.pdf">Sup 156</link></term><listitem><para>Planar MPR Volumetric Presentation State</para></listitem></varlistentry>
+        <varlistentry xml:id="sup_174"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup174_ft.pdf">Sup 174</link></term><listitem><para>RESTful Rendering</para></listitem></varlistentry>
+        <varlistentry xml:id="sup_181"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup181_ft_TractographyResultsStorage.pdf">Sup 181</link></term><listitem><para>Tractography Results Storage SOP Class</para></listitem></varlistentry>
+        <varlistentry xml:id="sup_184"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup184_ft_.pdf">Sup 184</link></term><listitem><para>Brachytherapy Delivery Instruction</para></listitem></varlistentry>
+        <varlistentry xml:id="sup_187"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/sup187_ft_preclinicalanimalacquisitioncontext.pdf">Sup 187</link></term><listitem><para>Preclinical Small Animal Imaging Acquisition Context</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+    
+    <section>
+      <title>Correction Items Incorporated</title>
+      <variablelist>
+        <varlistentry xml:id="cp_1066"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1066_ft.pdf">CP 1066</link></term><listitem><para>Encoding of Attributes with value length > 64kB with Explicit VR</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1302"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1302_ft.pdf">CP 1302</link></term><listitem><para>Correct example of Chinese encoding</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1357"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1357_ft.pdf">CP 1357</link></term><listitem><para>Allow Unicode Katakana in alphabetic name group</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1364"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1364_ft2_fix_rs_errors.pdf">CP 1364</link></term><listitem><para>Minor corrections to WADO-RS and STOW-RS</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1431"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1431_ft2_AddBeamEffectiveDoseInRTFractionSchemeModule.pdf">CP 1431</link></term><listitem><para>Add Beam Effective Dose in RT Fraction Scheme Module</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1432"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1432_ft2_AddSupportForIonTherapyScanningModes.pdf">CP 1432</link></term><listitem><para>Add Support for Ion Therapy Scanning Modes</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1441"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1441_ft.pdf">CP 1441</link></term><listitem><para>Add UPS scheduled output destination</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1444"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1444_ft.pdf">CP 1444</link></term><listitem><para>Add additional dental view sets to Structured Display</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1445"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1445_ft_updatefiguretoremoveinstackposition.pdf">CP 1445</link></term><listitem><para>Remove In-Stack Position text from figure C.7.6.16-3</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1446"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1446_ft_prohibitcirculardimensionindex.pdf">CP 1446</link></term><listitem><para>Prohibit circular Dimension Index references</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1447"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1447_ft_clarify8bitinextendedjpeg3.pdf">CP 1447</link></term><listitem><para>Clarify 8 bit in Extended JPEG Transfer Syntax</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1448"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1448_ft_IAUCBN.pdf">CP 1448</link></term><listitem><para>Add blood normalized IAUC codes</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1449"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1449_ft_modalitydevicecodedefinitions.pdf">CP 1449</link></term><listitem><para>Clarify Modality Device Code Definitions</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1451"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1451_ft_RetirePointIndexListAttributesPart5.pdf">CP 1451</link></term><listitem><para>Remove retired Point Index List attributes in PS3.5 Annex A</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1452"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1452_ft_Recomm_Presentation_Opacity_explanation.pdf">CP 1452</link></term><listitem><para>Correct Recommended Presentation Opacity explanation</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1454"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1454_ft.pdf">CP 1454</link></term><listitem><para>Add color space attribute</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1456"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1456_ft_operatorsequencertseries.pdf">CP 1456</link></term><listitem><para>Add Operator Identification Sequence to Series Modules</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1457"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1457_ft_smallanimalidentification.pdf">CP 1457</link></term><listitem><para>Identification of groups of pre-clinical research small animal subjects</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1458"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1458_ft_rwvmvr.pdf">CP 1458</link></term><listitem><para>Value representation of real world value first and last values mapped</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1459"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1459_ft.pdf">CP 1459</link></term><listitem><para>Add Patient Medical Module to Unified Procedure Step IOD</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1460"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1460_ft_AddIonRangeAndModulation.pdf">CP 1460</link></term><listitem><para>Add Ion Range and Modulation</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1461"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1461_ft.pdf">CP 1461</link></term><listitem><para>Add B1RMS value to MR Enhanced and MR Object</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1462"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1462_ft.pdf">CP 1462</link></term><listitem><para>Admission ID missing in MPPS module</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1463"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1463_ft_enhancedusvolimagetypevalues3and4.pdf">CP 1463</link></term><listitem><para>Clarify Enhanced US Volume Image and Frame Type Values 3 and 4</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1464"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1464_ft_referenceregionsegtype.pdf">CP 1464</link></term><listitem><para>Add reference region segmentation property type</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1465"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1465_ft_addtypeoffindingtomeasurements.pdf">CP 1465</link></term><listitem><para>Add type of finding to measurement SR templates</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1466"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1466_ft_addsessiontomeasurementsgroup.pdf">CP 1466</link></term><listitem><para>Add session to measurements group</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1467"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1467_ft_timepointcontextrelationship.pdf">CP 1467</link></term><listitem><para>Correct time point context relationship</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1468"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1468_ft_definedmodalitycidimagelibrary.pdf">CP 1468</link></term><listitem><para>Add defined CIDs for modality and laterality in image library</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1469"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1469_ft_removeduplicaterowsinvolumetricroi.pdf">CP 1469</link></term><listitem><para>Remove duplicate rows referencing source image or series for segmentation in volumetric ROI</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1470"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1470_ft_smallanimalanatomy.pdf">CP 1470</link></term><listitem><para>Small animal anatomy for pre-clinical research</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1471"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1471_ft_clinicaltrialsresearch.pdf">CP 1471</link></term><listitem><para>Generalize clinical trials attributes to refer to any type of research</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1472"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1472_ft_additionalresponsiblepersons.pdf">CP 1472</link></term><listitem><para>Additional responsible persons</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1473"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1473_ft_transversepositioning.pdf">CP 1473</link></term><listitem><para>Transverse positioning of pre-clinical research small animal subjects</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1475"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1475_ft_enhancedusvolpatientageometry.pdf">CP 1475</link></term><listitem><para>Add patient defined term for Ultrasound Acquisition Geometry</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1476"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1476_ft_fMRI_phases.pdf">CP 1476</link></term><listitem><para> Add settling phases information and Synch pulse for Functional MRI</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1477"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1477_ft_positionerangles.pdf">CP 1477</link></term><listitem><para>Angles for Positioner with Digital Detector</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1478"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1478_ft_speciesandstrain.pdf">CP 1478</link></term><listitem><para>Identification of species and strain of pre-clinical research small animal subjects</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1480"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1480_ft_MR_ReceivingCoil.pdf">CP 1480</link></term><listitem><para>Allow multiple items in the MR Receive Coil Sequence</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1482"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1482_ft.pdf">CP 1482</link></term><listitem><para>Correct PS3.18 RFC references</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1485"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1485_ft_Audit_Message_Schema.pdf">CP 1485</link></term><listitem><para>Resolve discrepancy in SOP Class multiplicity for ATNA messages</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1486"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1486_ft_AddRTIonBeamReferences.pdf">CP 1486</link></term><listitem><para>Add RT Ion References</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1487"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1487_ft2_AddDisplayOriginCoordinatesToRTPlan.pdf">CP 1487</link></term><listitem><para>Add Display Origin Coordinates To RTPlan</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1488"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1488_ft_ClarifyExposureAttributesInRTImage.pdf">CP 1488</link></term><listitem><para>Clarify RT Image Exposure Attributes in case of MPEG Encoding</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1489"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1489_ft.pdf">CP 1489</link></term><listitem><para>Correct description of Surface Scan IOD</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1490"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1490_ft.pdf">CP 1490</link></term><listitem><para>Update top level DICOM diagram for Web Services</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1491"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1491_ft_uri_windowing_fix.pdf">CP 1491</link></term><listitem><para>Incorrect terms in Part 18 Sections 8.2.5 and 8.2.6</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1493"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1493_ft_correctorgancodeforsegmentation.xml">CP 1493</link></term><listitem><para>Correct code for organ used in segmentation</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1494"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1494_ft_morePETRadiotracersZr89mAbs.xml">CP 1494</link></term><listitem><para>More Zr 89 monocolonal antibody and other targeted PET radiotracers</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1496"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1496_ft_segmenttrackingidanduid.xml">CP 1496</link></term><listitem><para>Add Tracking Identifier and UID to Segmentation Instances</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1497"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1497_ft_morePETRadionuclides.xml">CP 1497</link></term><listitem><para>Add Manganese-52m PET radionuclide</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1498"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1498_ft_moreparametricmaptypes.xml">CP 1498</link></term><listitem><para>Add Magnetization Transfer Ratio to Image Model Component Semantics for Parametric Maps</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1499"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1499_ft_CorrectCP1365_VR_setback.pdf">CP 1499</link></term><listitem><para>Fix CP 1365 setback with Long xxx Index List VR</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1501"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1501_ft_float_pixel_data_is_bulk_data.pdf">CP 1501</link></term><listitem><para>Add floating point pixel data to list of bulk data attributes</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1502"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1502_ft_PixelIntensityRelationshipInRTImage.pdf">CP 1502</link></term><listitem><para>Pixel Intensity Relationship in RT Image</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1504"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1504_ft_AddAccessoryCodeToTrays.pdf">CP 1504</link></term><listitem><para>Add Accessory Code To Trays</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1506"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1506_ft.pdf">CP 1506</link></term><listitem><para>QIDO-RS maximumResults</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1507"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1507_ft_no_region_param_in_PS.pdf">CP 1507</link></term><listitem><para>WADO-URI region parameter forbidden when Presentation State</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1510"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1510_ft_fix_UPS_errors.pdf">CP 1510</link></term><listitem><para>Correct UPS-RS errors</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1512"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1512_ft_CorrectionOfMotionModeAttributeReference.pdf">CP 1512</link></term><listitem><para>Correction of Motion Mode Attribute Reference</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1514"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1514_ft_add_missing_attributes_to_coded_terminology_macro.pdf">CP 1514</link></term><listitem><para>Add missing attributes to Coded Terminology Macro</para></listitem></varlistentry>
+        <varlistentry xml:id="cp_1516"><term><link xl:href="ftp://medical.nema.org/medical/dicom/final/cp1516_ft_ExtendIdentifiedPersonOrDeviceMacro.pdf">CP 1516</link></term><listitem><para>Extend Identified Person or Device Macro</para></listitem></varlistentry>
+      </variablelist>
+    </section>
+
+  </chapter>
+</book>
