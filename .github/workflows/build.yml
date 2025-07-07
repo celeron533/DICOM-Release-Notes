@@ -31,7 +31,7 @@ jobs:
       - name: copy files to publish directory
         run: |
           mkdir -p publish/data
-          cp src/dicom-release-notes/data/consolidated.json publish/data/
+          cp data/consolidated.json publish/data/
           cp index.html publish/
 
       - name: deploy to GitHub Pages
