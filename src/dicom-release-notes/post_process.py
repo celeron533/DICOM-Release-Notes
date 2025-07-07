@@ -23,7 +23,7 @@ def grouped_changes_of_parts(changes_of_parts_df: pd.DataFrame) -> pd.DataFrame:
         .apply(lambda df: [
             {'id': row['id'], 'parts': row['part']}
             for _, row in df.iterrows()
-        ])
+        ], include_groups=False)
         .reset_index(name='ids')
     )
 
