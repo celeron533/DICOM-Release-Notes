@@ -111,8 +111,45 @@
 
 
     </script>
+    <br>
+    <details>
+        <summary>Parts</summary>
+        <ul>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part01.html" target="_blank">Part 1: Introduction and Overview</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part02.html" target="_blank">Part 2: Conformance</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part03.html" target="_blank">Part 3: Information Object Definitions</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part04.html" target="_blank">Part 4: Service Class Specifications</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part05.html" target="_blank">Part 5: Data Structures and Encoding</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part06.html" target="_blank">Part 6: Data Dictionary</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part07.html" target="_blank">Part 7: Message Exchange</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part08.html" target="_blank">Part 8: Network Communication Support for Message Exchange</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part10.html" target="_blank">Part 10: Media Storage and File Format for Data Interchange</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part11.html" target="_blank">Part 11: Media Storage Application Profiles</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part12.html" target="_blank">Part 12: Media Formats and Physical Media for Data Interchange</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part14.html" target="_blank">Part 14: Grayscale Standard Display Function</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part15.html" target="_blank">Part 15: Security and System Management Profiles</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part16.html" target="_blank">Part 16: Content Mapping Resource</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part17.html" target="_blank">Part 17: Explanatory Information</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part18.html" target="_blank">Part 18: Web Services</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part19.html" target="_blank">Part 19: Application Hosting</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part20.html" target="_blank">Part 20: Imaging Reports using HL7 Clinical Document Architecture</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part21.html" target="_blank">Part 21: Transformations between DICOM and other Representations</a></li>
+            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part22.html" target="_blank">Part 22: Real-Time Communication</a></li>
+        </ul>
+    </details>
 </body>
 <footer>
+    <p>Data Source: <a href="https://medical.nema.org/medical/dicom/final/" target="_blank">NEMA DICOM Final Documents</a></p>
+    <p>Generated at: <span id="generated-at"></span></p>
+    <script>
+        // Fetch the consolidated info file to get the generated time
+        fetch("./data/consolidated_info.json")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("generated-at").textContent = data.generated_at;
+            })
+            .catch(error => console.error("Error fetching consolidated info:", error));
+    </script>
     <a href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank">GitHub Repository</a>
 </footer>
 </html>

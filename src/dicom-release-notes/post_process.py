@@ -61,6 +61,15 @@ def process():
 
     print(f"Consolidated data saved to {consolidated_json_file}")
 
+    # create a new json file, contains the consolidated data generated time
+    consolidated_info = {
+        "generated_at": pd.Timestamp.now().isoformat(),
+    }
+    # save the consolidated info to a new json file
+    consolidated_info_file = f"data/consolidated_info.json"
+    with open(consolidated_info_file, 'w', encoding='utf-8') as f:
+        pd.Series(consolidated_info).to_json(f, force_ascii=False, indent=2)
+
 if __name__ == "__main__":
     process()
     print("Post processing completed.")
