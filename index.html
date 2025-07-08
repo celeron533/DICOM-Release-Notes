@@ -88,6 +88,12 @@
             paginationCounter:"rows",
             // paginationButtonCount:10,
 
+            initialSort:[
+                {column:"version", dir:"desc"}
+            ],
+
+            groupBy:"version",
+
             columns: [
                 { title: "Version", field: "version", headerFilter: true },
                 // { title: "ID", field: "id",headerFilter: true},
