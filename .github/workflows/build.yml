@@ -6,7 +6,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 15 10 ? * 2,4" # every Tue,Thu on 10:15
+    - cron: "15 10 * * 2,4" # every Tue,Thu on 10:15
 
 permissions:
   contents: write
