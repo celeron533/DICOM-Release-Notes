@@ -23,6 +23,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: downloaded/
+          key: ${{ runner.os }}-custom
 
       - name: Install poetry
         run: pipx install poetry
