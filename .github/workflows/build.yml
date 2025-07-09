@@ -43,6 +43,7 @@ jobs:
         run: |
           mkdir -p publish/data
           cp data/consolidated.json publish/data/
+          cp data/consolidated_info.json publish/data/
           cp index.html publish/
 
       - name: deploy to GitHub Pages
