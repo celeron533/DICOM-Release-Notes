@@ -8,18 +8,18 @@
 </head>
 
 <body>
-    <header style="text-align: center; padding: 10px; background-color: #1976e2; color: white;">
+    <header>
         <h1>DICOM Release Notes</h1>
         <p>Explore and download the latest DICOM release notes and related documents</p>
     </header>
 
     <main>
-        <section id="table-section" style="margin-bottom: 40px;">
+        <section id="table-section">
             <h2>Release Notes Table</h2>
             <div id="main-table"></div>
         </section>
 
-        <section id="download-section" style="text-align: center; margin-bottom: 40px;">
+        <section id="download-section">
             <h2>Download Data File</h2>
             <div>
                 <button id="download-csv" class="download-btn csv">Download CSV</button>
@@ -29,7 +29,7 @@
             </div>
         </section>
 
-        <section id="dicom-parts-section" style="margin-bottom: 40px;">
+        <section id="dicom-parts-section">
             <h2>DICOM Parts</h2>
             <details id="dicom-parts-details">
                 <summary>View DICOM Parts</summary>
@@ -79,7 +79,7 @@
         </section>
     </main>
 </body>
-<footer style="text-align: center; padding: 20px; background-color: #333; color: white;">
+<footer>
     <p>Data Source: <a href="https://medical.nema.org/medical/dicom/final/" target="_blank" style="color: #4caf50;">NEMA
             DICOM Final Documents</a></p>
     <p>Generated at: <span id="generated-at"></span></p>
@@ -96,8 +96,26 @@
         text-align: center;
     }
 
+    header{
+        text-align: center;
+        padding: 10px;
+        background-color: #1976e2;
+        color: white;
+    }
+
+    footer{
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+    }
+
     main{
         padding: 20px;
+    }
+
+    section{
+        margin-bottom: 40px;
     }
 
     #main-table{
