@@ -1,162 +1,250 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link href="https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css" rel="stylesheet">
     <script src="https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js"></script>
     <script src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 </head>
+
 <body>
-    <style>
-        #main-table {
-            margin: 20px;
-            border: 10px solid #ccc;
-            padding: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-    </style>
-    <div id="main-table"></div>
+    <header style="text-align: center; padding: 10px; background-color: #1976e2; color: white;">
+        <h1>DICOM Release Notes</h1>
+        <p>Explore and download the latest DICOM release notes and related documents</p>
+    </header>
 
-    <script>
-        // icon SVGs
-        const icons = {
-            pdf: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#e53935"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">PDF</text></svg>`,
-            doc: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#1976e2"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">DOC</text></svg>`,
-            docx: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#1565c0"/><text x="1" y="9" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">DOC</text><text x="1" y="20" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">X</text></svg>`,
-            pptx: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#7b1fa2"/><text x="1" y="9" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">PPT</text><text x="1" y="20" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">X</text></svg>`,
-            xml: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#00c0c0"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">XML</text></svg>`,
-            dir: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#efb359"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">DIR</text></svg>`,
-        };
-        const data_URL = "./data/consolidated.json";
+    <main>
+        <section id="table-section" style="margin-bottom: 40px;">
+            <h2>Release Notes Table</h2>
+            <div id="main-table"></div>
+        </section>
 
-        // helper to get icon by extension
-        function getIcon(filename) {
-            // If no extension, treat as directory
-            const ext = filename.includes('.') ? filename.split('.').pop().toLowerCase() : "";
-            if (!ext) return icons.dir;
-            if (ext === "pdf") return icons.pdf;
-            if (ext === "doc") return icons.doc;
-            if (ext === "docx") return icons.docx;
-            if (ext === "xml") return icons.xml;
-            if (ext === "pptx") return icons.pptx;
-            return "";
-        };
+        <section id="download-section" style="text-align: center; margin-bottom: 40px;">
+            <h2>Download Data File</h2>
+            <div>
+                <button id="download-csv" class="download-btn csv">Download CSV</button>
+                <button id="download-json" class="download-btn json">Download JSON</button>
+                <button id="download-xlsx" class="download-btn xlsx">Download XLSX</button>
+                <button id="download-html" class="download-btn html">Download HTML</button>
+            </div>
+        </section>
 
-        var table = new Tabulator("#main-table", {
-            height:"700px",
-            layout:"fitDataStretch",
-            resizableColumnFit:true,
-            ajaxURL: data_URL,
-            ajaxConfig: {
-                method: "GET",
-                headers: {
-                    "Cache-Control": "max-age=60, must-revalidate"
-                }
-            },
+        <section id="dicom-parts-section" style="margin-bottom: 40px;">
+            <h2>DICOM Parts</h2>
+            <details id="dicom-parts-details">
+                <summary>View DICOM Parts</summary>
+                <ul id="dicom-parts-list">
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part01.html"
+                            target="_blank">Part 1: Introduction and Overview</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part02.html"
+                            target="_blank">Part 2: Conformance</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part03.html"
+                            target="_blank">Part 3: Information Object Definitions</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part04.html"
+                            target="_blank">Part 4: Service Class Specifications</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part05.html"
+                            target="_blank">Part 5: Data Structures and Encoding</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part06.html"
+                            target="_blank">Part 6: Data Dictionary</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part07.html"
+                            target="_blank">Part 7: Message Exchange</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part08.html"
+                            target="_blank">Part 8: Network Communication Support for Message Exchange</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part10.html"
+                            target="_blank">Part 10: Media Storage and File Format for Data Interchange</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part11.html"
+                            target="_blank">Part 11: Media Storage Application Profiles</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part12.html"
+                            target="_blank">Part 12: Media Formats and Physical Media for Data Interchange</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part14.html"
+                            target="_blank">Part 14: Grayscale Standard Display Function</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part15.html"
+                            target="_blank">Part 15: Security and System Management Profiles</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part16.html"
+                            target="_blank">Part 16: Content Mapping Resource</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part17.html"
+                            target="_blank">Part 17: Explanatory Information</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part18.html"
+                            target="_blank">Part 18: Web Services</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part19.html"
+                            target="_blank">Part 19: Application Hosting</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part20.html"
+                            target="_blank">Part 20: Imaging Reports using HL7 Clinical Document Architecture</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part21.html"
+                            target="_blank">Part 21: Transformations between DICOM and other Representations</a></li>
+                    <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part22.html"
+                            target="_blank">Part 22: Real-Time Communication</a></li>
+                </ul>
+            </details>
+        </section>
+    </main>
+</body>
+<footer style="text-align: center; padding: 20px; background-color: #333; color: white;">
+    <p>Data Source: <a href="https://medical.nema.org/medical/dicom/final/" target="_blank" style="color: #4caf50;">NEMA
+            DICOM Final Documents</a></p>
+    <p>Generated at: <span id="generated-at"></span></p>
+    <p><a href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank" style="color: #ff9800;">GitHub
+            Repository - "DICOM-Release-Notes" - celeron533</a></p>
+</footer>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
 
-            // flatten the data structure
-            ajaxResponse: function(url, params, response) {
+    h2 {
+        text-align: center;
+    }
 
-                const treeData = [];
-                
-                response.forEach(versionItem => {
-                    // // add version node (parent node)
-                    // const versionNode = {
-                    //     id: versionItem.version,
-                    //     version: versionItem.version,
-                    // };
-                    
-                    // treeData.push(versionNode);
-                    
-                    // add child nodes (ids)
-                    versionItem.ids.forEach(idItem => {
-                        treeData.push({
+    main{
+        padding: 20px;
+    }
+
+    #main-table{
+        margin: 0 auto; max-width: 90%;
+    }
+
+    .download-btn {
+        margin: 5px;
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .download-btn.json {
+        background-color: #2196f3;
+    }
+
+    .download-btn.csv {
+        background-color: #ff9800;
+    }
+
+    .download-btn.xlsx {
+        background-color: #4caf50;
+    }
+
+    .download-btn.html {
+        background-color: #9c27b0;
+    }
+
+    #dicom-parts-details {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    #dicom-parts-details summary {
+        cursor: pointer;
+        font-size: 1.2em;
+    }
+
+    #dicom-parts-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #dicom-parts-list li {
+        margin: 5px 0;
+    }
+</style>
+<script>
+    // icon SVGs
+    const icons = {
+        pdf: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#e53935"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">PDF</text></svg>`,
+        doc: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#1976e2"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">DOC</text></svg>`,
+        docx: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#1565c0"/><text x="1" y="9" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">DOC</text><text x="1" y="20" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">X</text></svg>`,
+        pptx: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#7b1fa2"/><text x="1" y="9" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">PPT</text><text x="1" y="20" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">X</text></svg>`,
+        xml: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#00c0c0"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">XML</text></svg>`,
+        dir: `<svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align:middle" fill="currentColor"><rect width="22" height="22" rx="2" fill="#efb359"/><text x="1" y="16" font-size="9" fill="#fff" font-family="Arial" font-weight="bold">DIR</text></svg>`,
+    };
+    const data_URL = "./data/consolidated.json";
+
+    // helper to get icon by extension
+    function getIcon(filename) {
+        // If no extension, treat as directory
+        const ext = filename.includes('.') ? filename.split('.').pop().toLowerCase() : "";
+        if (!ext) return icons.dir;
+        if (ext === "pdf") return icons.pdf;
+        if (ext === "doc") return icons.doc;
+        if (ext === "docx") return icons.docx;
+        if (ext === "xml") return icons.xml;
+        if (ext === "pptx") return icons.pptx;
+        return "";
+    };
+
+    var table = new Tabulator("#main-table", {
+        height: "700px",
+        layout: "fitDataStretch",
+        resizableColumnFit: true,
+        ajaxURL: data_URL,
+        ajaxConfig: {
+            method: "GET",
+            headers: {
+                "Cache-Control": "max-age=60, must-revalidate"
+            }
+        },
+
+        // flatten the data structure
+        ajaxResponse: function (url, params, response) {
+
+            const treeData = [];
+
+            response.forEach(versionItem => {
+                // // add version node (parent node)
+                // const versionNode = {
+                //     id: versionItem.version,
+                //     version: versionItem.version,
+                // };
+
+                // treeData.push(versionNode);
+
+                // add child nodes (ids)
+                versionItem.ids.forEach(idItem => {
+                    treeData.push({
                         ...idItem,
                         version: versionItem.version,
-                        });
                     });
                 });
-                
-                return treeData;
+            });
+
+            return treeData;
+        },
+
+        // placeholder:"Awaiting Data, Please Load File",
+        pagination: "local",
+        paginationSize: 200,
+        paginationSizeSelector: [50, 100, 200, 500, 1000, true],
+        paginationCounter: "rows",
+        // paginationButtonCount:10,
+
+        initialSort: [
+            { column: "version", dir: "desc" }
+        ],
+
+        groupBy: "version",
+
+        columns: [
+            { title: "Version", field: "version", headerFilter: true },
+            // { title: "ID", field: "id",headerFilter: true},
+            { title: "Name", field: "name", headerFilter: true },
+            { title: "Description", field: "description", headerFilter: true },
+            { title: "Parts", field: "parts" },
+            {
+                title: "Files",
+                field: "files",
+                formatter: function (cell) {
+                    const files = cell.getValue();
+                    if (!files || files.length === 0) return "-";
+                    return files.map(file => {
+                        const icon = getIcon(file);
+                        return `<a href="https://medical.nema.org/medical/dicom/final/${file}" target="_blank">${icon ? icon : file}</a>`;
+                    }).join(" ");
+                }
             },
+        ],
+    });
 
-            // placeholder:"Awaiting Data, Please Load File",
-            pagination: "local",
-            paginationSize: 200,
-            paginationSizeSelector: [50, 100, 200, 500, 1000, true],
-            paginationCounter:"rows",
-            // paginationButtonCount:10,
-
-            initialSort:[
-                {column:"version", dir:"desc"}
-            ],
-
-            groupBy:"version",
-
-            columns: [
-                { title: "Version", field: "version", headerFilter: true },
-                // { title: "ID", field: "id",headerFilter: true},
-                { title: "Name", field: "name", headerFilter: true },
-                { title: "Description", field: "description", headerFilter: true },
-                { title: "Parts", field: "parts"},
-                {
-                    title: "Files", 
-                    field: "files", 
-                    formatter: function(cell) {
-                        const files = cell.getValue();
-                        if (!files || files.length === 0) return "-";
-                        return files.map(file => {
-                            const icon = getIcon(file);
-                            return `<a href="https://medical.nema.org/medical/dicom/final/${file}" target="_blank">${icon ? icon : file}</a>`;
-                        }).join(" ");
-                    } 
-                },
-            ],
-        });
-
-    </script>
-    <div>
-        <button id="download-csv">Download CSV</button>
-        <button id="download-json">Download JSON</button>
-        <button id="download-xlsx">Download XLSX</button>
-        <button id="download-html">Download HTML</button>
-    </div>
-    <br>
-    <details>
-        <summary>DICOM Parts</summary>
-        <ul>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part01.html" target="_blank">Part 1: Introduction and Overview</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part02.html" target="_blank">Part 2: Conformance</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part03.html" target="_blank">Part 3: Information Object Definitions</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part04.html" target="_blank">Part 4: Service Class Specifications</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part05.html" target="_blank">Part 5: Data Structures and Encoding</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part06.html" target="_blank">Part 6: Data Dictionary</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part07.html" target="_blank">Part 7: Message Exchange</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part08.html" target="_blank">Part 8: Network Communication Support for Message Exchange</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part10.html" target="_blank">Part 10: Media Storage and File Format for Data Interchange</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part11.html" target="_blank">Part 11: Media Storage Application Profiles</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part12.html" target="_blank">Part 12: Media Formats and Physical Media for Data Interchange</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part14.html" target="_blank">Part 14: Grayscale Standard Display Function</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part15.html" target="_blank">Part 15: Security and System Management Profiles</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part16.html" target="_blank">Part 16: Content Mapping Resource</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part17.html" target="_blank">Part 17: Explanatory Information</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part18.html" target="_blank">Part 18: Web Services</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part19.html" target="_blank">Part 19: Application Hosting</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part20.html" target="_blank">Part 20: Imaging Reports using HL7 Clinical Document Architecture</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part21.html" target="_blank">Part 21: Transformations between DICOM and other Representations</a></li>
-            <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part22.html" target="_blank">Part 22: Real-Time Communication</a></li>
-        </ul>
-    </details>
-</body>
-<footer>
-    <p>Data Source: <a href="https://medical.nema.org/medical/dicom/final/" target="_blank">NEMA DICOM Final Documents</a></p>
-    <p>Download the generated json file: <a href="data/consolidated.json"  target="_blank">consolidated.json</a> Generated at: <span id="generated-at"></span></p>
-    <p><a href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank">GitHub Repository - "DICOM-Release-Notes" - celeron533</a></p>
-</footer>
-<script>
     // Fetch the consolidated info file to get the generated time
     fetch("./data/consolidated_info.json")
         .then(response => response.json())
@@ -166,23 +254,24 @@
         .catch(error => console.error("Error fetching consolidated info:", error));
 
     //trigger download of data.csv file
-    document.getElementById("download-csv").addEventListener("click", function(){
+    document.getElementById("download-csv").addEventListener("click", function () {
         table.download("csv", "data.csv");
     });
 
     //trigger download of data.json file
-    document.getElementById("download-json").addEventListener("click", function(){
+    document.getElementById("download-json").addEventListener("click", function () {
         table.download("json", "data.json");
     });
 
     //trigger download of data.xlsx file
-    document.getElementById("download-xlsx").addEventListener("click", function(){
-        table.download("xlsx", "data.xlsx", {sheetName:"My Data"});
+    document.getElementById("download-xlsx").addEventListener("click", function () {
+        table.download("xlsx", "data.xlsx", { sheetName: "My Data" });
     });
 
     //trigger download of data.html file
-    document.getElementById("download-html").addEventListener("click", function(){
-        table.download("html", "data.html", {style:true});
+    document.getElementById("download-html").addEventListener("click", function () {
+        table.download("html", "data.html", { style: true });
     });
 </script>
+
 </html>
