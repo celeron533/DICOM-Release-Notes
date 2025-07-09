@@ -19,11 +19,12 @@ def grouped_changes_of_parts(changes_of_parts_df: pd.DataFrame) -> pd.DataFrame:
 
     # Now group by 'version', aggregate 'id' and 'part' into desired structure
     result = (
-        grouped.groupby('version')
-        .apply(lambda df: [
-            {'id': row['id'], 'parts': row['part']}
-            for _, row in df.iterrows()
-        ], include_groups=False)
+        grouped.groupby('version')[['id','part']]
+        .apply(
+            lambda df: [
+                {'id': row['id'], 'parts': row['part']}
+                for _, row in df.iterrows()
+            ])
         .reset_index(name='ids')
     )
 

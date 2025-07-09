@@ -115,11 +115,9 @@
             ],
         });
 
-
     </script>
-    <br>
     <details>
-        <summary>Parts</summary>
+        <summary>DICOM Parts</summary>
         <ul>
             <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part01.html" target="_blank">Part 1: Introduction and Overview</a></li>
             <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part02.html" target="_blank">Part 2: Conformance</a></li>
@@ -146,16 +144,16 @@
 </body>
 <footer>
     <p>Data Source: <a href="https://medical.nema.org/medical/dicom/final/" target="_blank">NEMA DICOM Final Documents</a></p>
-    <p>Generated at: <span id="generated-at"></span></p>
-    <script>
-        // Fetch the consolidated info file to get the generated time
-        fetch("./data/consolidated_info.json")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("generated-at").textContent = data.generated_at;
-            })
-            .catch(error => console.error("Error fetching consolidated info:", error));
-    </script>
-    <a href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank">GitHub Repository</a>
+    <p>Download the generated json file: <a href="data/consolidated.json"  target="_blank">consolidated.json</a> Generated at: <span id="generated-at"></span></p>
+    <p><a href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank">GitHub Repository - "DICOM-Release-Notes" - celeron533</a></p>
 </footer>
+<script>
+    // Fetch the consolidated info file to get the generated time
+    fetch("./data/consolidated_info.json")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("generated-at").textContent = data.generated_at;
+        })
+        .catch(error => console.error("Error fetching consolidated info:", error));
+</script>
 </html>
