@@ -262,7 +262,7 @@
                     if (!files || files.length === 0) return "-";
                     return files.map(file => {
                         const icon = getIcon(file);
-                        return `<a href="https://medical.nema.org/medical/dicom/final/${file}" target="_blank">${icon ? icon : file}</a>`;
+                        return `<a href="https://medical.nema.org/medical/dicom/final/${file}" target="_blank" title="${file}">${icon ? icon : file}</a>`;
                     }).join(" ");
                 }
             },
