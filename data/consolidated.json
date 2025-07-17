@@ -13537,5 +13537,312 @@
         ]
       }
     ]
+  },
+  {
+    "version":"2025b",
+    "ids":[
+      {
+        "id":"cp_1570",
+        "parts":[
+          "PS3.3",
+          "PS3.6",
+          "PS3.16"
+        ],
+        "name":"CP 1570",
+        "description":"Add dental visible light acquisition context information",
+        "files":[
+          "cp1570_ft_add_dental_acquisition_attributes_into_VL_IOD.docx",
+          "cp1570_ft_add_dental_acquisition_attributes_into_VL_IOD.pdf"
+        ]
+      },
+      {
+        "id":"cp_2340",
+        "parts":[
+          "PS3.2"
+        ],
+        "name":"CP 2340",
+        "description":"Specify DICOMWeb security for conformance",
+        "files":[
+          "cp2340_ft_DICOMWeb-security-conformance.docx",
+          "cp2340_ft_DICOMWeb-security-conformance.pdf"
+        ]
+      },
+      {
+        "id":"cp_2409",
+        "parts":[
+          "PS3.16"
+        ],
+        "name":"CP 2409",
+        "description":"Multiple Inconsistencies of DCM Code Meanings in PS3.16 table D-1 versus Context Groups",
+        "files":[
+          "cp2409_ft_Multiple_Inconsistencies_of_DCM_CodeMeanings.docx",
+          "cp2409_ft_Multiple_Inconsistencies_of_DCM_CodeMeanings.pdf"
+        ]
+      },
+      {
+        "id":"cp_2421",
+        "parts":[
+          "PS3.4"
+        ],
+        "name":"CP 2421",
+        "description":"Fix inconsistent spelling and use of terms in PS3.4",
+        "files":[
+          "cp2421_ft_fix_inconsistent_spelling_and_use_of_terms_in_part_4.docx",
+          "cp2421_ft_fix_inconsistent_spelling_and_use_of_terms_in_part_4.pdf"
+        ]
+      },
+      {
+        "id":"cp_2425",
+        "parts":[
+          "PS3.3",
+          "PS3.6",
+          "PS3.16"
+        ],
+        "name":"CP 2425",
+        "description":"Generalize CTDI phantom options",
+        "files":[
+          "cp2425_ft_expandCTDIphantoms.doc",
+          "cp2425_ft_expandCTDIphantoms.pdf"
+        ]
+      },
+      {
+        "id":"cp_2433",
+        "parts":[
+          "PS3.3"
+        ],
+        "name":"CP 2433",
+        "description":"Clarify Vector Grid Data memory layout",
+        "files":[
+          "cp2433_ft_3Dvectorgrid.docx",
+          "cp2433_ft_3Dvectorgrid.pdf"
+        ]
+      },
+      {
+        "id":"cp_2434",
+        "parts":[
+          "PS3.16"
+        ],
+        "name":"CP 2434",
+        "description":"Add new IOL calculation formulas to CID 4236",
+        "files":[
+          "cp2434_ft_AddMoreIOLFormulasToPart16.doc",
+          "cp2434_ft_AddMoreIOLFormulasToPart16.pdf"
+        ]
+      },
+      {
+        "id":"cp_2436",
+        "parts":[
+          "PS3.16"
+        ],
+        "name":"CP 2436",
+        "description":"Inconsistency in reference to RT Structure Sets for Planar ROI in TID 1410",
+        "files":[
+          "cp2436_ft_TID1410RTSSInconsistency.pdf",
+          "cp2436_ft_TID1410RTSSInconsistency.xml"
+        ]
+      },
+      {
+        "id":"cp_2437",
+        "parts":[
+          "PS3.16"
+        ],
+        "name":"CP 2437",
+        "description":"Various Context Group corrections",
+        "files":[
+          "cp2437_ft_VariousContextGroupCorrections.pdf",
+          "cp2437_ft_VariousContextGroupCorrections.xml"
+        ]
+      },
+      {
+        "id":"cp_2438",
+        "parts":[
+          "PS3.16"
+        ],
+        "name":"CP 2438",
+        "description":"Update DICOM to reflect changes in IHTSDO SNOMED CT-DICOM Subset for JUL 2024 INT Release",
+        "files":[
+          "cp2438_ft_ihtsdoJul2024INTreleaseupdate.pdf",
+          "cp2438_ft_ihtsdoJul2024INTreleaseupdate.xml"
+        ]
+      },
+      {
+        "id":"cp_2439",
+        "parts":[
+          "PS3.6",
+          "PS3.16"
+        ],
+        "name":"CP 2439",
+        "description":"Update DICOM to reflect changes in SNOMED Imaging Procedures",
+        "files":[
+          "cp2439_ft_ihtsdoimagingprocedureupdate.pdf",
+          "cp2439_ft_ihtsdoimagingprocedureupdate.xml"
+        ]
+      },
+      {
+        "id":"cp_2441",
+        "parts":[
+          "PS3.18"
+        ],
+        "name":"CP 2441",
+        "description":"Remove the word 'codes' from diagrams",
+        "files":[
+          "cp2441_ft_RemoveTheWordCodesFromDiagrams.doc",
+          "cp2441_ft_RemoveTheWordCodesFromDiagrams.pdf"
+        ]
+      },
+      {
+        "id":"cp_2442",
+        "parts":[
+          "PS3.3"
+        ],
+        "name":"CP 2442",
+        "description":"Harmonize the meaning of Failure Reasons",
+        "files":[
+          "cp2442_ft_harmonize_the_meaning_of_failure_reasons.docx",
+          "cp2442_ft_harmonize_the_meaning_of_failure_reasons.pdf"
+        ]
+      },
+      {
+        "id":"cp_2443",
+        "parts":[
+          "PS3.16"
+        ],
+        "name":"CP 2443",
+        "description":"Add missing details to the definition of Template tables",
+        "files":[
+          "cp2443_ft_add_missing_details_to_the_definition_of_template_tables.docx",
+          "cp2443_ft_add_missing_details_to_the_definition_of_template_tables.pdf"
+        ]
+      },
+      {
+        "id":"cp_2447",
+        "parts":[
+          "PS3.3"
+        ],
+        "name":"CP 2447",
+        "description":"Pregnancy Status correct mismatch of VR and defined terms",
+        "files":[
+          "cp2447_ft_pregnancy_status_match_vr_and_defined_terms.docx",
+          "cp2447_ft_pregnancy_status_match_vr_and_defined_terms.pdf"
+        ]
+      },
+      {
+        "id":"cp_2448",
+        "parts":[
+          "PS3.16"
+        ],
+        "name":"CP 2448",
+        "description":"Update extensibility and order significance of several Waveform SR Templates",
+        "files":[
+          "cp2448_ft_AdaptSRTemplateProperties.docx",
+          "cp2448_ft_AdaptSRTemplateProperties.pdf"
+        ]
+      },
+      {
+        "id":"cp_2450",
+        "parts":[
+          "PS3.3"
+        ],
+        "name":"CP 2450",
+        "description":"Remove Table 10.41-1 from X-Ray Image Modules",
+        "files":[
+          "cp2450_ft_Remove_Table_10.41-1_From_X-Ray_Image_Modules.docx",
+          "cp2450_ft_Remove_Table_10.41-1_From_X-Ray_Image_Modules.pdf"
+        ]
+      },
+      {
+        "id":"cp_2451",
+        "parts":[
+          "PS3.3"
+        ],
+        "name":"CP 2451",
+        "description":"Add Physician of Record to Visit Admission Module",
+        "files":[
+          "cp2451_ft_add_physician_of_record_to_visit_admission_module.docx",
+          "cp2451_ft_add_physician_of_record_to_visit_admission_module.pdf"
+        ]
+      },
+      {
+        "id":"cp_2453",
+        "parts":[
+          "PS3.16"
+        ],
+        "name":"CP 2453",
+        "description":"Add FHIR canonical for DICOM UID Registry",
+        "files":[
+          "cp2453_ft_add_FHIR_canonical_for_DICOM_UID_registry.docx",
+          "cp2453_ft_add_FHIR_canonical_for_DICOM_UID_registry.pdf"
+        ]
+      },
+      {
+        "id":"cp_2454",
+        "parts":[
+          "PS3.2",
+          "PS3.18"
+        ],
+        "name":"CP 2454",
+        "description":"Correct Studies Service tables in PS3.2 and PS3.18",
+        "files":[
+          "cp2454_ft_correct_studies_service_tables_in_PS3.2_and_PS3.18.docx",
+          "cp2454_ft_correct_studies_service_tables_in_PS3.2_and_PS3.18.pdf"
+        ]
+      },
+      {
+        "id":"cp_2455",
+        "parts":[
+          "PS3.3",
+          "PS3.6",
+          "PS3.15",
+          "PS3.16"
+        ],
+        "name":"CP 2455",
+        "description":"Ethnic Group SH VR too short",
+        "files":[
+          "cp2455_ft_EthnicGroup.pdf",
+          "cp2455_ft_EthnicGroup.xml"
+        ]
+      },
+      {
+        "id":"cp_2456",
+        "parts":[
+          "PS3.15"
+        ],
+        "name":"CP 2456",
+        "description":"General handling of known safe private data elements within private sequences",
+        "files":[
+          "cp2456_ft_knownsafesequencecontent.pdf",
+          "cp2456_ft_knownsafesequencecontent.xml"
+        ]
+      },
+      {
+        "id":"sup_233",
+        "parts":[
+          "PS3.3",
+          "PS3.6",
+          "PS3.15",
+          "PS3.16",
+          "PS3.17"
+        ],
+        "name":"Sup 233",
+        "description":"Patient Model Gender Enhancements",
+        "files":[
+          "sup233_ft_PatientModelGenderEnhancements.docx",
+          "sup233_ft_PatientModelGenderEnhancements.pdf"
+        ]
+      },
+      {
+        "id":"sup_241",
+        "parts":[
+          "PS3.6",
+          "PS3.16"
+        ],
+        "name":"Sup 241",
+        "description":"Structural Heart Procedural SR Template",
+        "files":[
+          "sup241_ft3_StructuralHeartProceduralSR.docx",
+          "sup241_ft3_StructuralHeartProceduralSR.pdf"
+        ]
+      }
+    ]
   }
 ]
