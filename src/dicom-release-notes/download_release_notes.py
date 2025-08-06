@@ -5,6 +5,23 @@ from lxml import html
 
 url = "https://dicom.nema.org/medical/dicom/"
 
+def _download_file(download_url, folder_name):
+    print(f"Downloading {download_url}...")
+    #download the file to the downloaded folder
+    # skip if the file already exists
+    if os.path.exists(f"downloaded/releasenotes_{folder_name}.xml"):
+        print(f"File for {folder_name} already exists, skipping download.")
+        return
+    response = requests.get(download_url)
+
+    if response.status_code == 200:
+        with open(f"downloaded/releasenotes_{folder_name}.xml", "wb") as file:
+            file.write(response.content)
+        print(f"Downloaded {folder_name} release notes successfully.")
+    else:
+        print(f"Failed to download {folder_name} release notes. Status code: {response.status_code}")
+
+
 def download_release_notes():
     """
     Downloads the release notes from the DICOM NEMA website.
@@ -40,21 +57,25 @@ def download_release_notes():
         year = folder_name[:4]
         version = folder_name[4:]
         download_url = f"{url}{folder_name}/source/docbook/releasenotes/releasenotes_{folder_name}.xml"
+        _download_file(download_url, folder_name)
 
-        print(f"Downloading {download_url}...")
-        #download the file to the downloaded folder
-        # skip if the file already exists
-        if os.path.exists(f"downloaded/releasenotes_{folder_name}.xml"):
-            print(f"File for {folder_name} already exists, skipping download.")
-            continue
-        response = requests.get(download_url)
+    # special case for "current" release notes
+    # https://dicom.nema.org/medical/dicom/current/source/docbook/releasenotes/releasenotes_2025c.xml
+    folder = f"{url}current/source/docbook/releasenotes"
+    # parse the HTML to get the latest version
+    response = requests.get(folder)
+    tree = html.fromstring(response.content)
+    latest_version_link = tree.xpath("//a[contains(@href, 'releasenotes_')]/@href")
 
-        if response.status_code == 200:
-            with open(f"downloaded/releasenotes_{folder_name}.xml", "wb") as file:
-                file.write(response.content)
-            print(f"Downloaded {folder_name} release notes successfully.")
-        else:
-            print(f"Failed to download {folder_name} release notes. Status code: {response.status_code}")
+    if latest_version_link:
+        download_url = latest_version_link[0]
+        #parse the version from the link
+        version = download_url.split('_')[-1].split('.')[0]
+        print(f"Latest version found: {version}")
+        # download the file
+        _download_file(f"https://dicom.nema.org/{download_url}", version)
+    else:
+        print("No current release notes found.")
 
     # all downloaded.
     print("All release notes downloaded.")
