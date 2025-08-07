@@ -273,7 +273,13 @@
     fetch("./data/consolidated_info.json")
         .then(response => response.json())
         .then(data => {
-            document.getElementById("generated-at").textContent = data.generated_at;
+            // document.getElementById("generated-at").textContent = data.generated_at;
+            let generatedAt = new Date(data.generated_at);
+            document.getElementById("generated-at").textContent = generatedAt.toLocaleString(undefined, {
+                timeZoneName: 'short',
+                hourCycle: 'h24'
+            });
+
         })
         .catch(error => console.error("Error fetching consolidated info:", error));
 
