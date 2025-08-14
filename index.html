@@ -285,7 +285,7 @@
                     if (!files || files.length === 0) return "-";
                     return files.map(file => {
                         const iconClass = getIcon(file);
-                        return `<a href="https://medical.nema.org/medical/dicom/final/${file}" target="_blank" class="${iconClass} ">${file}</a>`;
+                        return `<a href="https://medical.nema.org/medical/dicom/final/${file}" target="_blank" class="${iconClass}" title="${file}">${file}</a>`;
                     }).join(" ");
                 }
             },
