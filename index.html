@@ -297,7 +297,8 @@
         .then(response => response.json())
         .then(data => {
             // document.getElementById("generated-at").textContent = data.generated_at;
-            let generatedAt = new Date(data.generated_at);
+            let utcString = data.generated_at.endsWith('Z') ? data.generated_at : data.generated_at + 'Z';
+            let generatedAt = new Date(utcString);
             document.getElementById("generated-at").textContent = generatedAt.toLocaleString(undefined, {
                 timeZoneName: 'short',
                 hourCycle: 'h24'
