@@ -64,7 +64,7 @@ def process():
 
     # create a new json file, contains the consolidated data generated time
     consolidated_info = {
-        "generated_at": pd.Timestamp.utcnow().isoformat() + "Z",
+        "generated_at": pd.Timestamp.utcnow().isoformat(),
     }
     # save the consolidated info to a new json file
     consolidated_info_file = f"data/consolidated_info.json"
