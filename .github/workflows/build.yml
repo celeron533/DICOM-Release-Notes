@@ -78,5 +78,5 @@ jobs:
         run: |
           git add downloaded/
           git diff --cached --quiet || git commit -m "Update downloaded files"
-          git push origin main
+          git push origin master
 
