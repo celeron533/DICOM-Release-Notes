@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
-    <script src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
-    <title>DICOM Release Notes</title>
+    <meta charset="utf-8">
     <meta name="description" content="Browse and download the latest DICOM release related documents.">
     <meta name="keywords" content="DICOM, Release Notes, Medical Imaging, Standards, Documentation, NEMA, Download, PDF, DOC, XML">
     <meta name="author" content="celeron533">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+    <script src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+    <title>DICOM Release Notes</title>
 </head>
 
 <body>
@@ -36,18 +37,18 @@
         <section id="download-section">
             <h2>Download Data File</h2>
             <div class="download-btn-group">
-                <button id="download-csv" class="download-btn csv">Download CSV</button>
-                <button id="download-json" class="download-btn json">Download JSON</button>
-                <button id="download-xlsx" class="download-btn xlsx">Download XLSX</button>
-                <button id="download-html" class="download-btn html">Download HTML</button>
+                <button id="download-csv" class="download-btn csv" type="button">Download CSV</button>
+                <button id="download-json" class="download-btn json" type="button">Download JSON</button>
+                <button id="download-xlsx" class="download-btn xlsx" type="button">Download XLSX</button>
+                <button id="download-html" class="download-btn html" type="button">Download HTML</button>
             </div>
         </section>
 
         <section id="dicom-parts-section">
             <h2>DICOM Parts</h2>
-            <details id="dicom-parts-details">
+            <details class="dicom-parts-details">
                 <summary>View DICOM Parts</summary>
-                <ul id="dicom-parts-list">
+                <ul class="dicom-parts-list">
                     <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part01.html"
                             target="_blank">Part 1: Introduction and Overview</a></li>
                     <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part02.html"
@@ -89,8 +90,10 @@
                     <li><a href="https://dicom.nema.org/medical/dicom/current/output/html/part22.html"
                             target="_blank">Part 22: Real-Time Communication</a></li>
                 </ul>
+            </details>
+            <details class="dicom-parts-details">
                 <summary>Obsoleted Parts</summary>
-                <ul id="dicom-parts-list">
+                <ul class="dicom-parts-list">
                     <li><a href="https://dicom.nema.org/medical/dicom/1992-1995/PS3.9_1993.pdf"
                             target="_blank">Part 9: Point to Point Communication Support for Message Exchange (1993)</a></li>
                     <li><a href="https://dicom.nema.org/medical/dicom/1992-1995/PS3.13_1995.pdf"
@@ -100,9 +103,9 @@
         </section>
         <section id="legacy-dicom-releases-section">
             <h2>Legacy DICOM Releases</h2>
-            <details id="dicom-releases-details">
+            <details class="dicom-releases-details">
                 <summary>View Legacy DICOM Releases (1985-2011)</summary>
-                <ul id="dicom-releases-list">
+                <ul class="dicom-releases-list">
                     <li><a href="https://dicom.nema.org/medical/dicom/1985"
                     target="_blank">1985</a></li>
                     <li><a href="https://dicom.nema.org/medical/dicom/1988"
@@ -138,11 +141,9 @@
 </body>
 <footer>
     <p>For more details, please visit <a href="https://www.dclunie.com/dicom-status/status.html" target="_blank" style="color: #69bef0;">David Clunie's Medical Image Format Site - DICOM Standard Status</a></p>
-    <p>Data Source: <a href="https://medical.nema.org/medical/dicom/final/" target="_blank" style="color: #4caf50;">NEMA
-            DICOM Final Documents</a></p>
-    <p>Generated at: <span id="generated-at"></span></p>
-    <p>Github Repository <a href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank" style="color: #ff9800;">
-            "DICOM-Release-Notes" - celeron533</a></p>
+    <p>Data Source: <a href="https://medical.nema.org/medical/dicom/final/" target="_blank" style="color: #4caf50;">NEMA DICOM Final Documents</a></p>
+    <p>Generated at: <time id="generated-at"></time></p>
+    <p>Github Repository <a href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank" style="color: #ff9800;">"DICOM-Release-Notes" - celeron533</a></p>
 </footer>
 <style>
     body {
@@ -205,22 +206,21 @@
         background-color: #9c27b0;
     }
 
-    #dicom-parts-details, #dicom-releases-details {
+    .dicom-parts-details, .dicom-releases-details {
         max-width: 90%;
         margin: 0 auto;
     }
 
-    #dicom-parts-details summary, #dicom-releases-details summary {
+    .dicom-parts-details summary, .dicom-releases-details summary {
         cursor: pointer;
         font-size: 1.2em;
     }
 
-    #dicom-parts-list, #dicom-releases-list {
+    .dicom-parts-list, .dicom-releases-list {
         list-style-type: none;
-        padding: 0;
     }
 
-    #dicom-parts-list li, #dicom-releases-list li {
+    .dicom-parts-list li, .dicom-releases-list li {
         margin: 5px 0;
     }
 
@@ -372,7 +372,6 @@
     fetch("./data/consolidated_info.json")
         .then(response => response.json())
         .then(data => {
-            // document.getElementById("generated-at").textContent = data.generated_at;
             let generatedAt = new Date(data.generated_at);
             document.getElementById("generated-at").textContent = generatedAt.toLocaleString(undefined, {
                 timeZoneName: 'short',
