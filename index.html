@@ -30,7 +30,7 @@
 
     <main>
         <section id="table-section">
-            <h2>Correction Proposals and Supplements in Releases Since 2014 to Latest</h2>
+            <h2>Correction Proposals and Supplements in Releases Since 2014 to <span id="latest-version">Latest</span></h2>
             <div id="main-table"></div>
         </section>
 
@@ -502,7 +502,8 @@
                 timeZoneName: 'short',
                 hourCycle: 'h24'
             });
-
+            let latestVersion = data.versions.sort((a, b) => b.localeCompare(a))[0];
+            document.getElementById("latest-version").textContent = latestVersion;
         })
         .catch(error => console.error("Error fetching consolidated info:", error));
 

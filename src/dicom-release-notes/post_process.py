@@ -65,6 +65,7 @@ def process():
     # create a new json file, contains the consolidated data generated time
     consolidated_info = {
         "generated_at": pd.Timestamp.utcnow().isoformat(),
+        "versions": consolidated_df['version'].tolist()
     }
     # save the consolidated info to a new json file
     consolidated_info_file = f"data/consolidated_info.json"
