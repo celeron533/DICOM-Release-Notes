@@ -47,6 +47,13 @@
         <section id="dicom-parts-section">
             <h2>DICOM Parts</h2>
             <details open class="dicom-parts-details">
+                <div id="version-selector-container">
+                    <label for="version-selector">Select DICOM Version:</label>
+                    <select id="version-selector">
+                        <option value="current">Current</option>
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                </div>
                 <summary>View Current DICOM Parts</summary>
                 <ul class="dicom-parts-list">
                     <li>
@@ -213,7 +220,7 @@
             </details>
             <details class="dicom-parts-details">
                 <summary>Obsoleted Parts</summary>
-                <ul class="dicom-parts-list">
+                <ul class="dicom-parts-list-obsolete">
                     <li><a href="https://dicom.nema.org/medical/dicom/1992-1995/PS3.9_1993.pdf"
                             target="_blank">Part 9: Point to Point Communication Support for Message Exchange (1993)</a></li>
                     <li><a href="https://dicom.nema.org/medical/dicom/1992-1995/PS3.13_1995.pdf"
@@ -262,7 +269,7 @@
         <p>For more details, please visit <a href="https://www.dclunie.com/dicom-status/status.html" target="_blank" style="color: #69bef0;">David Clunie's Medical Image Format Site - DICOM Standard Status</a></p>
         <p>Data Source: <a href="https://medical.nema.org/medical/dicom/final/" target="_blank" style="color: #4caf50;">NEMA DICOM Final Documents</a></p>
         <p>Generated at: <time id="generated-at"></time></p>
-        <p>Github Repository <a href="https://github.com/celeron533/DICOM-Release-Note-Summary" target="_blank" style="color: #ff9800;">"DICOM-Release-Notes" - celeron533</a></p>
+        <p>Github Repository <a href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank" style="color: #ff9800;">"DICOM-Release-Notes" - celeron533</a></p>
     </footer>
 </body>
 
@@ -337,17 +344,26 @@
         font-size: 1.2em;
     }
 
-    .dicom-parts-list, .dicom-releases-list {
+    .dicom-parts-list, .dicom-parts-list-obsolete, .dicom-releases-list {
         list-style-type: none;
     }
 
-    .dicom-parts-list li, .dicom-releases-list li {
+    .dicom-parts-list li, .dicom-parts-list-obsolete li, .dicom-releases-list li {
         margin: 5px 0;
         line-height: 1.5;
     }
 
     .dicom-parts-list li a.alt {
         margin-left: 1em;
+    }
+
+    #version-selector-container {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    #version-selector {
+        padding: 5px;
+        font-size: 1em;
     }
 
     .icon-pdf {
@@ -492,6 +508,13 @@
         initialHeaderFilter: buildFilters(getQueryObject()),
     });
 
+    // Function to update DICOM Parts links based on selected version
+    function updateDicomLinks(version) {
+        const links = document.querySelectorAll('.dicom-parts-list a');
+        links.forEach(link => {
+            link.href = link.href.replace(/\/(current|\d{4}[a-z]?)\//, `/${version}/`);
+        });
+    }
 
     // Fetch the consolidated info file to get the generated time
     fetch("./data/consolidated_info.json")
@@ -504,6 +527,23 @@
             });
             let latestVersion = data.versions.sort((a, b) => b.localeCompare(a))[0];
             document.getElementById("latest-version").textContent = latestVersion;
+
+            // Populate version selector
+            const selector = document.getElementById("version-selector");
+            data.versions.forEach(version => {
+                const option = document.createElement("option");
+                option.value = version;
+                option.textContent = version;
+                selector.appendChild(option);
+            });
+
+            // Set default to latest version or current
+            selector.value = "current"; // or latestVersion if preferred
+
+            // Add event listener for version change
+            selector.addEventListener("change", function() {
+                updateDicomLinks(this.value);
+            });
         })
         .catch(error => console.error("Error fetching consolidated info:", error));
 
