@@ -402,6 +402,7 @@
         pptx: "icon-pptx",
         xml: "icon-xml",
         dir: "icon-dir",
+        unknown: "",
     };
 
     const data_URL = "./data/consolidated.json";
@@ -411,12 +412,14 @@
         // If no extension, treat as directory
         const ext = filename.includes('.') ? filename.split('.').pop().toLowerCase() : "";
         if (!ext) return iconClasses.dir;
-        if (ext === "pdf") return iconClasses.pdf;
-        if (ext === "doc") return iconClasses.doc;
-        if (ext === "docx") return iconClasses.docx;
-        if (ext === "xml") return iconClasses.xml;
-        if (ext === "pptx") return iconClasses.pptx;
-        return "";
+        switch (ext) {
+            case "pdf": return iconClasses.pdf;
+            case "doc": return iconClasses.doc;
+            case "docx": return iconClasses.docx;
+            case "xml": return iconClasses.xml;
+            case "pptx": return iconClasses.pptx;
+            default: return iconClasses.unknown;
+        }
     };
 
 
@@ -491,7 +494,7 @@
             // { title: "ID", field: "id",headerFilter: true},
             { title: "Name", field: "name", headerFilter: true },
             { title: "Description", field: "description", headerFilter: true },
-            { title: "Parts", field: "parts" },
+            { title: "Parts", field: "parts", headerFilter: true },
             {
                 title: "Files",
                 field: "files",
