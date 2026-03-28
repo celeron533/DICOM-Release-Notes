@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+    <title>DICOM PS3 2026b</title>
+    <subtitle>Release Notes</subtitle>
+    <info>
+        <author>
+            <orgname>DICOM Standards Committee</orgname>
+        </author>
+        <copyright>
+            <year>2026</year>
+            <holder>NEMA</holder>
+        </copyright>
+        <legalnotice>
+            <para>A DICOM® publication</para>
+        </legalnotice>
+    </info>
+    <chapter label="">
+        <title/>
+        <section>
+            <title/>
+            <para>2026/03/25</para>
+            <para>The following changes have been made relative to the previously published PS3 2026a release of the standard, by incorporating the changes specified in the supplements and correction items.</para>
+            <para>The Final Text of all applied Supplements and Correction Proposals is available at <link xl:href="https://medical.nema.org/medical/dicom/final/"/></para>
+        </section>
+
+        <section>
+            <title>Production Notes</title>
+            <para>The DocBook XML files are the source format, and all other formats are rendered from it.</para>
+            <para>The PDF format is rendered from the DocBook XML, and remains the "official" (authoritative) form of the standard. The PDF contains hyperlinks to sections, figures and tables both within and between parts (which in the latter case work if you are reading the PDF in a tool that supports linking to other parts).</para>
+            <para>The two HTML formats are provided for the convenience of those who find them easier to navigate within a browser, and though the appearance and organization is different, the content is the same. One form consists of entire parts in one very large HTML page, and the other consist of chunks of sections with navigation elements. Both forms are hyper-linked within and between parts. The figures in the HTML are SVG, so a browser that supports SVG is required (most contemporary browsers do).</para>
+            <para>All paragraphs (&lt;p/&gt; elements) in the HTML files of this release, are uniquely identified with a hypertext anchor (&lt;a/&gt; element), each of which has an id attribute (derived from the source DocBook &lt;para/&gt; element xml:id attribute). These unique identifiers will remain stable in subsequent releases, so they may be reliably used as the persistent targets of hyperlinks relative to the current release base URL, and are more specific than the existing anchors for entire sections or tables. Unlike the section and table anchors, there is no semantic significance to the syntax of the identifiers (i.e., they are UUIDs, rather than being derived from the section or table numbering pattern). Subsequent releases will add new identifiers for new paragraphs and text split out of existing paragraphs into new paragraphs, and will, if possible, empty, rather than entirely remove, existing paragraphs that are retired (in order to avoid dead links).</para>
+            <para>The chunked HTML format includes navigation elements in the header and footer, as well as a hyperlink to the current release of that page, in case the user happens to find or be using an older release of the page.</para>
+            <para>The DOCX (for Word) and ODT (for OpenOffice or LibreOffice) formats are provided for the convenience of future Supplement and CP editors. Their main claim to fame is that they exist at all, and though they are viewable and editable, they are lacking many features of the Word source of previous release, for example the use of styles for section headings. They do contain embedded hyperlinks, and these are also present in the table of contents, even though the page numbers rendered in the table of contents may be meaningless. To reiterate, the intent of these files is to provide a source to cut and past into new Word documents, and not to be functional documents in their own right. Since Word does not support SVG, all figures embedded in the DOCX files have been rasterized to a fixed resolution and are adequate for position only and are not editable and are not intended to be a substitute for the SVG figures.</para>
+            <para>The rendering pipeline used to produce these files is available but requires some expertise to use it. It is not supported. To achieve quality rendering, the use of some commercial tools was necessary, to supplement the many open source tools that were also used. Oxygen (commercial) was used as the XML editor since it supports a WYSIWG authoring mode. OpenOffice (open source) was used as the equation editor. The DocBook (open source, version docbook-xsl-ns-1.78.1) style sheets were used to create the HTML and intermediate FO form used to created the PDF and DOCX. MathML equations were converted to SVG using pMML2SVG (open source, version pMML2SVG-0.8.5). RenderX XEP (commercial) was used to produce the PDF, and XMLmind FO-Converter (commercial) was used to produce the DOCX. The difference files were produced using DeltaXML DocBook Compare (commercial). The PDF files were post-processed with qpdf to generate object streams to reduce the size of the tagged PDF and
+                improve searching for strings that span lines within tables and to linearize the files for streamed web page viewing.</para>
+            <para>Some characteristics of the DocBook XML may be of interest to those performing automated processing or extraction:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>Zero width spaces (U+200B) are used in some places to allow long words (such as PS3.6 keywords and UIDs) to break within table columns and avoid tables becoming too wide to fit on a page. These need to be filtered out before using these words literally.</para>
+                </listitem>
+                <listitem>
+                    <para>Enumerated values and defined terms are formalized in PS3.3 as DocBook variablelist elements with a title identifying them as such, to facilitate their automated detection and extraction.</para>
+                </listitem>
+                <listitem>
+                    <para>Template and context group tables in PS 3.16 are preceded by variablelist elements defining whether or not they are extensible, etc., again to enable automated extraction.</para>
+                </listitem>
+                <listitem>
+                    <para>Hyperlinks (xref and link elements) are used extensively but may obscure the identifier of what is being linked to from the perspective of automated extraction. It may be useful to consult the olink targetdb files that are included in the package to "look up" the target of such links, rather than reinventing this mechanism, which is used by the DocBook stylesheets for cross-document linking. E.g., one can look up "sect_TID_300" in "output/html/targetdb/PS3_16_target.db" to determine that it has a "number" of "TID 300" and a "ttl" of "Measurement", etc.</para>
+                </listitem>
+            </itemizedlist>
+        </section>
+
+        <section>
+            <title>Changes to Parts</title>
+
+            <section>
+                <title>General Changes</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.1</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.2</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.3</title>
+                <itemizedlist>
+                    <listitem><para>Correct tag for Text Object Sequence​</para></listitem>
+                    <listitem><para><link linkend="cp_2170">CP 2170</link></para></listitem>
+                    <listitem><para><link linkend="cp_2253">CP 2253</link></para></listitem>
+                    <listitem><para><link linkend="cp_2465">CP 2465</link></para></listitem>
+                    <listitem><para><link linkend="cp_2506">CP 2506</link></para></listitem>
+                    <listitem><para><link linkend="cp_2539">CP 2539</link></para></listitem>
+                    <listitem><para><link linkend="cp_2560">CP 2560</link></para></listitem>
+                    <listitem><para><link linkend="cp_2561">CP 2561</link></para></listitem>
+                    <listitem><para><link linkend="cp_2563">CP 2563</link></para></listitem>
+                    <listitem><para><link linkend="cp_2567">CP 2567</link></para></listitem>
+                    <listitem><para><link linkend="cp_2571">CP 2571</link></para></listitem>
+                    <listitem><para><link linkend="cp_2575">CP 2575</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.4</title>
+                <itemizedlist>
+                    <listitem><para>Generalize sentence describing extended negotiation options in K.1</para></listitem>
+                    <listitem><para><link linkend="cp_1637">CP 1637</link></para></listitem>
+                    <listitem><para><link linkend="cp_2170">CP 2170</link></para></listitem>
+                    <listitem><para><link linkend="cp_2550">CP 2550</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.5</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.6</title>
+                <itemizedlist>
+                    <listitem><para><link linkend="cp_2435">CP 2435</link></para></listitem>
+                    <listitem><para><link linkend="cp_2558">CP 2558</link></para></listitem>
+                    <listitem><para><link linkend="cp_2575">CP 2575</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.7</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.8</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.10</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.11</title>
+                <itemizedlist>
+                    <listitem><para>Fix incorrectly numbered sub-sections xx.3.4.2 present since Sup 80</para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.12</title>
+                <itemizedlist>
+                 </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.14</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.15</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.16</title>
+                <itemizedlist>
+                    <listitem><para>Make CID 7163 title singular and consistent with keyword</para></listitem>
+                    <listitem><para><link linkend="cp_2435">CP 2435</link></para></listitem>
+                    <listitem><para><link linkend="cp_2494">CP 2494</link></para></listitem>
+                    <listitem><para><link linkend="cp_2543">CP 2543</link></para></listitem>
+                    <listitem><para><link linkend="cp_2545">CP 2545</link></para></listitem>
+                    <listitem><para><link linkend="cp_2546">CP 2546</link></para></listitem>
+                    <listitem><para><link linkend="cp_2547">CP 2547</link></para></listitem>
+                    <listitem><para><link linkend="cp_2548">CP 2548</link></para></listitem>
+                    <listitem><para><link linkend="cp_2556">CP 2556</link></para></listitem>
+                    <listitem><para><link linkend="cp_2558">CP 2558</link></para></listitem>
+                    <listitem><para><link linkend="cp_2564">CP 2564</link></para></listitem>
+                    <listitem><para><link linkend="cp_2565">CP 2565</link></para></listitem>
+                    <listitem><para><link linkend="cp_2575">CP 2575</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.17</title>
+                <itemizedlist>
+                    <listitem><para><link linkend="cp_2170">CP 2170</link></para></listitem>
+                    <listitem><para><link linkend="cp_2567">CP 2567</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.18</title>
+                <itemizedlist>
+                    <listitem><para><link linkend="cp_2259">CP 2259</link></para></listitem>
+                    <listitem><para><link linkend="cp_2332">CP 2332</link></para></listitem>
+                    <listitem><para><link linkend="cp_2525">CP 2525</link></para></listitem>
+                    <listitem><para><link linkend="cp_2551">CP 2551</link></para></listitem>
+                    <listitem><para><link linkend="cp_2553">CP 2553</link></para></listitem>
+                    <listitem><para><link linkend="cp_2569">CP 2569</link></para></listitem>
+                    <listitem><para><link linkend="cp_2570">CP 2570</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.19</title>
+                <itemizedlist>
+                    <listitem><para>Correct sort order of XML Infoset Definitions</para></listitem>
+                    <listitem><para><link linkend="cp_2332">CP 2332</link></para></listitem>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.20</title>
+                <itemizedlist></itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.21</title>
+                <itemizedlist>
+                </itemizedlist>
+            </section>
+
+            <section>
+                <title>PS3.22</title>
+                <itemizedlist></itemizedlist>
+            </section>
+
+        </section>
+
+        <section>
+            <title>Supplements Incorporated</title>
+            <variablelist>
+            </variablelist>
+        </section>
+
+        <section>
+            <title>Correction Items Incorporated</title>
+            <variablelist>
+                <varlistentry xml:id="cp_1637"><term><link xl:href="cp1637_ft_ClarifyMatchingOfRequiredKeysOfZeroLength.pdf">CP 1637</link></term><listitem><para>Clarify matching of Required Keys of zero length</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2170"><term><link xl:href="cp2170_ft_fix_inconsistent_use_of_name_blending_presentation_state.pdf">CP 2170</link></term><listitem><para>Fix inconsistent use of name "Blending Presentation State"</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2253"><term><link xl:href="cp2253_ft_textualCorrections.pdf">CP 2253</link></term><listitem><para>Clarify description of Image Type and Frame Type in Enhanced MR Image Module</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2259"><term><link xl:href="cp2259_ft_multiframemediatypetables.pdf">CP 2259</link></term><listitem><para>Correct multi-frame image media types for web services</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2332"><term><link xl:href="cp2332_ft_BulkDataURINotForSequences.pdf">CP 2332</link></term><listitem><para>Clarify that bulk data value cannot be used to encode entire Sequences</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2435"><term><link xl:href="cp2435_ft_CodesForWSIQC.pdf">CP 2435</link></term><listitem><para>Add concepts for WSI QC to segmentation properties</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2465"><term><link xl:href="cp2465_ft_unclear_constraints_on_measurement_units_for_real_world_value_mapping.pdf">CP 2465</link></term><listitem><para>Unclear constraints on measurement units for Real World Value Mapping</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2494"><term><link xl:href="cp2494_ft_include_tid_1002_in_tid_3700_with_correct_relationship_type.pdf">CP 2494</link></term><listitem><para>Include TID 1002 in TID 3700 with correct Relationship Type</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2506"><term><link xl:href="cp2506_ft_deviceidlength.pdf">CP 2506</link></term><listitem><para>Length limit of Detector ID</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2525"><term><link xl:href="cp2525_ft_DescribePayloadConsistentlyInMessageSyntax.pdf">CP 2525</link></term><listitem><para>Describe payload consistently in message syntax</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2539"><term><link xl:href="cp2539_ft_ClarifyLutBehaviourPresentationState.pdf">CP 2539</link></term><listitem><para>Clarify behaviour of LUT operations when modules are absent in presentation state</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2543"><term><link xl:href="cp2543_ft_replace_orphan_retired_SNOMED_code_244251006.pdf">CP 2543</link></term><listitem><para>Replace retired orphan SNOMED code 244251006</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2545"><term><link xl:href="cp2545_ft_Retire_DCM_Codes_from_referenced_but_retired_DIN_6868-57.pdf">CP 2545</link></term><listitem><para>Retire DCM Codes from referenced DIN 6868-57</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2546"><term><link xl:href="cp2546_ft_PS3.16_correction_of_typos_in_TIDs.pdf">CP 2546</link></term><listitem><para>Correction of typos in TIDs</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2547"><term><link xl:href="cp2547_ft_Deprecated_LOINC_Code_and_additions_to_H-1_LOINC_Codes.pdf">CP 2547</link></term><listitem><para>Correction of deprecated LOINC Code, and additions to H-1 LOINC Codes</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2548"><term><link xl:href="cp2548_ft_Clarification_on_Root_TIDs_-_especially_TID3202_TID3213.pdf">CP 2548</link></term><listitem><para>Clarification on Root TIDs - especially TID 3202, TID 3213</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2550"><term><link xl:href="cp2550_ft_ClarifyHowTheSCPKnowsWhatSCUsToNotifyForMPPS.pdf">CP 2550</link></term><listitem><para>Clarify how the SCP knows what SCUs to notify for MPPS</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2551"><term><link xl:href="cp2551_ft_AddProtocolApprovalsToNPIService.pdf">CP 2551</link></term><listitem><para>Add Protocol Approvals to NPI Service</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2553"><term><link xl:href="cp2553_ft_clarify_UPS-RS_user_agent_notification.pdf">CP 2553</link></term><listitem><para>Clarify how the origin server knows what user agents to notify in UPS-RS</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2556"><term><link xl:href="cp2556_ft_AddPlacentaToCervixMeasurement.pdf">CP 2556</link></term><listitem><para>Add Placenta to Cervix Internal Os Distance Measurement</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2558"><term><link xl:href="cp2558_ft_Z-ScoreInFetalSRTemplates.pdf">CP 2558</link></term><listitem><para>Enhance Z-scores in SR Templates</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2560"><term><link xl:href="cp2560_ft_GeneralAnatomyInRtStructureSet.pdf">CP 2560</link></term><listitem><para>General Anatomy Optional Macro in RT Structure Set IOD</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2561"><term><link xl:href="cp2561_ft_AddPurposeOfReferenceToReferencedInstanceAndImageSequencesInEncapsulatedDocumentModule.pdf">CP 2561</link></term><listitem><para>Add Purpose of Reference to Referenced Instance and Image Sequences in Encapsulated Document Module</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2562"><term><link xl:href="cp2562_ft_ihtsdoJul2025INTreleaseupdate.pdf">CP 2562</link></term><listitem><para>Update DICOM to reflect changes in IHTSDO SNOMED CT-DICOM Subset for JUL 2025 INT Release</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2563"><term><link xl:href="cp2563_ft_tiledfullfloat.pdf">CP 2563</link></term><listitem><para>Allow TILED_FULL for Float and Double Float Pixel Data</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2564"><term><link xl:href="cp2564_ft_completeness_of_pairedness_vs_bodypartexamined.pdf">CP 2564</link></term><listitem><para>Completeness of PS3.16 L-5 Pairedness vs. L-1 Body Part Examined</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2565"><term><link xl:href="cp2565_ft_Correction_of_wrong_SNOMED_Coded_Concepts_in_CID_4061_and_CID_12325.pdf">CP 2565</link></term><listitem><para>Correction of wrong SNOMED Coded Concepts in CID 4061 and CID 12325</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2567"><term><link xl:href="cp2567_ft_extend_xray_frame_acquisition_macro.pdf">CP 2567</link></term><listitem><para>Extend X-Ray Frame Acquisition Macro</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2569"><term><link xl:href="cp2569_ft_ImproveTheDescriptionOfTheSearchMediaTypeOfTheSearchTransaction.pdf">CP 2569</link></term><listitem><para>Improve the description of the search media type of the Search Transaction</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2570"><term><link xl:href="cp2570_ft_RemoveFirstDashOfAcceptMediaTypes.pdf">CP 2570</link></term><listitem><para>Remove first dash of Accept media types in several sections</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2571"><term><link xl:href="cp2571_ft_remove_waveform_from_relationship_content_constraints_for_colon_cad_sr_iod.pdf">CP 2571</link></term><listitem><para>Remove WAVEFORM from Relationship Content Constraints for Colon CAD SR IOD</para></listitem></varlistentry>
+                <varlistentry xml:id="cp_2575"><term><link xl:href="cp2575_ft_AddMetalArtifactReductionInfo.pdf">CP 2575</link></term><listitem><para>Add metal artifact reduction metadata in CT</para></listitem></varlistentry>
+                
+                
+            </variablelist>
+        </section>
+
+    </chapter>
+</book>
