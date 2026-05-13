@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <a class="github-corner" href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank" rel="noopener noreferrer" aria-label="View source code on GitHub">
+        <img class="github-logo" src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/github.svg" alt="GitHub logo">
+    </a>
+
     <header>
         <h1>DICOM Release Note Summary - CP and Sup</h1>
         <p>Explore and download the latest DICOM release note summary and related documents</p>
@@ -308,7 +312,11 @@
     <footer>
         <p>For more details, please visit <a href="https://www.dclunie.com/dicom-status/status.html" target="_blank" style="color: #69bef0;">David Clunie's Medical Image Format Site - DICOM Standard Status</a></p>
         <p>Data Source: <a href="https://medical.nema.org/medical/dicom/final/" target="_blank" style="color: #4caf50;">NEMA DICOM Final Documents</a></p>
-        <p>Generated at: <time id="generated-at"></time></p>
+        <p>Generated at: <time id="generated-at"></time>
+            <a href="https://github.com/celeron533/DICOM-Release-Notes/actions/workflows/build.yml">
+                <img src="https://github.com/celeron533/DICOM-Release-Notes/actions/workflows/build.yml/badge.svg" alt="Workflow status badge" loading="lazy" height="20">
+            </a>
+        </p>
         <p>Github Repository <a href="https://github.com/celeron533/DICOM-Release-Notes" target="_blank" style="color: #ff9800;">"DICOM-Release-Notes" - celeron533</a></p>
     </footer>
 </body>
@@ -317,6 +325,7 @@
     body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
+        margin: 0;
     }
 
     h2 {
@@ -393,8 +402,36 @@
         line-height: 1.5;
     }
 
+    #dicom-parts-section h2 {
+        text-align: left;
+    }
+
+    .dicom-parts-list {
+        display: grid;
+        grid-template-columns: max-content max-content max-content max-content;
+        row-gap: 5px;
+        column-gap: 1em;
+        align-items: center;
+    }
+
+    .dicom-parts-list li {
+        display: contents;
+    }
+
+    .dicom-parts-list li > a:first-child {
+        white-space: nowrap;
+        justify-self: start;
+        width: max-content;
+    }
+
+    .dicom-parts-list li > a.alt {
+        white-space: nowrap;
+        justify-self: start;
+        width: max-content;
+    }
+
     .dicom-parts-list li a.alt {
-        margin-left: 1em;
+        margin-left: 0;
     }
 
     #version-selector-container {
@@ -431,6 +468,45 @@
         align-items: center;
         gap: 30px;
         flex-wrap: wrap;
+    }
+
+    .github-corner {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+        width: 72px;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #24292f;
+        border-bottom-left-radius: 14px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+        transform-origin: top right;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .github-logo {
+        width: 38px;
+        height: 38px;
+        filter: invert(1);
+    }
+
+    .github-corner:hover {
+        transform: scale(1.08);
+    }
+
+    @media (max-width: 768px) {
+        .github-corner {
+            width: 60px;
+            height: 60px;
+        }
+
+        .github-logo {
+            width: 28px;
+            height: 28px;
+        }
     }
 </style>
 <script>
