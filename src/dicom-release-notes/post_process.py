@@ -43,7 +43,8 @@ def process():
     grouped_changes_of_parts_df = grouped_changes_of_parts(changes_of_parts_df)
     id_details_combined_df = pd.concat([supplements_incorporated_df, correction_items_incorporated_df], ignore_index=True)
 
-    id_to_name_description = dict(id_details_combined_df[['id', 'name', 'description']].values)
+    id_to_name_description = {row['id']: (row['name'], row['description']) 
+                           for _, row in id_details_combined_df[['id', 'name', 'description']].iterrows()}
     id_to_document_list = {row['doc_id']: [file['name'] for file in row['files']] 
                            for _, row in document_list_df.iterrows()}
 
