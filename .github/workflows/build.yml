@@ -2,6 +2,12 @@ name: Build and Deploy GitHub Pages
 
 on:
   workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Deploy to GitHub Pages after build'
+        required: true
+        type: boolean
+        default: true
   push:
     branches:
       - main
@@ -63,6 +69,7 @@ jobs:
 
   deploy:
     needs: build
+    if: ${{ (github.event_name == 'workflow_dispatch' && inputs.deploy) || github.event_name != 'workflow_dispatch' }}
     permissions:
       pages: write
       id-token: write
@@ -74,4 +81,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-
