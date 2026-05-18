@@ -51,6 +51,7 @@
         <section id="dicom-parts-section">
             <h2>DICOM Parts</h2>
             <details open class="dicom-parts-details">
+                <summary>View DICOM Parts</summary>
                 <div id="version-selector-container">
                     <label for="version-selector">Select DICOM Version:</label>
                     <select id="version-selector">
@@ -58,7 +59,6 @@
                         <!-- Options will be populated by JavaScript -->
                     </select>
                 </div>
-                <summary>View Current DICOM Parts</summary>
                 <ul class="dicom-parts-list">
                     <li>
                         <a href="https://dicom.nema.org/medical/dicom/current/output/html/part01.html"
@@ -322,6 +322,12 @@
 </body>
 
 <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    
     body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
