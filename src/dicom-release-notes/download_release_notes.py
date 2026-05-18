@@ -1,10 +1,7 @@
 import os
 import requests
 from lxml import html
-
-BASE_URL = "https://dicom.nema.org/medical/dicom/"
-DOWNLOADED_DIR = "downloaded"
-TIMEOUT = 30
+from settings import DICOM_BASE_URL, DOWNLOADED_DIR, REQUEST_TIMEOUT
 
 def download_file(download_url, folder_name):
     print(f"Downloading {download_url}...")
@@ -15,7 +12,7 @@ def download_file(download_url, folder_name):
         return
     
     try:
-        response = requests.get(download_url, timeout=TIMEOUT)
+        response = requests.get(download_url, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
         
         with open(file_path, "wb") as file:
@@ -29,7 +26,7 @@ def download_release_notes():
     os.makedirs(DOWNLOADED_DIR, exist_ok=True)
     
     try:
-        response = requests.get(BASE_URL, timeout=TIMEOUT)
+        response = requests.get(DICOM_BASE_URL, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
         
         tree = html.fromstring(response.content)
@@ -47,11 +44,11 @@ def download_release_notes():
         print(f">> Links to be downloaded: {release_folders}")
         
         for folder_name, href in release_folders:
-            download_url = f"{BASE_URL}{folder_name}/source/docbook/releasenotes/releasenotes_{folder_name}.xml"
+            download_url = f"{DICOM_BASE_URL}{folder_name}/source/docbook/releasenotes/releasenotes_{folder_name}.xml"
             download_file(download_url, folder_name)
         
-        folder = f"{BASE_URL}current/source/docbook/releasenotes"
-        response = requests.get(folder, timeout=TIMEOUT)
+        folder = f"{DICOM_BASE_URL}current/source/docbook/releasenotes"
+        response = requests.get(folder, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
         
         tree = html.fromstring(response.content)

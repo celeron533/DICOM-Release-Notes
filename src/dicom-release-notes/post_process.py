@@ -1,13 +1,14 @@
 import os
 import json
 import pandas as pd
-
-CHANGE_OF_PARTS_FILE = os.path.join("data", "extracted", "change_of_parts.json")
-SUPPLEMENTS_INCORPORATED_FILE = os.path.join("data", "extracted", "supplements_incorporated.json")
-CORRECTION_ITEMS_INCORPORATED_FILE = os.path.join("data", "extracted", "correction_items_incorporated.json")
-DOCUMENT_LIST_FILE = os.path.join("data", "extracted", "document_list.json")
-CONSOLIDATED_FILE = os.path.join("data", "consolidated.json")
-CONSOLIDATED_INFO_FILE = os.path.join("data", "consolidated_info.json")
+from settings import (
+    CHANGE_OF_PARTS_FILE,
+    SUPPLEMENTS_INCORPORATED_FILE,
+    CORRECTION_ITEMS_INCORPORATED_FILE,
+    DOCUMENT_LIST_FILE,
+    CONSOLIDATED_FILE,
+    CONSOLIDATED_INFO_FILE
+)
 
 def grouped_changes_of_parts(changes_of_parts_df: pd.DataFrame) -> pd.DataFrame:
     filtered_df = changes_of_parts_df[
@@ -65,7 +66,7 @@ def process():
     print(f"Consolidated data saved to {CONSOLIDATED_FILE}")
 
     consolidated_info = {
-        "generated_at": pd.Timestamp.now(tz='UTC').isoformat(),
+        "generated_at": pd.Timestamp.utcnow().isoformat(),
         "versions": consolidated_df['version'].tolist()
     }
     

@@ -1,15 +1,13 @@
 import os
 from lxml import html
 import pandas as pd
-
-INPUT_FILE = os.path.join("downloaded", "final.html")
-OUTPUT_FILE = os.path.join("data", "extracted", "document_list.json")
+from settings import FINAL_HTML_FILE, DOCUMENT_LIST_FILE
 
 def extract_document_list():
-    if not os.path.exists(INPUT_FILE):
-        raise FileNotFoundError(f"Input file not found: {INPUT_FILE}")
+    if not os.path.exists(FINAL_HTML_FILE):
+        raise FileNotFoundError(f"Input file not found: {FINAL_HTML_FILE}")
     
-    with open(INPUT_FILE, "rb") as f:
+    with open(FINAL_HTML_FILE, "rb") as f:
         content = f.read()
     
     tree = html.fromstring(content)
@@ -39,9 +37,9 @@ def extract_document_list():
         include_groups=False
     ).reset_index(name='files')
     
-    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
-    folders_df.to_json(OUTPUT_FILE, orient='records', force_ascii=False, indent=2)
-    print(f"Document list saved to {OUTPUT_FILE}")
+    os.makedirs(os.path.dirname(DOCUMENT_LIST_FILE), exist_ok=True)
+    folders_df.to_json(DOCUMENT_LIST_FILE, orient='records', force_ascii=False, indent=2)
+    print(f"Document list saved to {DOCUMENT_LIST_FILE}")
 
 if __name__ == "__main__":
     extract_document_list()

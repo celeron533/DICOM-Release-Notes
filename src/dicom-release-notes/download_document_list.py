@@ -1,22 +1,18 @@
-import os
 import requests
-
-BASE_URL = "https://dicom.nema.org/medical/dicom/final"
-DOWNLOADED_DIR = "downloaded"
-FILENAME = os.path.join(DOWNLOADED_DIR, "final.html")
-TIMEOUT = 30
+from settings import DICOM_FINAL_URL, DOWNLOADED_DIR, FINAL_HTML_FILE, REQUEST_TIMEOUT
 
 def download_document_list():
+    import os
     os.makedirs(DOWNLOADED_DIR, exist_ok=True)
     
     try:
-        response = requests.get(BASE_URL, timeout=TIMEOUT)
+        response = requests.get(DICOM_FINAL_URL, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
         
-        with open(FILENAME, "wb") as f:
+        with open(FINAL_HTML_FILE, "wb") as f:
             f.write(response.content)
         
-        print(f"Downloaded HTML content from {BASE_URL} to {FILENAME}")
+        print(f"Downloaded HTML content from {DICOM_FINAL_URL} to {FINAL_HTML_FILE}")
     except requests.exceptions.RequestException as e:
         print(f"Failed to download document list: {e}")
         raise

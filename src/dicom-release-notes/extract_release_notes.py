@@ -1,15 +1,10 @@
 import os
 import json
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List
 from lxml import etree
 import pandas as pd
-
-NAMESPACES = {
-    'db': 'http://docbook.org/ns/docbook',
-    'xhtml': 'http://www.w3.org/1999/xhtml',
-    'xl': 'http://www.w3.org/1999/xlink'
-}
+from settings import NAMESPACES, DOWNLOADED_DIR, EXTRACTED_DIR
 
 @dataclass
 class IDsInParts:
@@ -158,18 +153,18 @@ def extract_release_info(file_path: str):
     correction_items_incorporated_result = extract_varlistentry(cps)
     correction_items_incorporated_df = pd.DataFrame([entry.to_dict() for entry in correction_items_incorporated_result])
 
-    os.makedirs("data/extracted", exist_ok=True)
+    os.makedirs(EXTRACTED_DIR, exist_ok=True)
         
     if not changes_of_parts_df.empty:
-        change_of_parts_json_file = "data/extracted/change_of_parts.json"
+        change_of_parts_json_file = os.path.join(EXTRACTED_DIR, "change_of_parts.json")
         append_to_json(changes_of_parts_df, change_of_parts_json_file)
 
     if not supplements_incorporated_df.empty:
-        supplements_incorporated_json_file = "data/extracted/supplements_incorporated.json"
+        supplements_incorporated_json_file = os.path.join(EXTRACTED_DIR, "supplements_incorporated.json")
         append_to_json(supplements_incorporated_df, supplements_incorporated_json_file)
 
     if not correction_items_incorporated_df.empty:
-        correction_items_incorporated_json_file = "data/extracted/correction_items_incorporated.json"
+        correction_items_incorporated_json_file = os.path.join(EXTRACTED_DIR, "correction_items_incorporated.json")
         append_to_json(correction_items_incorporated_df, correction_items_incorporated_json_file)
 
 def walk_directory(directory: str):
@@ -181,7 +176,7 @@ def walk_directory(directory: str):
                 extract_release_info(file_path)
 
 def extract_release_notes():
-    walk_directory("downloaded")
+    walk_directory(DOWNLOADED_DIR)
 
 if __name__ == "__main__":
     extract_release_notes()
