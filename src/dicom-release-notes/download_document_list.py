@@ -1,23 +1,25 @@
-import requests
 import os
+import requests
 
-filename = "downloaded/final.html"
+BASE_URL = "https://dicom.nema.org/medical/dicom/final"
+DOWNLOADED_DIR = "downloaded"
+FILENAME = os.path.join(DOWNLOADED_DIR, "final.html")
+TIMEOUT = 30
 
 def download_document_list():
-    """
-    Downloads the HTML content from the DICOM NEMA final document list page.
-    """
-
-    if not os.path.exists("downloaded"):
-        os.makedirs("downloaded")
-
-    url = "https://dicom.nema.org/medical/dicom/final"
-    response = requests.get(url)
-
-    with open(filename, "wb") as f:
-        f.write(response.content)
-
-    print(f"Downloaded HTML content from {url} to {filename}")
+    os.makedirs(DOWNLOADED_DIR, exist_ok=True)
+    
+    try:
+        response = requests.get(BASE_URL, timeout=TIMEOUT)
+        response.raise_for_status()
+        
+        with open(FILENAME, "wb") as f:
+            f.write(response.content)
+        
+        print(f"Downloaded HTML content from {BASE_URL} to {FILENAME}")
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to download document list: {e}")
+        raise
 
 if __name__ == "__main__":
     download_document_list()
