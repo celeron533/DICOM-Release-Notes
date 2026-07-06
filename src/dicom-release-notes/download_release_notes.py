@@ -3,12 +3,12 @@ import requests
 from lxml import html
 from settings import DICOM_BASE_URL, DOWNLOADED_DIR, REQUEST_TIMEOUT
 
-def download_file(download_url, folder_name):
+def download_file(download_url, version_name):
     print(f"Downloading {download_url}...")
-    file_path = os.path.join(DOWNLOADED_DIR, f"releasenotes_{folder_name}.xml")
+    file_path = os.path.join(DOWNLOADED_DIR, f"releasenotes_{version_name}.xml")
     
     if os.path.exists(file_path):
-        print(f"File for {folder_name} already exists, skipping download.")
+        print(f"File for {version_name} already exists, skipping download.")
         return
     
     try:
@@ -17,9 +17,9 @@ def download_file(download_url, folder_name):
         
         with open(file_path, "wb") as file:
             file.write(response.content)
-        print(f"Downloaded {folder_name} release notes successfully.")
+        print(f"Downloaded {version_name} release notes successfully.")
     except requests.exceptions.RequestException as e:
-        print(f"Failed to download {folder_name} release notes: {e}")
+        print(f"Failed to download {version_name} release notes: {e}")
         raise
 
 def download_release_notes():
@@ -30,22 +30,28 @@ def download_release_notes():
         response.raise_for_status()
         
         tree = html.fromstring(response.content)
-        folders = []
+        version_names = []
         for link in tree.xpath("//a"):
             href = link.get("href")
             if href and href.endswith("/") and href != "../":
-                folder_name = link.text_content()
-                folders.append((folder_name, href))
+                version_name = link.text_content()
+                version_names.append((version_name, href))
         
-        print(f">> Links found: {folders}")
+        print(f">> Links found: {version_names}")
         
-        release_folders = [f for f in folders if f[0][:4].isdigit()]
-        release_folders = [f for f in release_folders if int(f[0][:4]) >= 2014]
-        print(f">> Links to be downloaded: {release_folders}")
+        release_version_names = [f for f in version_names if f[0][:4].isdigit()]
+        release_version_names = [f for f in release_version_names if int(f[0][:4]) >= 2014]
+        print(f">> Links to be downloaded: {release_version_names}")
         
-        for folder_name, href in release_folders:
-            download_url = f"{DICOM_BASE_URL}{folder_name}/source/docbook/releasenotes/releasenotes_{folder_name}.xml"
-            download_file(download_url, folder_name)
+        for version_name, href in release_version_names:
+            try:
+                download_url = f"{DICOM_BASE_URL}{version_name}/source/docbook/releasenotes/releasenotes_{version_name}.xml"
+                download_file(download_url, version_name)
+            except requests.exceptions.RequestException as e:
+                # sometimes the latest version is sitting in the "current" folder instead of its own version folder
+                print(f"Trying to download from the \"current\" folder instead.")
+                download_url = f"{DICOM_BASE_URL}current/source/docbook/releasenotes/releasenotes_{version_name}.xml"
+                download_file(download_url, version_name)
         
         folder = f"{DICOM_BASE_URL}current/source/docbook/releasenotes"
         response = requests.get(folder, timeout=REQUEST_TIMEOUT)
