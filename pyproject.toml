@@ -6,11 +6,11 @@ authors = [
     {name = "celeron533",email = "zhuyilun8@hotmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
-    "requests (>=2.32.4,<3.0.0)",
-    "lxml (>=6.0.0,<7.0.0)",
-    "pandas (>=2.3.0,<3.0.0)"
+    "requests (>=2.34.2,<3.0.0)",
+    "lxml (>=6.1.0,<7.0.0)",
+    "pandas (>=3.0.3,<4.0.0)"
 ]
 
 [tool.poetry]
