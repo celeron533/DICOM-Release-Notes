@@ -497,6 +497,16 @@
         transform: scale(1.08);
     }
 
+    .tabulator-group .version-group-link {
+        color: blue;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .tabulator-group .version-group-link:hover {
+        text-decoration: underline;
+    }
+
     @media (max-width: 768px) {
         .github-corner {
             width: 60px;
@@ -522,6 +532,17 @@
     };
 
     const data_URL = "./data/consolidated.json";
+
+    var latestVersion = ""; // such as 2026c
+
+    function buildDicomVersionUrl(version) {
+        if (version == latestVersion) {
+            return `https://dicom.nema.org/medical/dicom/current/output/pdf/releasenotes_${version}.pdf`;
+        }
+        else {
+            return `https://dicom.nema.org/medical/dicom/${version}/output/pdf/releasenotes_${version}.pdf`;
+        }
+    }
 
     // helper to get icon by extension
     function getIcon(filename) {
@@ -604,6 +625,10 @@
         ],
 
         groupBy: "version",
+        groupHeader: function (value, count) {
+            const versionUrl = buildDicomVersionUrl(value);
+            return `<a href="${versionUrl}" target="_blank" rel="noopener noreferrer" class="version-group-link" onclick="event.stopPropagation()">${value}</a> <span>(${count} item${count === 1 ? "" : "s"})</span>`;
+        },
 
         columns: [
             { title: "Version", field: "version", headerFilter: true },
@@ -644,7 +669,7 @@
                 timeZoneName: 'short',
                 hourCycle: 'h24'
             });
-            let latestVersion = data.versions.sort((a, b) => b.localeCompare(a))[0];
+            latestVersion = data.versions.sort((a, b) => b.localeCompare(a))[0];
             document.getElementById("latest-version").textContent = latestVersion;
 
             // Populate version selector
