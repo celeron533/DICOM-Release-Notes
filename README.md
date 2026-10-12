@@ -4,6 +4,8 @@ This project collects DICOM release-note data and presents a consolidated summar
 
 The source release notes and document listings are published by [DICOM](https://dicom.nema.org/medical/dicom/). This repository downloads and processes that source material; it is not an official DICOM publication.
 
+[![Build and Deploy GitHub Pages](https://github.com/celeron533/DICOM-Release-Notes/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/celeron533/DICOM-Release-Notes/actions/workflows/build.yml)
+
 ## How to use
 
 Open the [deployed GitHub Pages site](https://celeron533.github.io/DICOM-Release-Notes/) to:
