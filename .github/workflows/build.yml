@@ -31,19 +31,21 @@ jobs:
           path: downloaded/
           key: ${{ runner.os }}-custom
 
-      - name: Install poetry
-        run: pipx install poetry
-
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
           python-version-file: "pyproject.toml"
-          cache: "poetry"
 
-      - run: poetry install --no-root
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - run: uv sync --locked --no-install-project
 
       - name: Run data generation script
-        run: poetry run python src/dicom-release-notes/start.py
+        run: uv run --locked python src/dicom-release-notes/start.py
 
       - name: copy files to publish directory
         run: |

@@ -18,7 +18,7 @@ The generated JSON is also available as `data/consolidated.json` (summary data) 
 
 ## Development
 
-The Python dependencies and supported Python version are declared in `pyproject.toml`; `poetry.lock` records the resolved dependency versions. The main runtime dependencies are Requests, lxml, and pandas.
+The Python dependencies and supported Python version are declared in `pyproject.toml`; `uv.lock` records the resolved dependency versions. The main runtime dependencies are Requests, lxml, and pandas.
 
 ### Data processing flow
 
@@ -39,13 +39,13 @@ DICOM final listing ──────> document-list HTML ──> extracted doc
 
 ### Run the data pipeline manually
 
-You need Python 3.14 or newer, [Poetry](https://python-poetry.org/), and an internet connection to the DICOM source site.
+You need Python 3.14 or newer, [uv](https://docs.astral.sh/uv/), and an internet connection to the DICOM source site.
 
 From the repository root:
 
 ```powershell
-poetry install --no-root
-poetry run python src/dicom-release-notes/start.py
+uv sync --locked --no-install-project
+uv run --locked python src/dicom-release-notes/start.py
 ```
 
 The script logs progress to the console and `app.log`. Raw downloads are stored in `downloaded/`; extracted intermediates and consolidated output are stored in `data/`.
@@ -56,7 +56,7 @@ For a **clean** extraction on PowerShell:
 
 ```powershell
 if (Test-Path data\extracted) { Remove-Item -Recurse -Force data\extracted }
-poetry run python src/dicom-release-notes/start.py
+uv run --locked python src/dicom-release-notes/start.py
 ```
 
 ### Automation and deployment
